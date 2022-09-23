@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<!-- 1. JS파일을 연결 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+//window객체를 할당한 load함수의 호출 시간.
+$(window).load(function(){
+	alert("load : HTML문서에 필요한 모든 내용이 로드 된 후 호출");
+})
+
+//document객체를 할당한 ready 함수
+//$(document).ready(function(){ 줄여서 사용 => $(function(){});
+$(function(){
+	alert("ready : <body> 태그의 태그 정보가 로딩된 후 호출");
+})
+</script>
+</head>
+<body>
+
+</body>
+</html>

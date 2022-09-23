@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/*
+external file방식
+모든 페이지에서 사용되는 공통 디자인을 .css 파일을 만들고 정의하는 방식.
+ 코드의 중복성 최소화 가능
+ 
+ 사용하는 html에서는 아래의 코드로 CSS파일과 연결하여 사용한다.
+ <link rel="stylesheet" type="text/css" href="외부파일방식URL"/>
+ *주의 : href에서 정의된 외부파일방식 css의 URL이 잘 못된 경우 페이지의 로딩속도가 매우 느려진다.
+*/
+/* # : 아이디 selector */
+#border{border:1px solid #FF0000}

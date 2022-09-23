@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>여러개의 옵션 중 선택한 옵션 하나를 전송하는 HTML Form Control</title>
+</head>
+<body>
+<form action="test.jsp">
+<!-- HTML Form Control들의 값을 action 속성에 정해진 back-end 페이지로 요청을 보낼 때 사용 -->
+<label>전화번호</label>
+<select name="tel1">
+<option value="010">010</option>
+<option value="011">011</option>
+<option value="016">016</option>
+<option value="017">017</option>
+<option value="018">018</option>
+<option value="019">019</option>
+<option value="none" selected="selected">--전화번호선택--</option>
+</select><br/>
+<!-- size="보여줄 옵션의 갯수" -->
+<label>이름</label>
+<select name="name" size="10">
+<option value="차승주">차승주</option>
+<option value="정주은">정주은</option>
+<option value="홍아람">홍아람</option>
+<option value="정현지">정현지</option>
+<option value="이유리">이유리</option>
+<option value="송성우">송성우</option>
+</select><br/>
+<!-- back-end로 값을 전송할려면 submit -->
+<input type="submit" value="전송"/>
+</form>
+</body>
+</html>

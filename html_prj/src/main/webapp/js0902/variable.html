@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트에서 변수의 사용</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+//지역 변수
+//1.선언) var 변수명;
+var i;
+var j;
+var k;
+//2.값 할당) 변수명=값;
+i=10.9;
+//j="안녕 JavaScript";//자바스크립트는 문자열만 존재. ""와 ''모두 가능
+j='안녕 JavaScript';//자바스크립트는 문자열만 존재. ""와 ''모두 가능
+k=true;
+//3.값 사용) 출력, 연산, 재할당
+document.write("i="+i+", 데이터형 "+typeof(i)+"<br>");//<br/>:J.S영역에서는 HTML코드를 사용할 수 없다.
+document.write("j="+j+", 데이터형 "+typeof(j)+"<br>");
+document.write("k="+k+", 데이터형 "+typeof(k)+"<br>");
+document.write("window의 데이터형 "+typeof(window)+"<br>");
+
+//전역변수
+//1.선언)변수명=값;
+a=2022;
+//2.값 사용)출력, 연산, 재할당
+document.write("전역변수: "+a+"<br>");
+
+function test() {
+	document.write("<hr>");
+	document.write("test 함수 지역변수: "+j+"<br>");
+	document.write("test 함수 전역변수: "+a+"<br>");
+}//test
+test();
+
+function test1() {
+	var name="차승주";//지역변수 : 함수 외부에서 사용 불가능
+	addr="서울시 강남구 역삼동";//전역변수 : 함수 외부에서 사용 가능
+	console.log(name);
+	console.log(addr);
+}//test1
+test1();
+document.write("test1함수 내 지역변수:"+name+"<br>");
+//document.write("test1함수 내 전역변수:"+addr+"<br>");//참조할 수 없다.
+
+var msg; // msg변수의 데이터형을 모른다. 값 할당하지 않으면 undefined가 들어간다.
+
+msg="오늘은 태풍이 올라옵니다."; //msg의 데이터형은 string으로 결정 된다.
+alert(msg+"/"+typeof(msg));
+
+msg=2022;//msg의 데이터형은 number로 결정된다. 이전에 할당된 데이터형과 관련없는 데이터형이 입력될 수 있다.(동적할당)
+alert(msg+"/"+typeof(msg));
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

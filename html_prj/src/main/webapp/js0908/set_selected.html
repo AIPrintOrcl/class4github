@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+function setSelected() {
+	var obj=document.frm;
+	//1~6까지의 난수 발생.
+	var num=parseInt(Math.random()*6)+1;
+	
+	obj.loc[num].selected=true;
+}//setSelected
+</script>
+</head>
+<body>
+<form name="frm">
+<strong>document.폼이름.control명[인덱스].selected=값</strong><br/>
+<select name="loc" class="inputBtn">
+<option value="none">----선택----</option>
+<option value="서울">서울</option>
+<option value="경기">경기</option>
+<option value="충청">충청</option>
+<option value="전라">전라</option>
+<option value="경상">경상</option>
+<option value="제주">제주</option>
+</select>
+<input type="button" value="선택" onclick="setSelected()" class="inputBtn"/>
+</form>
+</body>
+</html>

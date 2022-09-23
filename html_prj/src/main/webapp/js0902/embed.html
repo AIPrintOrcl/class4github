@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>embed방식의 JS사용</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<!-- embed 방식 : <script type="text/javascript">을 선언하고 JS코드를 작성. -->
+<script type="text/javascript">
+//HTML 태그와 JavaScript코드를 분리할 수 있다.
+function test(){
+	alert((9+2)+ " embed 방식의 코드");
+}//test
+</script>
+</head>
+<body>
+
+<input type="button" value="embed 방식" onclick="test()" class="inputBtn"/>
+<input type="button" value="embed 방식" onclick="test1()" class="inputBtn"/>
+
+<script type="text/javascript">
+function test1(){
+	alert("<body>내에서 정의한 JS코드");
+}//test1
+</script>
+
+</body>
+</html>

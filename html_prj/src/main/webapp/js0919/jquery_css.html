@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css 함수 사용</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+#div1{width: 300px; height: 150px; background-color: #333;}
+#div2{height: 150px; border:1px solid #333}
+</style>
+<!-- jQuery google CND -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+//1. 속성 하나인 함수를 사용하면 속성 값을 얻을 수 있다.
+var width=$("#div1").css("width");
+var height=$("#div1").css("height");
+var bgcolor=$("#div1").css("background-color");
+$("#output").html("div1의 넓이: "+width+", 높이: "+height+", 바닥색: "+bgcolor);
+
+//2. 속성이 두개인 함수를 사용하면 속성값을 설정할 수 있다.
+$("#btn").click(function(){
+	$("#div2").css("width", "200px");
+	$("#div2").css("background-color", "#FF0000");
+});
+});
+</script>
+</head>
+<body>
+<div id="div1"></div>
+<div id="output"></div>
+<input type="button" value="클릭" class="inputBtn" id="btn"/>
+<div id="div2"></div>
+</body>
+</html>

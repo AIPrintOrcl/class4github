@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>익명함수로 이벤트 처리</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+
+<script type="text/javascript">
+//function test() {
+	window.onload=function(){
+		
+		//익명함수로 이벤트 처리 : 권장하지 않는다.
+		//문법) document.getElementById("아이디").등록할이벤트=function(){처리할 코드}
+		document.getElementById("btn").onclick=function() {
+			alert("버튼이 클릭 되었습니다.")
+		}//function
+		
+		document.getElementById("sel").onchange=function(){
+			var obj=document.frm;
+			if(obj.sel.selectedIndex !=0){
+				alert(obj.sel.value+"를 선택하였습니다.")
+			}//end if
+		}//onchange
+	}//onload
+//}//test
+</script>
+</head>
+<!-- <body onload="test()"> -->
+<body>
+<form name="frm">
+<select id="sel">
+ <option value="none">---선택---</option>
+ <option value="Java">Java</option>
+ <option value="Oracle">Oracle</option>
+ <option value="JDBC">JDBC</option>
+ <option value="HTML">HTML</option>
+
+</select> <br/>
+<input type="button" value="클릭" id="btn" class="inputBtn"/>
+</form>
+</body>
+</html>

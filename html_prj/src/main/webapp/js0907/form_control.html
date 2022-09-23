@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+function getValue() {
+	//name속성이 유일한 Form Control의 값 얻기.
+	//1. form 태그를 변수 저장
+	var obj=document.frm;
+	
+	var msg="";
+	//2. form태그의 자식 control에 접근하여 값 얻기.
+	var text=obj.text.value;//<input type="text"
+	msg="text: "+ text + "<br>";
+	
+	msg+="password: "+ obj.pass.value + "<br>";//<input type="password"
+	msg+="hidden: "+ obj.hid.value + "<br>";//<input type="hidden"
+	//checkbox는 value사용하면 check여부에 상관 없이 값을 얻을 수 있다.
+	msg+="checkbox값: "+ obj.cbFlag.value + "<br>";//<input type="checkbox"
+	//checkbox나 radio의 확인 상태는 checked 사용
+	msg+="checkbox확인상태: "+ obj.cbFlag.checked + "<br>";//<input type="checkbox"
+	//radio는 value사용하면 check여부에 상관 없이 값을 얻을 수 있다.
+	msg+="radio값: "+ obj.rad.value + "<br>";//<input type="radio"
+	//checkbox나 radio의 확인 상태는 checked 사용
+	msg+="radio확인상태: "+ obj.rad.checked + "<br>";//<input type="radio"
+	
+	//file
+	msg+="file값: "+ obj.file.value + "<br>";//<input type="file"
+	
+	//select
+	msg+="select값: "+ obj.sel.value + "<br>";//<input type="select"
+	
+	//textarea
+	msg+="textarea값: "+ obj.ta.value + "<br>";//<input type="textarea"
+	
+	//출력
+	document.getElementById("output").innerHTML=msg;
+
+}//getValue
+
+function getTaValue() {
+	//1. form 태그를 변수 저장
+	var obj=document.frm;
+	
+	//2. 값을 가져오기
+	var taValue= obj.ta.value + "<br>";//<input type="textarea"
+	
+	//3. div 출력
+	document.getElementById("output2").innerHTML=taValue.replaceAll("\n", "<br>");
+
+}//getTaValue
+
+function getChValue() {
+	/*//1. form 태그를 변수 저장
+	var obj=document.frm;
+	
+	//2. checkbox 얻기
+	var chk= obj.ta.value;//<input type="textarea"
+	
+	if(chk.checked) {//checkedbox가 체크 되어있는지 확인
+		//3. div 출력
+		document.getElementById("output2").innerHTML=chk;
+	}  */
+	document.getElementById("output2").innerHTML=document.frm.cbFlag.checked?chk:"";
+
+}//getChValue
+
+function getRadValue() {
+	//1. form 태그를 변수 저장
+	var obj=document.frm;
+	
+	//2. radio 얻기
+	var radckh= obj.rad;//<input type="textarea"
+	
+	if(radckh.checked) {//checkedbox가 체크 되어있는지 확인
+		
+		//3. div 출력
+		document.getElementById("output2").innerHTML=obj.text.value+ " / "+obj.pass.value;
+	}//end if
+}//getRadValue
+
+function getSelValue() {
+	//1. form 태그를 변수 저장
+	var obj=document.frm;
+	
+	//2. select 값 얻기
+	var sel= obj.sel.value;
+	
+	if(sel=="select값3"){//select가 값3을 선택 시 hidden값 출력
+		//3. div 출력
+		sel=obj.hid.value;
+	}//end if
+	document.getElementById("output2").innerHTML=sel;
+}//getSelValue
+
+function chgImg() {
+	var obj=document.frm;
+	//<img> 태그는 value로 값을 얻을 수 없다.
+	//alert(obj.img.src);
+	if(obj.text.value==""){
+		alert("text에 이미지상의 인물명 입력하세요!!");
+		return;
+	}else if(obj.text.value=="차승주"){
+		obj.img.src="../common/images/pass.png"
+	}else{
+		alert("잘못된 인물명입니다.");
+		obj.text.value="";
+	}//end else
+}//chgImg
+
+</script>
+</head>
+<body>
+<!-- name 속성이 "유일한" HTML Form Control의 값 얻기 -->
+<div>
+<strong>name속성이 유일한 Form Control(document.폼이름.control명.value)</strong><br/>
+<form name="frm">
+<label>text</label>
+<input type="text" name="text" class="inputBox"/><br/>
+
+<label>password</label>
+<input type="password" name="pass" class="inputBox"/><br/>
+
+<label>hidden</label>
+<input type="hidden" name="hid" value="hidden값"/><br/>
+
+<label>checkbox</label>
+<input type="checkbox" name="cbFlag" value="checkbox값"/>체크<br/>
+
+<label>radio</label>
+<input type="radio" name="rad" value="radio값"/>라디오<br/>
+
+<label>file</label>
+<input type="file" name="file"/><br/>
+
+<label>file</label>
+<select name="sel">
+	<option value="select값1">값1</option>
+	<option value="select값2">값2</option>
+	<option value="select값3">값3</option>
+</select>
+<br/>
+<label>textarea</label><br/>
+<textarea rows="5" cols="40" name="ta"></textarea><br/>
+<img src="../day0825/images/cimg.png" name="img"/>
+<br/>
+<input type="button" value="값얻기" class="inputBtn" onclick="getValue()"/>
+<input type="button" value="ta값얻기" class="inputBtn" onclick="getTaValue()"/>
+<input type="button" value="check값얻기" class="inputBtn" onclick="getChValue()"/>
+<input type="button" value="radio선택" class="inputBtn" onclick="getRadValue()"/>
+<input type="button" value="select선택" class="inputBtn" onclick="getSelValue()"/>
+<input type="button" value="이미지변경" class="inputBtn" onclick="chgImg()"/>
+</form>
+<div id="output"></div>
+<div id="output2" style="position:absolute;top:100px;left:500px; border: 1px solid #333; width:400px; height:200px;"></div>
+</div>
+</body>
+</html>

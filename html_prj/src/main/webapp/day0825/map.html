@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이미지를 자르지 않고 특정 위치에 링크 설정</title>
+</head>
+<body>
+<!-- 이미지는 링크를 설정하면 전체 영역에 링크가 설정된다. -->
+<a href="http://sist.co.kr"><img src="http://localhost/html_prj/day0825/images/seoul_map.png" width="200"></a>
+<hr color="#77B2DE">
+<strong>이미지 맵사용</strong>
+<!-- 1. 이미지의 일부분에 링크를 설정하기 위한 map 사용 -->
+<map id="seoulMap" name="seoulMap">
+<area alt="동작구청" shape="rect" coords="295,416,331,426" href="https://www.dongjak.go.kr/portal/main/main.do" title="동작구청" target="_blank"/>
+<area alt="노원구청" shape="rect" coords="490,124,532,138" href="https://www.nowon.kr/www/index.do" title="노원구청" target="_blank"/>
+
+<!-- 강동구를 클릭하면 강동구청 홈페이지와 연결 -->
+<area alt="강동구청" shape="rect" coords="591,324,632,340" href="https://www.gangdong.go.kr/newportal/" title="강동구청" target="_blank"/>
+
+<area alt="용산구청" shape="circle" coords="363,352,20" 
+href="https://www.yongsan.go.kr/portal/main/main.do" title="용산구청" target="_new">
+
+</map>
+
+
+<!-- 2. map을 적용한 이미지태그 -->
+
+<img src="http://localhost/html_prj/day0825/images/seoul_map.png" usemap="#seoulMap"/>
+</body>
+</html>

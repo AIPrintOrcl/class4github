@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+div{height:200px; width:300px}
+#warnMsg{font-weight:bold; color: #FF0000; display:none;}
+</style>
+<!-- JQuery google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btnHide").click(function(){
+		$("#div").hide();
+	});//click
+	
+	$("#btnShow").click(function(){
+		$("#div").show();
+	});//click
+	$("#btnToggle").click(function(){
+		$("#img").toggle();
+	});//click
+	
+	$("#btnFadeOut").click(function(){
+		//fadeOut(ms); fadeOut(ms, function(){대상이 완전히 숨었을 때 제공할 기능})
+		$("#img").fadeOut(1000, function(){
+			alert("숨김 작업 완료");
+		});
+	});//click
+	
+	$("#btnFadeIn").click(function(){
+		//fadeIn(ms); fadeIn(ms, function(){대상이 완전히 보였을 때 제공할 기능})
+		$("#img").fadeIn(1000, function(){
+			alert("보이기 작업 완료");
+		});
+	});//click
+	
+	$("#btnFadeToggle").click(function(){
+		//fadeToggle(ms); fadeToggle(ms, function(){대상이 완전히 숨기고 보이기 제공할 기능})
+		$("#img").fadeToggle(1000, function(){
+			alert("반전 작업 완료");
+		});
+	});//click
+	
+	$("#btnMsg").click(function(){
+		for(var i=0;i<14;i++){
+			//fadeToggle(ms); fadeToggle(ms, function(){대상이 완전히 숨기고 보이기 제공할 기능})
+			$("#warnMsg").fadeToggle(500);
+		}//end for
+	});//click
+});//ready
+</script>
+</head>
+<body>
+<div id="div">
+<img src="http://localhost/html_prj/day0825/images/cimg.png" id="img" title="요우~"/>
+</div>
+<input type="button" value="숨기기" class="inputBtn" id="btnHide"/>
+<input type="button" value="보이기" class="inputBtn" id="btnShow"/>
+<input type="button" value="반전" class="inputBtn" id="btnToggle"/>
+<input type="button" value="서서히숨기기" class="inputBtn" id="btnFadeOut"/>
+<input type="button" value="서서히보이기" class="inputBtn" id="btnFadeIn"/>
+<input type="button" value="서서히반전" class="inputBtn" id="btnFadeToggle"/>
+<input type="button" value="출근메시지" class="inputBtn" id="btnMsg"/>
+<div style="height: 40px">
+<span id="warnMsg">오늘은 출근이 어려웠다.</span></div>
+</body>
+</html>

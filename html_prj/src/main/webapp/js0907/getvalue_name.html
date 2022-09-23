@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>name 속성 사용하여 값 얻기</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+function useName() {
+	//name속성으로 값을 얻을 때에는
+	//window.document.폼이름.컨트롤명.value의 문법을 사용한다.
+	//window - 생략가능 => document.폼이름
+	//document - 생략가능 => 폼이름
+	var obj=document.frm
+	var name=obj.name.value;
+	var age=obj.age.value;
+	
+	//출력
+	
+	var divNode=document.getElementById("output");
+	divNode.innerHTML="이름: "+name+" / 나이: "+age;
+}
+</script>
+</head>
+<body>
+<strong>name속성으로 HTML Form Control의 값 얻기</strong><br/>
+<!-- name속성으로 Form Control의 값을 얻을 때는 반드시 <form>태그와 name속성이 존재해한다. -->
+<!-- 1. <form> 태그가 존재해야한다. -->
+<form name="frm">
+<label>이름</label>
+<input type="text" name="name" id="name" class="inputBox"/><br/>
+<label>나이</label>
+<input type="password" name="age" id="age" class="inputBox"/><br/>
+<input type="button" value="name으로 값 얻기" class="inputBtn" onclick="useName()"/><br/>
+</form>
+
+<div id="output"></div>
+</body>
+</html>

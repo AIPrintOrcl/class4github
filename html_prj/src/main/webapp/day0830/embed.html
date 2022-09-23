@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>embed - 특정페이지에서 만 사용하는 디자인을 정의할 때</title>
+<style type="text/css">
+/* embed방식 : <style>태그를 열고 CSS코드를 정의하는 방식.
+	selector (선택자)사용하여 디자인을 적용받은 태그를 선택한다.
+	-페이지 내에서 사용될 공통디자인을 모아서 정의하기 때문에 코드의 중복성을 낮출 수 있다.
+	-정의된 디자인을 다른페이지에서 사용할 수 없다.
+	
+	문법)
+	selector {속성:값;,,,,,}
+ */
+ div{font-size: 20px; font-weight: bold; font-style: italic}
+</style>
+</head>
+<body>
+<div>오늘은 비오는 화요일입니다.</div>
+<div>내일은 맑은 수요일입니다.</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>내부여백</title>
+<style type="text/css">
+div{width:300px; height:80px; border: 1px solid #333}
+/*	내부여백 설정 - 전체 크기에 설정된 여백만큼 전체 크기에 반영된다.
+	모든 여백 설정(L,T,R,B)
+	padding : 값;
+ */
+#all{ padding: 30px;}
+/* 
+	특정 여백 설정
+	왼쪽 : padding-left : 값;
+	윗쪽 : padding-top : 값;
+	오른쪽 : padding-right : 값;
+	아래쪽 : padding-bottom : 값;
+ */
+#left{ padding-left: 30px;}
+#top{ padding-top: 30px;}
+#right{ padding-right: 20px; text-align:right;}
+#bottom{ padding-bottom: 20px;}
+ul{margin:0px; padding:0px;}
+</style>
+</head>
+<body>
+<div id="all"></div>
+<div id="left">데이터</div>
+<div id="top">데이터</div>
+<div id="right">데이터</div>
+<div id="bottom">데이터</div>
+
+<ul>
+<li>자바</li>
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript</li>
+</ul>
+</body>
+</html>

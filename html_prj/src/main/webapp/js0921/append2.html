@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<!-- JQuery google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var cnt=1;
+	$("#btnAdd").click(function(){
+		//$("#inputWrap").last().append("<div>a<div>");
+		//$("#inputWrap div:first").append("<div>a<div>");
+		
+	//	$("#inputWrap").append(outDiv);
+		$("#tab").last().append("<tr><td>"+ cnt++ +"</td><td>주소</td></tr>");
+	});//click
+	
+	$("#btnRemove").click(function(){
+		$("#tab tr").last().remove();
+		cnt--;
+		if(cnt == -1){cnt=0;}
+	});//click
+});//ready
+</script>
+</head>
+<body>
+<div id="inputWrap">
+<input type="button" value="추가" class="inputBtn" id="btnAdd"/>
+<input type="button" value="삭제" class="inputBtn" id="btnRemove"/>
+<label>이름 1</label>
+<input type="text" name="name" class="inputBox"/>
+</div>
+<table id="tab" >
+<tr>
+<th>이름</th>
+<th>주소</th>
+</tr>
+</table>
+</body>
+</html>

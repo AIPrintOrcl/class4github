@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+tr{ height: 30px }
+</style>
+</head>
+<body>
+<a href="#void">링크</a>
+<h2>회원가입</h2>
+	<form>
+		<table border="0">
+			<tr>
+				<td ><span class="red">*</span>아이디</td>
+				<td><input type="text" class="inputBox">
+				<input type="button" class="inputBtn" value="ID 중복확인"></td>
+			</tr>
+			<tr>
+				<td><span class="red">*</span>비밀번호</td>
+				<td><input type="password" id="pass" class="inputBox"><label
+					for="passcheck"><small>&nbsp;&nbsp;비밀번호 확인</small></label> 
+					<input type="password" id="passcheck" class="inputBox"> <label for="pass"> <small>&nbsp;&nbsp;<span class="red">*</span>8~12자의
+							영문,숫자,특수문자 3가지를 조합하여 입력</small></label></td>
+			</tr>
+			<tr>
+				<td><span class="red">*</span>이름</td>
+				<td><input type="text" class="inputBox"></td>
+			</tr>
+			<tr>
+				<td><span class="red">*</span>생일</td>
+				<td><input type="date" class="inputBox"></td>
+			</tr>
+			<tr>
+				<td>연락처</td>
+				<td><input type="tel" class="inputBox" style="width: 100px"></td>
+			</tr>
+			<tr>
+				<td><span class="red">*</span>휴대폰</td>
+				<td><input type="tel" class="inputBox"> <input type="checkbox"><small>수신</small></td>
+			</tr>
+			<tr>
+				<td><span class="red">*</span>이메일</td>
+				<td><input type="email" class="inputBox" style="width: 150px">@ 
+						<select class="inputBox">
+						<option>선택해주세요</option>
+						<option>googl.com</option>
+						<option>daum.net</option>
+						<option>nate.com</option>
+						<option>naver.com</option>
+						<option>hotmail.com</option>
+						<option>직접입력</option>
+						</select> <input type="checkbox"><small>수신</small></td>
+			</tr>
+			<tr>
+				<td><span class="red">*</span>성별</td>
+				<td><input type="radio" id="man" name="gender" value="m">
+					<label>남자</label> 
+					<input type="radio" 	id="woman" name="gender" value="w"><label>여자</label>
+				</td>
+			</tr>
+			<tr>
+				<td>소재지</td>
+					<td><select class="inputBox">
+						<option>선택해주세요</option>
+						<option>서울</option>
+						<option>경기</option>
+						<option>강원</option>
+						<option>충청도</option>
+						<option>경상도</option>
+						<option>전라도</option>
+						<option>제주도</option>
+						</select></td>
+			</tr>
+			<tr>
+				<td><span class="red">*</span>우편번호</td>
+				<td><input type="text" class="inputBox"><input type="button" class="inputBtn" value="우편번호 검색"></td>
+			</tr>
+			<tr>
+				<td ><span class="red">*</span>주소</td>
+				<td><input type="text" class="inputBox" style="width: 400px"> <br>
+				 	<input type="text" class="inputBox" style="width: 400px">
+				</td>
+			</tr>
+		</table>
+		<br>
+		<table>
+			<tr align="center">
+				<td><input type="submit" value="확인" class="inputBtn">
+				<input type="button" value="취소" class="inputBtn"></td>
+		</table>
+	</form>
+
+</body>
+</html>

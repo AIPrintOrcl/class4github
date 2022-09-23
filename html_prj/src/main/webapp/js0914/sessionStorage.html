@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>storage</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+#output{border:1px solid #333; width:500px;height:500px}
+</style>
+<script type="text/javascript">
+//web broswer에 정보가 저장되는 storage 객체 사용.
+//sessionStorage: 웹 브라우저가 열려있는 동안에만 정보가 유지되는 특징.
+function addSession(){
+	//스토리지에 값 설정.(Cookie와 다르게 문자열, 숫자, boolean 저장 가능)
+	//1.스토리지 얻기
+	var ss=window.sessionStorage;
+	//2.값 설정. setItem("이름", 값)
+	ss.setItem("name", "차승주");
+	ss.setItem("age", 20);
+	ss.setItem("flag", true);
+}//addSession
+
+function getSession(){
+	//변수에 할당하고 사용하지 않고 직접 스토리지 객체를 사용 가능.
+	//alert(sessionStorage.getItem("name"));
+	var data="이름: "+sessionStorage.getItem("name")
+			+"<br/>나이: "+ sessionStorage.getItem("age")
+			+"<br/>플래그: "+ sessionStorage.getItem("flag");
+	document.getElementById("output").innerHTML=data;
+}//getSession
+
+function removeSession(){
+	//스토리지 삭제
+	var ss=sessionStorage; //window객체 생략
+	ss.removeItem("age");
+}//removeSession
+function clearSession(){
+	//세션 스토리지의 모든 값 삭제.
+	var ss=sessionStorage; //window객체 생략
+	ss.clear();
+}//removeSession
+</script>
+</head>
+<body>
+<input type="button" value="값 설정" class="inputBtn" onclick="addSession()"/>
+<input type="button" value="값 얻기" class="inputBtn" onclick="getSession()"/>
+<input type="button" value="값 삭제" class="inputBtn" onclick="removeSession()"/>
+<input type="button" value="모두삭제" class="inputBtn" onclick="clearSession()"/>
+<div id="output"></div>
+</body>
+</html>

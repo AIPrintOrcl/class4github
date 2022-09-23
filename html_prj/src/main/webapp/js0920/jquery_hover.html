@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+#msgDiv{width:30px}
+#todayMsg{font-weight: bold; size:20px; color:#4D579C; background-color: #D6E3F4; display:none;}
+</style>
+<!-- JQuery google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#img").hover(function(){//마우스포인터가 올라왔을 때
+		//alert("마우스 포인터 올라옴")
+		$("#todayMsg").show();
+	},function(){//커서가 빠져 나갔을 때
+		//alert("마우스 포인터 빠져나감.")
+		$("#todayMsg").hide();
+	});//hover
+	
+	$("#img2").mousemove(function(evt){
+		$("#sx").html(evt.pageX);
+		$("#sy").html(evt.pageY);
+	})//mousemove
+	
+});//ready
+</script>
+</head>
+<body>
+<div>
+<img id="img" src="http://localhost/html_prj/day0825/images/cimg.png">
+</div>
+<div id="msgDiv">
+<span id="todayMsg">오늘은 화창한 날씨의 화요일 입니다.</span>
+</div>
+<img id="img2" src="http://localhost/html_prj/day0825/images/cimg.png">
+<div id="mousePointer">
+x : <span id="sx">0</span>, y : <span id="sy">0</span>
+</div>
+</body>
+</html>

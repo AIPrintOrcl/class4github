@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>name selector</title>
+<style type="text/css">
+/* 
+name selector
+속성="값"을 가진 모든 태그에 디자인을 적용할 때
+
+문법)
+	-css
+	[속성명='값'] {속성:값;,,,,}
+	
+	-tag
+	<태그명 속성명="값">
+
+ */
+/* [type='text'] {border: 1px solid #0000FF; height: 40px} */
+/* [name='age'] {border: 1px solid #00FF00; width: 200px} */
+/* [id='name'] {border: 1px solid #00FF00; width: 200px} */
+[size='40'] {border: 1px solid #00FF00; width: 200px}
+</style>
+</head>
+<body>
+<label>이름</label> <input type="text" name="name" id="name" size="40"><br/>
+<label>나이</label> <input type="text" name="age"><br/>
+<label>주소</label> <input type="text" name="addr" size="40"><br/>
+<label>저장여부</label> <input type="checkbox" name="saveFlag"><br/>
+</body>
+</html>

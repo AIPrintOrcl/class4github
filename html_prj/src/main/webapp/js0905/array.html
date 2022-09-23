@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+//일차원 배열만 제공, 가변길이형(값이 입력되면 배열의 길이가 늘어난다.)
+//1.생성) var 배열명=new Array();
+var arr=new Array();
+//2.값할당)배열명[인덱스]=값; //값이 할당될 때 데이터형이 결정된다.
+arr[0]=2022;
+arr[1]="안녕하세요?";
+arr[2]=9.5;
+arr[3]=true;
+
+//3. 값사용)배열명[인덱스]
+document.write(arr[0]);
+document.write("<hr>");
+
+//4.일괄처리)배열명.length - 방의 갯수를 알 수 있다.
+for(var i=0; i<arr.length;i++){
+	document.write(arr[i]+"<br>");
+}//end for
+
+document.write("<hr>");
+//초기화: var 배열명=[값,,,,,];
+var arr2 = [2022, 9, 5, 12, 22];
+document.write(arr2+"배열의 방의 수 "+arr2.length);
+
+document.write("<hr>");
+var sum=0;
+for(var i=0;i<arr2.length;i++){
+	sum+=arr2[i];
+}//end for
+document.write(arr2+"배열의 모든 방의 값 "+sum);
+
+document.write("<hr>");
+//arr2 배열의 방의 값 중 가장 작은 값을 출력
+var min=arr2[0];
+for(var i=1;i<arr2.length;i++){
+	if(min>arr2[i]){
+		min=arr2[i];
+	}//end if
+}//end for
+document.write("배열의 최소값 "+min);
+
+
+document.write("<hr>");
+var domain=["gmail.com","hotmail.com", "naver.com", "daum.net", "nate.com", "직접입력"];
+document.write("<select name='domain'>")
+var selected;
+for(var i=0;i<domain.length;i++){
+	selected="";
+	if(domain[i]=="naver.com"){
+		selected="selected='selected'";
+	}//end if
+	document.write("<option "+selected+" value='"+domain[i]+"'>"+domain[i]+"</option>")
+}//end for
+document.write("</select>")
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

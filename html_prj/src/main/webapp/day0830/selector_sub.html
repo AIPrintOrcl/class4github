@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sub selector</title>
+<style type="text/css">
+/* sub selector
+특정 태그하위의 자식태그만 디자인을 적용할 때.
+
+문법)
+	-css
+	부모태그명 > 자식태그명 {속성:값;,,,,}
+	
+	-tag
+	<부모태그명>
+		<자식태그명></자식태그명>
+	</부모태그명>
+
+ */
+div > ul > li { font-size: 20px; font-weight: bold}
+</style>
+</head>
+<body>
+<ul>
+	<li>알약</li>
+	<li>이스트소프트</li>
+	<li>알집</li>
+</ul>
+<ol>
+	<li>차승주</li>
+	<li>송성우</li>
+	<li>남상민</li>
+</ol>
+<div>
+	<ul>
+		<li>자바</li>
+		<li>오라클</li>
+		<li>JSP</li>
+	</ul>
+</div>
+
+</body>
+</html>

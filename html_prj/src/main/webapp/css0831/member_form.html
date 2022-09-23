@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+
+<table width=1000 height=700 align="center">
+
+<tr>
+	<td align="center" colspan="2"><h1>회원가입</h1></td>
+</tr>
+
+<tr>
+ <td>
+ <table border="1" width=100% height=100% cellspacing="0">
+
+<tr>
+	<td><font color="#FF0000" title="필수입력사항입니다.">*</font>아이디</td><td><input type="text" size="20"><input type="button" value="ID중복확인"></td>
+</tr>
+<tr>
+	<td><font color="#FF0000" title="필수입력사항입니다.">*</font>비밀번호</td><td><input type="password">
+	<label>비밀번호 확인</label><input type="password"><label>*8~12자의 영문, 숫자, 특수문자 3가지를 조합하여 입력</label></td>
+</tr>
+<tr>
+	<td><font color="#FF0000" title="필수입력사항입니다.">*</font>이름</td><td><input type="text" size="20"></td>
+</tr>
+<tr>
+	<td><font color="#FF0000" title="필수입력사항입니다.">*</font>생일</td><td><input type="date"></td>
+</tr>
+<tr>
+	<td>연락처</td><td><input type="tel"></td>
+</tr>
+<tr>
+	<td><font color="#FF0000" title="필수입력사항입니다.">*</font>휴대폰</td><td><input type="tel"><input type="checkbox"/>수신</td>
+</tr>
+<tr>
+	<td><font color="#FF0000" title="필수입력사항입니다.">*</font>이메일</td><td><input type="email" size="20"><label>@</label>
+	<select>
+		<option value="none">선택해주세요.</option>
+		<option value="google.com">google.com</option>
+		<option value="daum.net">daum.net</option>
+		<option value="nate.com">nate.com</option>
+		<option value="naver.com">naver.com</option>
+		<option value="hotmail.com">hotmail.com</option>
+		<option value="직접입력">직접입력</option>
+	</select>
+	<input type="checkbox"/>수신
+	</td>
+</tr>
+<tr>
+	<td><font color="#FF0000" title="필수입력사항입니다.">*</font>성별</td><td><input type="radio" name="gender" value="m"/>남자 <input type="radio" name="gender" value="f"/>여자</td>
+</tr>
+<tr>
+	<td>소재지</td><td>
+	<select>
+		<option value="none">선택해주세요.</option>
+		<option value="서울">서울</option>
+		<option value="경기">경기</option>
+		<option value="강원">강원</option>
+		<option value="충청도">충청도</option>
+		<option value="경상도">경상도</option>
+		<option value="전라도">전라도</option>
+		<option value="제주도">제주도</option>
+	</select>
+	</td>
+</tr>
+<tr>
+	<td><font color="#FF0000" title="필수입력사항입니다.">*</font>우편번호</td><td><input type="text" size="15" > 
+	<input type="button" value="우편번호검색"/></td>
+</tr>
+<tr>
+	<td><font color="#FF0000" title="필수입력사항입니다.">*</font>주소</td><td><input type="text" size="30"><br/>
+	<input type="text" size="30"></td>
+</tr>
+
+ </table>
+ </td>
+</tr>
+<tr>
+	<td>'<font color="#FF0000">*</font>'은 필수사항 입력사항입니다.
+</tr>
+<tr align="center">
+ <td><input type="submit" style="width:100px; height:30px;" value="확인">
+ <input type="reset" style="width:100px; height:30px;" value="취소"></td>
+</tr>
+
+</table>
+</body>
+</html>

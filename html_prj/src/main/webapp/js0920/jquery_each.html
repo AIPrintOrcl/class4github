@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<!-- JQuery google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+var arr=["오늘은","화요일","입니다.","내일은","수요일","입니다."];
+$(function() {
+	$("#btn").click(function(){
+		//배열의 방의 값을 jQueryObject의 each 함수를 사용하여 반복 처리.
+		//1. 값이 외부에 존재하는 경우.
+		// $.each(배열명, function(인덱스, 배열방의 값을 저장할 변수){
+		//	변수를 사용하면 인덱스를 사용하지 않고 배열방의 값을 얻을 수 있다.	
+		//});
+		
+		var output="<ol>";
+		
+		$.each(arr, function(i, val){
+			output+="<li>"+i+". "+val+"</li>";
+		});
+		output+="</ol>";
+		
+		$("#output").html(output);
+		
+	});//click
+	
+	$("#btnRadio").click(function(){
+		//2. 찾아낸 태그를 반복 시킬 때.
+		//$("selector").each(function(인덱스, 저장될 변수){
+		//	저장될 변수를 jQueryObject에 넣어 사용 가능.
+		//});
+		
+		//모든 라디오를 얻어 반복 시킨다.=>코드가 길다.
+		//$("[name='gender']").each(function(i, element){
+		//	if($(element).is(":checked")){//현재 반복중인 라디오가 확인 되었는지?
+		//		alert($(element).val());//현재 반복중인 라디오의 값을 얻는다.
+		//	}//end if
+		//});//each
+		
+		//개선=>확인된 라디오만 얻는다.(현재 라디오는 두개이므로)
+		var radioVal=($("[name='gender']:checked").val());
+		if(radioVal == undefined){
+			return;
+		}//end if
+		$("#outputGender").html("선택한 성별: "+radioVal);
+	});//click
+	
+	$("#btnCheck").click(function(){
+		var output="<ul>";
+		//확인된 체크박스만 가져와서 반복(최소화된 반복을 수행)
+		$("[name='lang']:checked").each(function(i, element){
+			output+="<li><strong>"+i+"</strong>."+$(element).val()+"</li>";
+		});//each
+		
+		//체크된 값이 없을 때에는 "선택하신 언어가 없습니다."를 출력.
+		if($("[name='lang']:checked").length==0){
+			output+="<li>선택하신 언어가 없습니다.</li>";
+		}//end if
+		
+		
+		
+		output+="</ul>";
+		
+		$("#outputLeng").html(output);
+		$("li:even").css("background-color","#FF0000");
+		
+	});//click
+});//ready
+</script>
+</head>
+<body>
+<input type="button" value="each사용" class="inputBtn" id="btn"/>
+<div id="output"></div>
+
+<strong>성별</strong>
+<input type="radio" name="gender" value="M"/>남자
+<input type="radio" name="gender" value="F"/>여자
+<input type="button" value="each사용" class="inputBtn" id="btnRadio"/>
+<div id="outputGender"></div>
+
+<strong>관심언어</strong>
+<input type="checkbox" name="lang" value="자바"/>자바
+<input type="checkbox" name="lang" value="C/C++"/>C/C++
+<input type="checkbox" name="lang" value="비주얼 베이직"/>Visual Basic
+<input type="checkbox" name="lang" value="C#"/>C#
+<input type="checkbox" name="lang" value="ASP"/>ASP
+<input type="checkbox" name="lang" value="PHP"/>PHP
+<input type="checkbox" name="lang" value="JSP"/>JSP
+<input type="checkbox" name="lang" value="PyThon"/>PyThon
+<br/>
+<input type="button" value="each사용" class="inputBtn" id="btnCheck"/>
+<div id="outputLeng"></div>
+</body>
+</html>

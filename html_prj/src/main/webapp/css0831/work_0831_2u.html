@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="work_0831_2.css">
+  <title>로그인 숙제</title>
+</head>
+<body>
+  <div id="wrap" >
+    
+      <header class="header" role="banner" >
+      <h1 class="login_title">로그인</h1>
+     </header>
+
+     <!-- 로그인 -->
+     <form>
+     <div id="inner"> 
+      <ul class="login_wrap">
+        <li class="login_item" style="display: block;">
+        <div class="login_inner_title">
+        <span class="top_text1 top_text">회원 로그인</span>
+        </div>
+        <div class="login_inner" role="tabpanel">
+          <div class="id_pw_wrap">
+            <div class="input_row" id="id_line">
+            <input type="text" id="id" class="input_id" name="id" placeholder="아이디" title="아이디" maxlength="40" autofocus>
+           </div> 
+           <div class="input_row" id="pw_line">
+            <input type="password" id="pw" class="input_id" name="pw" placeholder="비밀번호" title="비밀번호" maxlength="16">
+           </div> 
+          </div>
+
+          <div class="btn_login_wrap">
+            <button type="submit" class="btn_login">
+              <span class="btn_text">로그인</span>
+            </button>
+          </div>
+
+          <div class="user_info">
+            <a href="http://211.63.89.142/html_prj/day0829/work_0829_2.html" title="회원가입창으로 이동">
+            <span class=" sign_up">회원가입</span>
+            </a>
+
+            <span class="line find_id">아이디 찾기</span>
+            <span class="line find_pass">비밀번호 찾기</span>
+          </div>
+        </div>
+        </li>
+       </ul>  
+    
+      <!-- 주문조회 -->
+      <ul class="login_wrap">
+        <li class="login_item" style="display: block;">
+        <div class="login_inner_title">
+        <span class="top_text1 top_text">비회원 주문조회</span>
+        </div>
+        <div class="login_inner" role="tabpanel">
+          <div class="id_pw_wrap">
+            <div class="input_row" id="order_name_line">
+            <input type="text" id="non_client_name" class="input_name" name="client_name" placeholder="주문자명" title="주문자명" maxlength="40">
+           </div> 
+           <div class="input_row" id="tel_line">
+            <input type="text" id="tel" class="input_tel" name="tel" placeholder="하이픈(-) 포함" title="비회원주문 비밀번호" maxlength="16" size="20">
+           </div> 
+           <div class="input_row" id="non_client_pw_line">
+            <input type="password" id="non_client_pw" class="input_non_c_pw" name="non_c_pw" placeholder="비회원주문 비밀번호" title="비회원 주문 비밀번호" maxlength="16" size="20">
+           </div> 
+          </div>
+
+          <div class="btn_login_wrap">
+            <button type="submit" class="btn_login btn_order">
+              <span class="btn_text btn_text2">비회원 주문 조회하기</span>
+            </button>
+          </div>
+
+        </div>
+        </li>
+       </ul>  
+
+       
+    </div>
+    </form>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>숙제 0825</title>
+</head>
+<body>
+<!-- 숙제
+1.자신이 주로 방문하는 사이트 1,2,3위를 정해서 
+   1. 사이트명     <li><a>사이트</a></li>     : <a><li>사이트명</li></a>
+   2. 사이트명
+   3. 사이트명
+
+의 형식으로 보여주고, 사이트명에 마우스포인터가 올라가면 사이트의 URL을
+  풍선도움말로 보여준다.
+사이트를 클릭하면 해당 사이트로 새창을 띄워서 이동한다. 
+
+
+
+2. 아래 이미지에서 
+  뉴스를 클릭하면  https://v.daum.net/v/20220825150716274 로 이동하고
+  지도를 클릭하면 https://map.kakao.com/ 로 이동하는 코드를 작성하세요. -->
+<ol>
+<li><a href="http://google.com" title="http://google.com" target="_new">구글</a></li>
+<li><a href="http://naver.com" title="http://naver.com" target="_new">네이버</a></li>
+<li><a href="http://www.youtube.com/" title="http://www.youtube.com/" target="_new">유튜브</a></li>
+</ol>
+
+<hr>
+
+<map name="daum_menu" id="daum_menu">
+<area alt="뉴스" shape="rect" coords="87,9,115,27" href="https://v.daum.net/v/20220825150716274" title="뉴스" target="_new">
+<area alt="지도" shape="rect" coords="129,9,155,27" href="https://map.kakao.com/" title="지도" target="_new">
+
+</map>
+
+<img src="http://localhost/html_prj/day0825/images/daum_menu.png" usemap="#daum_menu"/>
+
+</body>
+</html>

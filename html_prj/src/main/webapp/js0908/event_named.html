@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>기명함수로 이벤트를 등록하고 처리</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+
+window.onload=function(){
+	//<body>와 함께 실행 => tag들에 접근이 가능.
+	//이벤트 등록 문법) document.getElementById("아이디").addEventListener("이벤트명", 함수명);
+	
+	document.getElementById("btn").addEventListener("click", clickEvtProcess);
+	document.getElementById("btn1").addEventListener("click", divPrint);
+	document.getElementById("btn2").addEventListener("click", setEmail);
+	document.getElementById("email2").addEventListener("change", setEmail);
+	
+}//onload
+
+function clickEvtProcess(){
+	//이벤트처리 코드를 분리할 수 있다.
+	alert("버튼이 클릭되었습니다.");
+}//clickEvtProcess
+
+function divPrint(){
+	//이벤트처리 코드를 분리할 수 있다.
+	var obj=document.frm;
+	var output=obj.name.value+"님의 대략 나이는 "+obj.age.value+"살입니다.";
+	
+	document.getElementById("output").innerHTML=output;
+}//divPrint
+
+function setEmail(){
+	var obj=document.frm;
+	
+	var msg="";
+	
+	if(obj.email1.value==""){
+		alert("이메일1은 필수 입력");
+		obj.email1.focus();
+		return;
+	}//end if
+	
+	//선택한 메일주소 설정
+	if(obj.email2.selectedIndex > 0 && obj.email2.selectedIndex < obj.email2.length-1){
+		obj.email3.value=obj.email2.value;
+	}//end if
+	
+	//직접입력 선택
+	if(obj.email2.selectedIndex == obj.email2.length-1){
+		obj.email3.focus();
+	}//end if
+	
+	//선택에서 입력버튼을 누를 시
+	if(obj.email2.selectedIndex == 0){
+		alert("도메인 주소를 선택해주세요.");
+		return;
+	}//end if
+	
+	//도메인의 길이가 4자 이상 이면서 .이 있는 경우
+	if(!(obj.email3.value.length>4 && obj.email3.value.indexOf(".") != -1)) {
+		alert("도메인 주소를 올바르게 입력해 주세요.");
+		obj.email3.focus();
+		return;
+	}//end if
+	
+	msg=obj.email1.value+"@"+obj.email3.value;
+	
+	document.getElementById("output").innerHTML=msg;
+	
+}//emailPrint
+
+function emailPrint(){
+	var obj=document.frm;
+	var selVal=obj.email.value;
+	var email3=obj.email3.value;
+	
+	var output;
+	
+	if(selVal=="self" && email3!==""){
+		output=obj.email3.value;
+	}//end if
+	
+	output=obj.email1.value+"@"+selVal;
+	document.getElementById("output").innerHTML=output;
+}//emailPrint
+</script>
+</head>
+<body>
+<form name="frm">
+<input type="button" name="bin" id="btn" value="클릭" class="inputBtn"/>
+<label>이름</label><input type="text" name="name" class="inputBox"/><br/>
+<label>나이</label><input type="range" name="age" min="0" max="100"/>100<br/>
+<input type="button" name="btn1" id="btn1" value="클릭" class="inputBtn"/>
+
+<br/>
+<label>이메일</label>
+<input type="text" name="email1" class="inputBox"/>@
+<select name="email2" id="email2" class="inputBox">
+<option value="none">---선택---</option>
+<option value="gmail.com">지메일</option>
+<option value="naver.com">네이버메일</option>
+<option value="daum.net">다음메일</option>
+<option value="nate.com">네이트메일</option>
+<option value="self" >----직접입력----</option>
+</select>
+<input type="text" name="email3" class="inputBox"/>
+<input type="button" name="btn2" id ="btn2" value="입력"/>
+</form>
+<div id="output"></div>
+</body>
+</html>

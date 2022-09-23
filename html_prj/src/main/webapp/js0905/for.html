@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- <link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/> -->
+<style type="text/css">
+	.td{width: 100px}
+	td{text-align: center;}
+	td:hover {background-color: #c0c0c0}
+</style>
+<script type="text/javascript">
+//for문
+for(var i=1;i<7;i++){
+	document.write("<h"+i+">안녕하세요?</h"+i+">");
+}//end for
+
+document.write("<hr>");
+
+document.write("<table border='1'>");
+document.write("<tr>");
+document.write("<td wdith='100'>번호</th><th width='200'>값</th>");
+document.write("</tr>");
+
+for(var i=0;i<3;i++){
+	document.write("<tr>");
+	document.write("<td>"+(i+1)+"</td>");
+	document.write("<td>"+((i+1)*100)+"</td>");
+	document.write("</tr>");
+}//end for
+document.write("</table>");
+
+document.write("<hr>");
+
+//구구단 출력
+
+document.write("<ul type='square'>");
+for(var i=1;i<10;i++){
+	document.write("<li> 2x"+i+"="+2*i+"<br>");
+}//end for
+document.write("</ul>");
+
+document.write("<hr>");
+
+//1~100까지의 합 출력 : 5050
+var sum=0;
+
+for(var i=1;i<101;i++){
+	sum+=i;
+}
+document.write("합 출력 : "+sum);
+
+document.write("<hr>");
+
+//구구단 모든 단을 표를 만들어서 출력
+document.write("<table border='1'>");
+for(var j=1;j<10;j++){
+	document.write("<tr>");
+	for(var i=2;i<10;i++){
+		document.write("<td class='td'>"+ i +"x"+j+"="+(i*j)+"</td>");
+	}
+	document.write("</tr>");
+}
+document.write("</table>");
+
+document.write("<hr>");
+
+for(var i=1;i<5;i++){
+	for(var j=0;j<i;j++){
+		document.write("<img src='http://localhost/html_prj/day0825/images/img2.png' title='"+i+"행'/>");
+	}//end for
+	document.write("<br>");
+}//end for
+</script>
+</head>
+<body>
+</body>
+</html>

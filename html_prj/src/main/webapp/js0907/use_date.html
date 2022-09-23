@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+#dateOutput{border:1px solid #333; width:800px; height:400px; font-size:20px;
+	padding: 5px; line-height: 1.2}
+span{font-weight:bold;}
+</style>
+<script type="text/javascript">
+function useDate() {
+	//Date 객체 생성
+	let date=new Date();
+	
+	let weekTitle=["일","월","화","수","목","금","토"]
+	let outputData="날짜 객체 <span>"+date+"</span><br>";
+	
+	outputData+="년 : <span>"+ date.getFullYear()+"</span><br>";
+	outputData+="월 : <span>"+ (date.getMonth()+1)+"</span><br>";//0월부터 나온다.
+	outputData+="일 : <span>"+ date.getDate()+"</span><br>";
+	outputData+="요일 : <span>"+ weekTitle[date.getDay()]+"</span><br>";
+	outputData+="시간 : <span>"+ date.getHours()+"</span><br>";
+	outputData+="분 : <span>"+ date.getMinutes()+"</span><br>";
+	outputData+="초 : <span>"+ date.getSeconds()+"</span><br>";
+	
+	//1.id를 가진 태그 얻기
+	let divNode=document.getElementById("dateOutput");
+	//2.얻어낸 태그에 값 설정.
+	divNode.innerHTML=outputData;
+	
+}//useDate
+</script>
+</head>
+<body>
+<div id="dateOutput"></div>
+<input type="button" value="시간얻기" class="inputBtn" onclick="useDate()"/>
+
+</body>
+</html>

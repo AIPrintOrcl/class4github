@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>multiple selector</title>
+<style type="text/css">
+/* multiple selector.
+	- 하나의 디자인을 여러 selector에서 사용할 때.
+	- 모든 selector에 적용가능.
+	
+	문법)
+	-css
+	selector, selector,,{속성:값;,,,,,}
+	
+	-tag
+	정의한 selector에 맞게 사용.
+*/
+/* id selector를 동일 디자인으로 여러개 정의 */
+#news1, #news2 {color:#D7424F; font-size: 20px}
+
+/* class selector를 동일 디자인으로 여러개 정의 */
+.contents1, .contents2 { font-family: 궁서체; font-size: 12px}
+
+/* name selector를 동일 디자인으로 여러개 정의 */
+[name='id'], [type='password'] { background-color: #E89199; color: #D8424F; font-size: 20px}
+/* tag selector를 동일디자인으로 여러 개 정의 */
+big, small{ font-size: 30px; font-weight: bold}
+</style>
+</head>
+<body>
+<div id="news1">뉴스1</div>
+<div id="news2">뉴스2</div>
+
+<div class="contents1">내용1</div>
+<div class="contents2">내용2</div>
+ 
+<div>
+<input type="text" name="id" placeholder="아이디입력"/><br/>
+<input type="password" name="pass" placeholder="비밀번호입력"/><br/>
+</div>
+
+오늘은 <big>알약</big>이 큰 일을 하였다. 내일은 <small>V3</small> 관련자가 <big>쾌재</big>를 불렀다.
+<br/> 알약을 집에서 사용하시는 분은 <big>삭제</big>해주세요.
+
+</body>
+</html>

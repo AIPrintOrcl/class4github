@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#output{width:500px; height:500px; border:1px solid #333; padding: 20px};
+</style>
+<script type="text/javascript">
+sumResult=0;//주사위 결과 값
+window.onload=function(){
+	setDice();//페이지 시작 시 임의의 주사위 값
+	/* document.getElementById("btn").addEventListener("click", setDice);
+	document.getElementById("sumResult").value=sumResult; */
+}//onload
+
+function setDice() {
+	var obj=document.frm;
+	
+	var dice1=parseInt(Math.random()*6+1);
+	var dice2=parseInt(Math.random()*6+1);
+	
+	sumResult=dice1+dice2;
+	
+	return dice1;
+	
+}//setDice
+
+</script>
+</head>
+<body>
+<form name="frm">
+<div>
+<input type="button" value="던지기" id="btn" name="btn" onclick="setDice()"/><br/>
+<div id="output"><img src="http://localhost/html_prj/js0908/images/dice"+setDice()의 리턴 값+"_.png"/></div> 
+<label>결과</label><input type="text" id="sumResult"> 
+</div>
+</form>
+</body>
+</html>

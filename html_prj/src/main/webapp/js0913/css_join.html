@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+tr{ height: 30px }
+</style>
+<script type="text/javascript">
+function idDup(){
+	//팝업창 열기 : window.open();
+	window.open("http://localhost/html_prj/js0913/id_dup.html", "idWin", 
+			"width=510px,height=310px,top=200,left=300,scolling=no");
+}//idDup
+function idDup2(){
+	//1.팝업창을 변수에 저장 : window.open();
+	var subWin=window.open("http://localhost/html_prj/js0913/id_dup.html", "idWin", 
+			"width=510px,height=310px,top=200,left=300,scolling=no");
+	//2.팝업창을 사용하여 자식 윈도우에 접근. (크롬은 안된다.)
+	//변수명.window.document.폼이름.컨트롤명.value=값;
+	
+	subWin.document.idDupFrm.id.value=document.memberFrm.id2.value;
+}//idDup2
+function idDup3(){
+	//1.팝업창 URL에 Web QueryString로 전달한다.
+	window.open("http://localhost/html_prj/js0913/id_dup.jsp?id="+document.memberFrm.id3.value, "idWin", 
+			"width=510px,height=310px,top=200,left=300,scolling=no");
+	//2.팝업창을 사용하여 자식 윈도우에 접근. (크롬은 안된다.)
+	//변수명.window.document.폼이름.컨트롤명.value=값;
+	
+}//idDup2
+</script>
+<!-- 우편번호 API 시작 -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    function execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('zipcode').value = data.zonecode;
+                document.getElementById("addr1").value = roadAddr;
+                //커서를 상세 주소로 이동
+                document.getElementById("addr2").focus();
+            }
+        }).open();
+    }
+</script>
+<!-- 우편번호 API 끝 -->
+</head>
+<body>
+<a href="#void">링크</a>
+<h2>회원가입</h2>
+	<form name="memberFrm">
+		<table border="0">
+			<tr>
+				<td ><span class="red">*</span>아이디</td>
+				<td><input type="text" class="inputBox" name="id">
+				<input type="button" class="inputBtn" value="ID 중복확인" onclick="idDup()"></td>
+			</tr>
+			<tr>
+				<td ><span class="red">*</span>부모아이디</td>
+				<td><input type="text" class="inputBox" name="id2">
+				<input type="button" class="inputBtn" value="ID 중복확인2" onclick="idDup2()"></td>
+			</tr>
+			<tr>
+				<td ><span class="red">*</span>부모아이디JSP전송</td>
+				<td><input type="text" class="inputBox" name="id3">
+				<input type="button" class="inputBtn" value="ID 중복확인3" onclick="idDup3()"></td>
+			</tr>
+			<tr>
+				<td><span class="red">*</span>비밀번호</td>
+				<td><input type="password" id="pass" class="inputBox"><label
+					for="passcheck"><small>&nbsp;&nbsp;비밀번호 확인</small></label> 
+					<input type="password" id="passcheck" class="inputBox"> <label for="pass"> <small>&nbsp;&nbsp;<span class="red">*</span>8~12자의
+							영문,숫자,특수문자 3가지를 조합하여 입력</small></label></td>
+			</tr>
+			<tr>
+				<td><span class="red">*</span>이름</td>
+				<td><input type="text" class="inputBox"></td>
+			</tr>
+			<tr>
+				<td><span class="red">*</span>생일</td>
+				<td><input type="date" class="inputBox"></td>
+			</tr>
+			<tr>
+				<td>연락처</td>
+				<td><input type="tel" class="inputBox" style="width: 100px"></td>
+			</tr>
+			<tr>
+				<td><span class="red">*</span>휴대폰</td>
+				<td><input type="tel" class="inputBox"> <input type="checkbox"><small>수신</small></td>
+			</tr>
+			<tr>
+				<td><span class="red">*</span>이메일</td>
+				<td><input type="email" class="inputBox" style="width: 150px">@ 
+						<select class="inputBox">
+						<option>선택해주세요</option>
+						<option>googl.com</option>
+						<option>daum.net</option>
+						<option>nate.com</option>
+						<option>naver.com</option>
+						<option>hotmail.com</option>
+						<option>직접입력</option>
+						</select> <input type="checkbox"><small>수신</small></td>
+			</tr>
+			<tr>
+				<td><span class="red">*</span>성별</td>
+				<td><input type="radio" id="man" name="gender" value="m">
+					<label>남자</label> 
+					<input type="radio" 	id="woman" name="gender" value="w"><label>여자</label>
+				</td>
+			</tr>
+			<tr>
+				<td>소재지</td>
+					<td><select class="inputBox">
+						<option>선택해주세요</option>
+						<option>서울</option>
+						<option>경기</option>
+						<option>강원</option>
+						<option>충청도</option>
+						<option>경상도</option>
+						<option>전라도</option>
+						<option>제주도</option>
+						</select></td>
+			</tr>
+			<tr>
+				<td><span class="red">*</span>우편번호</td>
+				<td><input type="text" class="inputBox" name="zipcode" id="zipcode" readonly="readonly" style="width:50px">
+				<input type="button" class="inputBtn" value="우편번호 검색" onclick="execDaumPostcode()"></td>
+			</tr>
+			<tr>
+				<td ><span class="red">*</span>주소</td>
+				<td><input type="text" name="addr1" id="addr1" class="inputBox" style="width: 400px" readonly="readonly"> <br>
+				 	<input type="text" name="addr2" id="addr2" class="inputBox" style="width: 400px">
+				</td>
+			</tr>
+		</table>
+		<br>
+		<table>
+			<tr align="center">
+				<td><input type="submit" value="확인" class="inputBtn">
+				<input type="button" value="취소" class="inputBtn"></td>
+		</table>
+	</form>
+
+</body>
+</html>

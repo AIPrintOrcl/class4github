@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>class selector</title>
+<style type="text/css">
+/*	class selector
+	-정의된 디자인을 <body>에서 여러 번 사용해야할 때.
+	
+	문법)
+	-css 선언
+	.클래스명(속성:값;,,,,)
+	
+	-태그에서 사용.
+	class="클래스명" 
+ */
+.headerText{ font-family: 맑은 고딕; font-size: 28px; color: #467DC3}
+
+</style>
+</head>
+<body>
+<div class="headerText">사회안전망 뉴스</div>
+<div>
+	<ul>
+		<li>생계급여액 4인가구 월 153만→162만원…'최대 인상폭' 데일리안</li>
+		<li>반지하·쪽방 이사비 지원 등 복지 8.9조 늘려…일자리 예산은 삭감 아시아경제</li>
+		<li>전세사기 피해자에 '인당 1억600만원' 저리 대출 지원…보증료 지원도 뉴스1</li>
+		<li>생계급여 최대 월 162만 원으로 인상…공공 일자리는 축소 이투데이</li>
+	</ul>
+</div>
+<!-- <div id="headerText">재난안전 뉴스</div> 
+ 동일 아이디를 여러번 사용하는 것은 에러가 발생하지 않지만 잘못된 사용 -->
+<!-- 다른 아이디를 정의한 후 사용 -->
+<div class="headerText">재난안전 뉴스</div>
+<div>
+	<ul>
+		<li>집중호우시 빗물 저장시설 8곳 추가…재난대책비 1.5배로 확대 연합뉴스</li>
+		<li>탄소중립 R&D에 2조원…서울 지하 빗물터널 설계비 반영 연합뉴스</li>
+		<li>도시침수 예보 도입…재난헬기 확충 아주경제</li>
+	</ul>
+</div>
+</body>
+</html>

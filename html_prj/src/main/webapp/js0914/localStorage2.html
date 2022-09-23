@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>storage</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+#output{border:1px solid #333; width:500px;height:500px}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var lcData=localStorage.getItem("lastConnect");
+	
+	var msg="최근 접속 기록이 존재하지 않습니다.";
+	if(lcData != null){
+		msg=lcData;
+	}//end if
+	document.getElementById("lc").innerHTML=msg;
+}
+//web broswer에 정보가 저장되는 storage 객체 사용.
+//localStorage: 웹 브라우저가 종료되어도 정보가 유지되는 특징.(다음 번 접속 시에도 정보 사용 가능)
+function addSession(){
+	//스토리지에 값 설정.(Cookie와 다르게 문자열, 숫자, boolean 저장 가능)
+	//1.스토리지 얻기
+	var ls=window.localStorage;
+	//2.값 설정. setItem("이름", 값)
+	ls.setItem("name", "송성우");
+	ls.setItem("age", 21);
+	ls.setItem("flag", false);
+}//addSession
+
+function getSession(){
+	//변수에 할당하고 사용하지 않고 직접 스토리지 객체를 사용 가능.
+	//alert(sessionStorage.getItem("name"));
+	var data="이름: "+localStorage.getItem("name")
+			+"<br/>나이: "+ localStorage.getItem("age")
+			+"<br/>플래그: "+ localStorage.getItem("flag");
+	document.getElementById("output").innerHTML=data;
+}//getSession
+
+function removeSession(){
+	//스토리지 삭제
+	var ls=localStorage;
+	ls.removeItem("age");
+}//removeSession
+function clearSession(){
+	//세션 스토리지의 모든 값 삭제.
+	var ls=localStorage;
+	ls.clear();
+}//removeSession
+</script>
+</head>
+<body>
+<div>
+마지막 접속 일자: <span id="lc"></span>
+</div>
+<strong>로컬스토리지 이동페이지</strong><br/>
+<input type="button" value="값 얻기" class="inputBtn" onclick="getSession()"/>
+<div id="output"></div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+// 함수가 arguments 없이 호출 될 때 기본 값으로 설정할 입력할 때 사용.
+function paramDefault(name="익명", age) {
+	alert("생략하더라도 undefined가 나오지 않음: "+name+", (undefined가 나옴).age: "+age);
+}
+</script>
+</head>
+<body>
+<input type="button" value="값설정 호출" class="inputBox" onclick="paramDefault('차승주',20)"/>
+<input type="button" value="값없이 호출" class="inputBox" onclick="paramDefault()"/>
+</body>
+</html>

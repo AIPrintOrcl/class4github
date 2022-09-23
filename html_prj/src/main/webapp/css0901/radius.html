@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>둥근 모서리 만들기</title>
+<style type="text/css">
+/* 	모든 모서리를 동일하게 둥글게 만들기 
+	border-radius : 값;
+	특정 모서리만 다르게 만들기
+	border-radius : 좌상단값 우상단값 우하단값 좌하단값;
+*/
+#radius1{ width: 250px; height: 190px; border: 1px solid #333;
+		 border-radius: 100px; padding-left: 50px; padding-top: 10px;}
+#radius2{ width: 250px; height: 190px; border: 1px solid #333;
+		 border-radius: 10px 20px 30px 40px;}
+table{border:1px solid #333; border-spacing: 30px}
+.radius3{ width: 100px; height: 100px; border: 1px solid #333;
+		border-radius: 100px; box-shadow: 10px 5px 10px #000000; 
+		font-size: 25px; text-align: center; font-weight: bold;
+		}
+td:hover{background-color: #dfdfdf}
+</style>
+</head>
+<body>
+<div id="radius1">데이터</div>
+<div id="radius2"></div>
+
+<table>
+<tr>
+	<td class="radius3">1</td><td class="radius3">2</td><td class="radius3">3</td>
+</tr>
+<tr>
+	<td class="radius3">4</td><td class="radius3">5</td><td class="radius3">6</td>
+</tr>
+<tr>
+	<td class="radius3">7</td><td class="radius3">8</td><td class="radius3">9</td>
+</tr>
+</table>
+<hr/>
+<img src="http://localhost/html_prj/day0825/images/cimg.png"
+	style="border-radius: 50px"/>
+<hr/>
+<input type="text" style="width: 300px; height:60px; border:1px solid #333; font-size: 20px; border-radius: 20px; padding-left: 7px"/>
+</body>
+</html>

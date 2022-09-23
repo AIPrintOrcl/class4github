@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>글꼴,크기,색을 변경하는 속성이 있는 태그</title>
+</head>
+<body>
+일반글자 <font>글꼴</font><br>
+일반글자 <font size="10">크기변경</font><br> <!-- size="1~10" -->
+일반글자 <font face="궁서체">글꼴변경</font><br> <!-- face="모든글꼴" -->
+일반글자 <font color="#FF0000">색깔있는 글자</font><br>
+<!-- 안녕하세요를 파란색, 휴먼편지체, 7p로 설정하여 보여주기 -->
+<font color="#0000FF" face="휴먼편지체" size="7">안녕하세요?</font><br>
+<font color='#0000FF' face='휴먼편지체' size='7'>안녕하세요?</font><br>
+<!-- 속성 값이 공백이 있는 경우 띄어쓰기 까지만 값으로 인정한다. => 정상동작 안됨. 
+속성=값 권장하지 않음. -->
+<font color=#0000FF face=문체부 궁체 정자체 size=7>안녕하세요?</font>
+</body>
+</html>

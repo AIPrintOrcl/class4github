@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+window.onload=function(){
+
+//JSONObject : 자바스크립트에서 값을 저장하기 위해 고안된 객체.
+//형식) {이름 : 값,,,,,,,}
+//1. 문자열 형식)=> eval 함수를 사용하여 문자열을 JSONObject으로 생성.
+var data="{name:'차승주',age:25,height:184.5, flag:false}";
+//2. 문자열을 객체로 변경 : eval("("+문자열+")");
+
+var jsonObj=eval("("+ data +")");
+//alert(jsonObj);
+//값 얻기 : json객체명.이름 => parsing 데이터에서 피룡한 부분을 잘라서 사용한다.
+var parsingData="이름: "+jsonObj.name+"<br>나이: "+jsonObj.age
+				+"<br>키: "+jsonObj.height+"<br>flag: "+jsonObj.flag;
+
+document.getElementById("output").innerHTML=parsingData;
+}
+</script>
+</head>
+<body>
+<div id="output"></div>
+</body>
+</html>

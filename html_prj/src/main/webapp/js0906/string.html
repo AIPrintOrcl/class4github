@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문자열 함수</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+//문자열 함수
+//길이 : length 키워드로 제공되기 때문에 ()를 붙이지 않고 사용.
+var msg="abcde5@gmail.com";
+document.write(msg+"의 글자수: "+msg.length+"<br/>");
+//모두 대문자 : toUpperCase()
+msg="Java,Oracle,HTML,CSS,JavaScript";//CSV Data
+document.write(msg+" 모두 대문자: "+msg.toUpperCase()+"<br/>");
+
+//모두 소문자: toLowerCase()
+document.write(msg+" 모두 소문자: "+msg.toLowerCase()+"<br/>");
+
+//특정 문자의 인덱스 얻기. 문자가 없다면 -1이 발생.
+//indexOf("문자열") : L->R 진행
+document.write(msg+" 'a'의 인덱스: "+msg.indexOf('a')+"<br/>");
+//indexOf("문자열","시작 인덱스") : 시작 인덱스 부터 L->R 진행
+document.write(msg+" 'a'의 인덱스: "+msg.indexOf('a',4)+"<br/>");
+
+//lastIndexOf("문자열") : R->L 진행
+document.write(msg+" 'a'의 인덱스: "+msg.lastIndexOf('a')+"<br/>");
+//lastIndexOf("문자열","시작 인덱스") : R->L 진행
+document.write(msg+" 'a'의 인덱스: "+msg.lastIndexOf('a',23)+"<br/>");
+
+//특정문자로 구분하여 배열 만들기.
+//split("구분문자")
+var arr=msg.split(",");
+for(var i=0;i<arr.length;i++){
+	document.write(arr[i]+"<br>");
+}//end for
+
+msg='   JavaScript CSS   ';
+//앞뒤공백 제거:trim()
+window.onload=function(){
+	document.getElementById("text").value=msg.trim();
+}//function
+
+//특정 문자치환 : replace("찾을 문자열", "치환할 문자열"); L->R 진행하면서 최초 일치하는 문자 하나만 치환
+document.write(msg+"에서 'a'를 'z'로 변환"+msg.replace("a","z")+"<br/>");
+document.write(msg+"에서 'a'를 'z'로 변환"+msg.replace(/a/g, "z")+"<br/>");
+
+//특정 문자치환 : replaceAll("찾을 문자열", "치환할 문자열"); L->R 진행하면서 최초 일치하는 문자 모두 치환
+document.write(msg+"에서 'a'를 'z'로 변환"+msg.replaceAll("a","z")+"<br/>");
+
+msg="반장 차승주님.";
+//자식문자열 자르기 : substring(시작인덱스, 끝인덱스+1)
+document.write(msg+"에서 3번째 인덱스 부터 6번째 인덱스까지 자르기: "+msg.substring(3,6)+"<br/>");
+
+//특정인덱스의 문자얻기 : charAt(인덱스)
+document.write(msg+"에서 3번째 인덱스의 문자: "+msg.charAt(3)+"<br/>");
+
+//문자열 붙이기: concat("붙일 문자열")
+var test=msg.concat("은 열심히 한다.");
+document.write(test+"<br/>");
+
+msg="서울시 강남구 역삼동";
+//시작문자열 비교 : startsWith("비교할 문자열")
+document.write(msg.startsWith("서울")+"<br/>");
+document.write(msg.startsWith("경기")+"<br/>");
+
+//끝문자열 비교 : endsWith("비교할 문자열")
+document.write(msg.endsWith("역삼동")+"<br/>");
+document.write(msg.endsWith("서초동")+"<br/>");
+</script>
+</head>
+<body>
+<input type="text" id="text" class="inputBox" style="width:200px; height:40px; font-weight:bold; font-size:20px"/>
+</body>
+</html>

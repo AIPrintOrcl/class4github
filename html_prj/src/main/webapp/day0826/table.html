@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>테이블</title>
+</head>
+<!-- <body background="../day0825/images/cimg.png"> -->
+<body>
+<!-- 
+<table> : 테이블 시작
+ 	<table border="테이블선의 두깨" bordercolor="선색" bgcolor="바닥색" background="바닥이미지"
+ 	width="테이블 너비" height="높이" align="수평정렬" cellspacing="td간의 여백"
+ 	cellpadding="td 내부여백">
+<tr> : 행을 시작
+	<tr height="행높이" bgcolor="바닥색" background="바닥이미지" align="수평정렬" valign="수직정렬">
+<td> : 열 시작
+	<td height="열 높이" width="열너비" bgcolor="바닥색" background="바닥이미지"
+	align="수평정렬" valign="수직정렬" colspan="합칠칸의 수" rowspan="합칠행의 수">
+<th> : 열 제목 시작
+ -->
+ <strong>속성이 없는 표</strong><br/>
+ <table>
+ <tr>
+ 	<td>칸열림</td><td>td</td>
+ </tr>
+ <tr>
+ 	<td>3</td><td>4</td>
+ </tr>
+ 
+ <hr/>
+ 
+ <strong>border 속성을 사용한 표</strong><br/>
+ <!-- border 속성은 자식 태그인 td로 상속된다. -->
+ <table border="1" border="#0000FF">
+ <tr>
+ 	<td>Java</td><td>Oracle</td><td>JDBC</td>
+ </tr>
+ <tr>
+ 	<td>HTML</td><td>CSS</td><td>JavaScript</td>
+ </tr>
+ </table>
+ <strong>width 속성을 사용한 표</strong><br/>
+<!--  <table border="1" width="400"> table에 width를 설정하는 것은 권장하지 않는다.-->
+ <table border="1"><!-- td의 넓이로 table의 넓이 설정되도록 만든다.. -->
+ <tr><!-- tr은 width속성이 없다. -->
+ 	<td width="150">COUNTRY</td><td width="100">MAKER</td>
+ </tr>
+ <tr>
+ 	<td>국산</td><td>현대</td><!-- 아래의 td는 위의 td에 넓이를 그대로 사용한다. -->
+ </tr>
+ <tr>
+ 	<td>국산</td><td>기아</td>
+ </tr>
+ <tr>
+ 	<td>국산</td><td>삼성</td>
+ </tr>
+ </table>
+ 
+ <hr/>
+ 
+ <strong>바닥색 속성을 사용한 표</strong>
+ <table border="1" bgcolor="#CFECFF"><!-- 모든 tr과 td에 색 설정 -->
+ <tr bgcolor="#4C84AC"><!-- 바닥색을 설정하면 모든 td에 색 설정 -->
+ 	<td width="150">COUNTRY</td><td width="100">MAKER</td>
+ </tr>
+ <tr>
+ 	<td>국산</td><td>현대</td>
+ </tr>
+ <tr>
+ 	<td>국산</td><td bgcolor="#8EC57C">기아</td>
+ </tr>
+ <tr>
+ 	<td>국산</td><td>삼성</td>
+ </tr>
+ </table>
+ 
+ <strong>바닥이미지 설정</strong>
+ <table border="1" background="http://localhost/html_prj/common/images/daum.png"><!-- 설정되는 이미지가 전체크기가 맞지 않으면 반복되어 들어간다. =>바둑판식 -->
+ <tr background="http://localhost/html_prj/common/images/sist.png"><!-- tr에 이미지를 설정하면 모든 td에 설정된다. -->
+ 	<td width="150">COUNTRY</td><td width="100">MAKER</td>
+ </tr>
+ <tr>
+ 	<td>국산</td><td background="images/hyundai.png">현대</td>
+ </tr>
+ <tr>
+ 	<td>국산</td><td background="images/kia.png">기아</td>
+ </tr>
+ <tr>
+ 	<td>국산</td><td background="images/samsung.png">삼성</td>
+ </tr>
+ </table>
+</body>
+</html>

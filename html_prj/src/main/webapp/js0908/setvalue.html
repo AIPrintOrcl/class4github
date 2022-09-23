@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML Form Control에 값 설정</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+function setValue() {
+	//value속성으로 값을 설정하는 HTML Form Control
+	var obj=document.frm;
+	
+	//text설정
+	obj.text.value="즐거운 한가위 명절되세요.";
+	//password설정
+	obj.pass.value="q1w2e3r4t5";
+	//hidden설정
+	obj.hid.value="살인적인 추석 식탁물가";
+	
+	//file은 보안상 설정할 수 없다.
+	//obj.file.value="e:/dev/env.bat";
+	
+	//button설정
+	obj.btn.value="설정된버튼 라벨";
+	
+	//textarea설정
+	obj.ta.value="9일 추선 전날, 10일 추석당일, 11일 추석다음날~\n12일 내일이면 출근이야.";
+	
+}//setValue
+</script>
+</head>
+<body>
+<form name="frm">
+<strong>document.폼이름.control명.value=값; 으로 설정</strong>
+<br/>
+<label>text</label>
+<input type="text" name="text" class="inputBox"/><br/>
+
+<label>password</label>
+<input type="password" name="pass" class="inputBox"/><br/>
+
+<label>hidden</label>
+<input type="hidden" name="hid"/><br/>
+
+<label>file</label><!-- value로 설정할 수 없다. error -->
+<input type="file" name="flie" class="inputBox" style="width: 200px"/><br/>
+
+<label>button</label>
+<input type="button" value="버튼" name="btn" class="inputBtn"/><br/>
+
+<label>textarea</label>
+<textarea class="inputBox" style="width:350px; height:200px" name="ta"></textarea>
+<br/>
+<input type="button" value="값설정" class="inputBtn" onclick="setValue()"/><br/>
+
+
+
+
+
+</form>
+</body>
+</html>

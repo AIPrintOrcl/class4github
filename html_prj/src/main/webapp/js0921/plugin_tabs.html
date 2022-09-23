@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>탭사용</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+
+<style type="text/css">
+
+</style>
+
+<!-- JQuery google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+</script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs({
+      collapsible: true
+    });
+  } );
+  </script>
+</head>
+<body>
+
+<div id="tabs" style="width:500px">
+  <ul>
+    <li><a href="#tabs-1">1조</a></li>
+    <li><a href="#tabs-2">2조</a></li>
+    <li><a href="#tabs-3">3조</a></li>
+    <li><a href="#tabs-4">4조</a></li>
+  </ul>
+  <div id="tabs-1">
+    <p><strong>중고거래 (애기당근).</strong></p>
+    <p>애기당근 내용</p>
+  </div>
+  <div id="tabs-2">
+    <p><strong>2조</strong></p>
+    <p>문화 공연 내용</p>
+  </div>
+  <div id="tabs-3">
+    <p><strong>고양시 시티투어</strong></p>
+    <p>고양시 시티투어 내용</p>
+  </div>
+  <div id="tabs-4">
+    <p><strong>4조</strong></p>
+    <p>4조는 없습니다.</p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+// 입력된 이름이 차승주 -반장, 송성우 - 1조 조장, 최정민 - 2조 조장, 홍다영 - 3조 조장을
+// 그렇지 않으면 조원을 이름앞에 출력 - 일치하는 값을 비교하는 상황
+let name=prompt("이름을 입력해 주세요", "차승주");
+
+let prevMsg;
+
+switch (name) {
+case "차승주": prevMsg="반장";break;
+case "송성우": prevMsg="1조 조장";break;
+case "최정민": prevMsg="2조 조장";break;
+case "홍다영": prevMsg="3조 조장";break;
+default:prevMsg="평민";break;
+}//end switch
+
+document.write( prevMsg+" / "+name);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

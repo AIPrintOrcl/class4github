@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+
+nameArr=new Array();
+
+function nameInput() {
+	nameArr+=prompt("이름을 입력해주세요.", "차승주 송성우").split(" ");
+}//nameInput
+
+function nameOutput(){
+	document.write("<table border='1'>");
+	for(var i=0;i<nameArr.length;i++){
+		document.write("<tr>");
+		document.write("<td>"+nameArr[i]+"</td>");
+		document.write("</tr>");
+	}//end for
+	document.write("</table>");
+}//nameOutput
+
+</script>
+</head>
+<body>
+<input type="button" onclick="nameInput()" value="이름입력">
+<input type="button" onclick="nameOutput()" value="이름출력">
+</body>
+</html>

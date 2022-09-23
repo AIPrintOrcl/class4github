@@ -1,0 +1,140 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+  letter-spacing: 1px;
+}
+
+div#wrap{
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+}
+
+header{
+  padding:20px;
+
+}
+
+div#inner{
+  display: flex;
+}
+
+
+ ul.login_wrap{
+ 
+   width:calc(1500px/4);
+}
+
+
+div.login_inner_title span.top_text{ 
+  font-weight: bold;
+  color:#656565;
+
+}
+
+div.login_inner div.id_pw_wrap{
+  margin-top:5px;
+  width:340px;
+  border-top:3px solid #343434;
+  
+}
+
+input{
+ margin:5px 0px;
+ width:310px;
+ height:40px;
+ border-radius: 2px;
+ border:1px solid #F1F1F1;
+ font-weight: bold;
+ padding-left:20px;
+ color:#333;
+
+}
+
+#id{
+  margin-top: 10px;
+
+}
+
+button.btn_login{
+  margin:5px 0px;
+  width:335px;
+  height: 50px;
+  font-size: 17px;;
+  background-color: #272727;
+  color:whitesmoke;
+  font-weight: bolder;
+  margin-bottom:130px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight:bold;
+ 
+}
+
+/*footer*/
+.user_info{
+  font-size:14px;
+  font-weight: bold;
+  color:#2A2A2A;
+}
+
+.user_info .line{
+  position:relative;
+
+}
+
+.user_info .line::before{
+  content:"";
+  width:1px;
+  height:14px;
+  background-color:#E8E8E8;
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:-10px;
+  margin:auto 0 ;
+ 
+
+}
+.user_info span.find_id{
+  margin-left:20px;
+}
+.user_info span.find_id,
+.user_info span.find_pass{ 
+  margin-right:20px;
+  cursor: pointer;
+}
+
+.user_info a{
+  text-decoration: none;
+  color:black;
+}
+
+.user_info a:hover{
+  text-decoration: underline;
+}
+
+/*비회원 주문조회*/
+input#non_client_name{
+  margin-top:10px;
+}
+
+button.btn_order{
+  border:1px solid whitesmoke;
+  background:linear-gradient(white,whitesmoke);
+  color:#525252;
+  font-weight:bold;
+  box-shadow:  0px 1px 2px 0px gray;
+  transition: background 0.5s;
+  
+}
+
+button.btn_order:hover{
+	background:linear-gradient(whitesmoke,white);
+	transition: background 0.5s;
+	
+}

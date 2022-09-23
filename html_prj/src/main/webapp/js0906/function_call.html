@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+img{border:1px solid #333}
+</style>
+<script type="text/javascript">
+//경고창으로 "called!!!"를 보여주는 callTest 기명함수를 만들어보세요.
+function callTest(){
+	alert("called!!!");
+}//callTest
+
+</script>
+</head>
+<!-- <body onload="callTest()"> -->
+<body>
+<h2>사용자의 동작으로 JavaScript function 호출</h2>
+
+<label>클릭</label>
+<!-- 사용자가 click을 수행했을 때 onclick="호출할 함수명()" -->
+<input type="button" value="클릭" class="inputBtn" onclick="callTest()"/>
+<table border="1">
+<tr>
+<td width="100">A</td>
+<td width="100" onclick="callTest()" style="cursor: pointer;">B</td>
+<td width="100">C</td>
+</tr>
+</table>
+<br/>
+<!-- 키보드 이벤트는 onkeydown, onkeyup, onkeypress를 키입력이 가능한 HTML Form Control에 사용. -->
+<label>키가 눌리면</label><!-- 키값이 입력되기전에 함수가 호출된다. -->
+<input type="text" class="inputBox" onkeydown="callTest()"/><br/>
+<label>키가 올라오면</label><!-- 눌린키가 올라오면 함수가 호출된다. -->
+<input type="text" class="inputBox" onkeyup="callTest()"/><br/>
+<!-- HTML이 loading 되면 : <body>에만 사용 가능 -->
+<!-- <div onload="callTest()"></div> div에 onload는 동작하지 않는다.-->
+
+<!-- onchange : 변경되었을 때 
+	<select> : 바로 전 선택된 option과 이번에 선택된 option이 다른 경우
+	<input> : 커서가 입력되엇을 때의 값고 ㅏ커서가 빠져나갔을때의 값이 다른 경우.
+	-->
+<label>값이 변경 되면</label>
+<select onchange="callTest()">
+	<option>A</option>
+	<option>B</option>
+	<option>C</option>
+</select>
+<br><!-- text, password, textarea 같다. -->
+<input type="text" onchange="callTest()" class="inputBox"/>
+<br/>
+<!-- 값변경과 상관없이 커서가 빠져나가면 -->
+<label>커서가 빠져나가면</label>
+<input type="text" onblur="callTest()" class="inputBox"/><br/>
+<label>마우스포인터가 빠져나가면</label>
+<img src="http://localhost/html_prj/day0825/images/img1.png" onmouseout="callTest()"/><br/>
+<hr/>
+<label>마우스포인터가 올라오면</label>
+<img src="http://localhost/html_prj/day0825/images/img1.png" onmouseover="callTest()"/><br/>
+
+<label>더블클릭</label>
+<input type="button" value="더블클릭" ondblclick="callTest()" class="inputBox"/><br/>
+
+<!-- href속성의 영역은 HTML영역이지 JavaScript영역이 아니다.
+	href속성에 입력된 .HTML페이지로 연결을 시도하게된다. -->
+<a href="callTest()">클릭</a><br/>
+<!-- 1.href속성엔 이동하는 페이지 없음 설정하고 onclick 속성을 사용하여 함수 호출 -->
+<a href="#void" onclick="callTest()">클릭</a><br/>
+<!-- 2.href속성의 영역을 HTML영역에서 JavaScript영역으로 변경
+	javascript: 을 사용하면 영역이 변경된다.
+	href="javascript: 자바스크립트영역"
+	 -->
+<a href="javascript:callTest()">클릭</a><br/>
+</body>
+</html>

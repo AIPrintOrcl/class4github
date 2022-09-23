@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+	window.onload=function(){
+		document.getElementById("btn").addEventListener("click", moveSite);
+		document.getElementById("btn1").addEventListener("click", moveSite1);
+		document.getElementById("moveBtn").addEventListener("click", moveURL);
+	}//onload
+	
+	function moveSite() {
+		//web browser에 history가 남아 뒤로, 앞으로 가기가 가능.
+		location.href="http://daum.net";
+	}//moveSite
+	
+	function moveSite1() {
+		//web browser에 history가 치환되어 뒤로, 앞으로 가기가 불가능.
+		location.replace("http://daum.net");
+	}//moveSite1
+	
+	function moveURL() {
+		var obj=document.frm;
+		
+		if(obj.url.selectedIndex!=0){
+			if(confirm(obj.url.value+"정말 이동하시겠습니까?")){
+				location.href="http://"+obj.url.value;
+			}//end if
+		}//end if
+	}//moveURL
+</script>
+</head>
+<body>
+<input type="button" value="다음-href" class="inputBox" id="btn"/>
+<input type="button" value="다음-replace" class="inputBox" id="btn1"/>
+<form name="frm">
+<label>이동할 site선택</label>
+<select name="url">
+	<option>---선택---</option>
+	<option value="daum.net">다음</option>
+	<option value="naver.com">네이버</option>
+	<option value="google.com">구글</option>
+	<option value="java.sun.com">자바</option>
+</select>
+<input type="button" value="이동" class="inputBtn" id="moveBtn"/>
+</form>
+</body>
+</html>

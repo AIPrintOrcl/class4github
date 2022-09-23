@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>name속성이 같은 값인 control</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+#output{position: absolute;top:100px;left:500px;
+	border:1px solid #333; width:400px; height:300px;
+	overflow: auto}
+</style>
+<script type="text/javascript">
+function getRadio() {
+	//HTML Form Control의 갯수가 3개 이상부터 반복문을 사용하는 것이 좋다.
+	//checked된 것의 값을 얻는다.
+	var obj=document.frm;
+	//이름이 같다면 배열로 처리된다.
+	var gender="";
+	for(var i=0;i<obj.gender.length;i++){//1.모든 라디오를 반복 시켜
+		//alert(obj.gender[i].checked);
+		if(obj.gender[i].checked){//2.선택된 라디오의
+			gender=obj.gender[i].value;//3.값을 얻는다.
+		}//end if
+	}//end for
+	
+	if(gender==""){//선택된 라디오 없는 상태
+		alert("성별을 선택해 주세요.");
+		return;
+	}//end if
+	
+	document.getElementById("output").innerHTML="선택하신 성별은 <strong>"+gender+"</strong> 입니다."
+	
+}//getRadio
+function getCheck() {
+	//1. 폼을 얻는다.
+	var obj=document.frm;
+	//2. 컨트롤을 얻는다.
+	var siteArr=obj.site;
+	
+	console.log(obj.site);
+	
+	var flag=false;
+	var list="<ul>";
+	//3. 컨트롤은 배열이므로 반복시킨다.
+	for(var i=0;i<siteArr.length;i++){
+		//4. 반복중 확인 상태의 체크박스 얻는다.
+		if(siteArr[i].checked){
+			//5. 체크박스의 값을 저장한다.
+			list+="<li>"+siteArr[i].value+"</li>";
+			
+			flag=true;
+		}//end if
+	}//end for
+	
+	//선택된 체크박스가 없다면 <li>선택하신 사이트 없음.
+	if(!flag){
+		list+="<li>선택하신 사이트 없음.</li>";
+	}//end if
+	
+	list+="</ul>";
+	
+	document.getElementById("output").innerHTML=list;
+	
+	
+}//getCheck
+function getSelect() {
+	//select은 option에 selected인 상태일 때 true가 반환된다.
+	//1. 폼얻기
+	var obj=document.frm;
+	//2. 컨트롤 얻기 : <value>가 여러개여서 배열로 얻어진다.
+	var mailArr=obj.email;
+	
+	//3. 반복 수행
+	var mail="";
+	/*
+	for(var i=0;i<mailArr.length;i++){
+		//4. 선택상태(selected)인지를 판단
+		if(mailArr[i].selected){
+			//5. 값을 얻기
+			mail=mailArr[i].value;
+			break;//선택된 옵션 다음 옵션을 선택될 수 없기 때문에 반복문을 빠져나간다.
+		}//end if
+	}//end for
+	
+	if(mail=="none"){
+		alert("도메인 주소를 선택해 주세요.");
+		return;
+	}//end if
+	*/
+	
+	//선택된 옵션의 인덱스를 얻을 수 있다. selectedIndex
+	if(obj.email.selectedIndex==0){
+		alert("도메인 주소를 선택해 주세요.");
+		return;
+	}//end if
+	//mail=obj.email[obj.email.selectedIndex].value;
+	mail=obj.email.value;
+	
+	document.getElementById("output").innerHTML="선택도메인: "+mail;
+	
+}//getSelect
+</script>
+</head>
+<body>
+<div>
+<form name="frm">
+<strong>name속성이 같은 값을 가진 Form Control</strong>
+<br>
+<label>checkbox</label>
+<input type="checkbox" name="site" value="http://naver.com">네이버<br/>
+<input type="checkbox" name="site" value="https://webtoonscorp.com/">네이버 웹툰<br/>
+<input type="checkbox" name="site" value="https://google.com/">구글<br/>
+<input type="checkbox" name="site" value="https://youtube.com/">유튜브<br/>
+<br/>
+<label>라디오</label>
+<input type="radio" name="gender" value="남자"/>남자
+<input type="radio" name="gender" value="여자"/>여자
+<br/>
+<label>셀렉트</label>
+<select name="email">
+<option value="none">---선택하세요---</option>
+<option value="gmail.com">gmail</option>
+<option value="naver.com">naver</option>
+<option value="daum.com">daum</option>
+<option value="hotmail.com">hotmail</option>
+<option value="nate.com">nate</option>
+</select>
+<br/>
+<input type="button" value="라디오 값 얻기" class="inputBox" onclick="getRadio()"/>
+<input type="button" value="체크박스 값 얻기" class="inputBox" onclick="getCheck()"/>
+<input type="button" value="셀렉트 값 얻기" class="inputBox" onclick="getSelect()"/>
+</form>
+</div>
+<div id="output"></div>
+
+</body>
+</html>

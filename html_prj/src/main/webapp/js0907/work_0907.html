@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+#output{width:600px;height:300px;border:1px solid #333}
+</style>
+<script type="text/javascript">
+function getSSN(){
+	var obj=document.frm;
+	
+	var name=obj.name.value;
+	var frontNum=obj.frontSSNNum.value; 
+	var backNum=obj.backSSNNum.value;
+	
+	if(name==""){
+		alert("이름 필수입력");
+		obj.name.focus();
+	}else if(frontNum=="" || backNum==""){
+		alert("주민번호 필수입력");
+		obj.frontSSNNum.focus();
+	}else if((frontNum.length+backNum.length)!==13){
+		alert("주민번호가 총 13자리가 아닙니다.");
+		obj.frontSSNNum.focus();
+	}//end else if
+	
+	//주민번호의 유효성 검증
+	var ssnArr=frontNum.split('');
+	ssnArr.push(...backNum.split(''));
+	var multArr=[2,3,4,5,6,7,8,9,2,3,4,5];//각 자리에 곱할 값
+	
+	var ssnFlag=true;//주민번호가 유효한지
+	var temp=0;//검증하기 위한 값을 저장
+	for(var i=0;i<ssnArr.length-1;i++){
+		temp+=ssnArr[i]*multArr[i];
+	}//end for
+	console.log(ssnArr);
+	temp=(11-(temp%11))%10;
+	
+	if(parseInt(ssnArr[12])!==temp){
+		ssnFlag=false;
+	}//end if
+	
+	var outInfo = obj.name.value+"님 <br/>";
+	outInfo += frontNum+"-"+backNum+"<br/>";
+	outInfo += "주민번호 유효성 검증 결과: "+(ssnFlag?"유효":"무효")+"<br/>";
+	
+	if(ssnFlag){
+		
+		var year="";
+		var nation="";
+		var gender="";
+		switch (parseInt(ssnArr[6])) {
+			case 1:year="19";nation="내국인";gender="남자";break;
+			case 2:year="19";nation="내국인";gender="여자";break;
+			case 3:year="20";nation="내국인";gender="남자";break;
+			case 4:year="20";nation="내국인";gender="여자";break;
+			case 5:year="19";nation="외국인";gender="남자";break;
+			case 6:year="19";nation="외국인";gender="여자";break;
+			case 7:year="20";nation="외국인";gender="남자";break;
+			case 8:year="20";nation="외국인";gender="여자";break;
+			case 9:year="18";nation="내국인";gender="남자";break;
+			case 0:year="18";nation="내국인";gender="여자";break;
+		};
+		
+		var zodiacArr=["원숭이","닭","개","돼지","쥐","소","호랑이","토끼","용","뱀","말","양"];
+		year=parseInt(year+ssnArr[0]+ssnArr[1]);
+		
+		outInfo += "태어난 해: "+year+"년<br/>";
+		outInfo += "생년월일: "+ssnArr[2]+ssnArr[3]+"월 "+ssnArr[4]+ssnArr[5]+"일<br/>";
+		outInfo += "성별: "+gender+"<br/>";
+		outInfo += "띠: "+zodiacArr[year%12]+"<br/>";
+		outInfo += "국적: "+nation+"<br/>";
+		
+	}//end if
+	
+	document.getElementById("output").innerHTML=outInfo;
+	
+}//getSSN
+</script>
+</head>
+<body>
+<div>
+<form name="frm">
+<label>이름 : </label><input type="text" name="name"/><br/>
+<label>주민번호 : </label><input type="text" name="frontSSNNum" value="121212" maxlength=6/>-
+	<input type="password" name="backSSNNum" value="1234567" maxlength=7/>
+<br/>
+<input type="button" value="입력" class="inputBox" onclick="getSSN()"/>
+</form>
+</div>
+<br/>
+<div id="output"></div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>숙제0907</title>
+<link rel="stylesheet" type="text/css" href="http://211.63.89.149/html_prj/common/css/main_v1_220901.css">
+<style type="text/css">
+#wrap{
+	width: 450px;
+	margin: 100px auto;
+	border: 1px solid #F0F0F0;
+	padding: 15px;
+	background-color: #DEE2FF;
+	box-shadow: 0 0 5px;
+	border-radius: 10px;
+}
+#print{
+	border: 1px solid #F0F0F0; 
+	width: 300px; 
+	height: 250px;
+	margin: 5px auto;
+	font-size: 15px;
+	padding: 10px;
+	background-color: #FEEAFA;
+	line-height: 1.5;
+	border-radius: 20px;
+	
+}
+label{
+	width: 80px;
+	float: left;
+	font-size: 15px
+}
+input{
+	margin: 2px;
+}
+span{
+	font-weight: bold;
+}
+.inputBtn{
+	background-color: #BBD0FF;
+	font-size: 15px;
+}
+</style>
+
+<script type="text/javascript">
+
+function getData() {
+	var obj=document.frm;
+	
+	var name=obj.name.value;
+	var rrnFront=obj.rrnFront.value;
+	var rrnBack=obj.rrnBack.value;
+	
+	var checkMsg="";
+	var checkData="";
+	
+	if(name==""){
+		alert("이름 필수입력");
+		return document.frm.name.focus();
+	}else if(rrnFront==""){
+		alert("주민번호 필수입력");
+		return document.frm.rrnFront.focus();
+	}else if(rrnBack==""){
+		alert("주민번호 뒷자리 필수입력");
+		return document.frm.rrnBack.focus();
+	}else if(rrnFront.length+rrnBack.length!="13"){
+		alert("주민번호가 13자리가 아닙니다.");
+		return;
+	}else{
+		if(ssnCheck(rrnFront+rrnBack)){
+			checkMsg="유효";
+			checkData=ssnData(rrnFront+rrnBack);
+		}else{
+			checkMsg="무효";
+		}//emd else
+	}//end else
+	
+	var div=document.getElementById("print").innerHTML=
+			"이름: <span>"+name+"님 </span><br>"
+			+"주민번호: <span>"+rrnFront+"-"+rrnBack+"</span><br><br>"
+			+"주민번호 유효성 검증 결과: <span>"+checkMsg+"</span><br><br>"
+			+checkData;
+	
+}//getData
+
+function ssnCheck(value){
+	
+	var checkNum=[2,3,4,5,6,7,8,9,2,3,4,5];
+	var sum=0;
+	var tmp=0;
+	for(var i=0; i<checkNum.length; i++){
+		tmp=value.charAt(i)*checkNum[i];
+		sum+=tmp;
+	}//end for
+	
+	var check=(11-(sum%11))%10;
+	
+	if(value.charAt(12)==check) {
+		return true;
+	}else{
+		return false;
+	}//end else
+	
+}//ssnCheck
+
+function ssnData(value){
+
+	var year=0;
+	var getGender=value.charAt(6);
+	var yearArr=[1800,1900,1900,2000,2000,1900,1900,2000,2000,1800];
+	year=yearArr[getGender];
+	year+=parseInt(value.substring(0,2));
+	
+	var month=0;
+	var day=0;
+	month=parseInt(value.substring(2,4));
+	day=parseInt(value.substring(4,6));
+	
+	var gender=["여자","남자"];
+	
+	var zodiac=["쥐", "소", "호랑이", "토끼", "용", "뱀", "말", "양","원숭이", "닭", "개", "돼지"];
+	
+	var nation=["내국인", "내국인", "내국인", "내국인", "내국인", "외국인", "외국인", "외국인", "외국인", "내국인"];
+	
+	return "태어난 해: <span>"+year+"년 </span><br>"
+			+"생년월일: <span>"+month+"월 "+day+"일 </span><br>"
+			+"성별: <span>"+gender[getGender%2]+"</span><br>"
+			+"띠: <span>"+zodiac[value.substring(0,2)%12]+"</span><br>"
+			+"국적: <span>"+nation[getGender]+"</span>";
+	
+}//ssnData
+
+</script>
+</head>
+<body>
+
+<div id="wrap">
+<form name="frm">
+<label>이름</label>
+<input type="text" name="name" class="inputBox" autocomplete='off'/><br>
+
+<label>주민번호</label>
+<input type="text" name="rrnFront" class="inputBox" autocomplete='off' maxlength="6"/>&nbsp;-&nbsp;
+<input type="password" name="rrnBack" class="inputBox" autocomplete='off' maxlength="7"/><br>
+
+<input type="button" value="입력" class="inputBtn" onclick="getData()">
+</form>
+
+<div id="print"></div>
+</div>
+
+</body>
+</html>

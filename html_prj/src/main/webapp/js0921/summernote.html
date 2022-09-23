@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<!-- JQuery google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+</script>
+<!-- summer note 시작 -->
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<!-- summer note 끝 -->
+<script type="text/javascript">
+$(function() {
+	$('#summernote').summernote({
+		placeholder:'자기소개', height:300,
+		toolbar: [
+	          ['font', ['bold', 'underline']],
+	          ['para', ['paragraph']],
+	          ['insert', ['link', 'picture']],
+	        ]
+	});
+});//ready
+</script>
+</head>
+<body>
+<form method="post">
+<div style="width:800px;height:400px">
+  <textarea id="summernote" name="editordata"></textarea>
+</div>
+</form>
+</body>
+</html>

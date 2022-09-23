@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSONArray를 가진 JSONObject</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	//JSONArray를 가진 JSONObject
+	//문법) var jsonObj={이름:값,이름:값, 이름:[{이름:값,,},{이름:값,,},,,] }
+	var jsonObj={pubDate:"2022-09-15", dataCnt : 3, result:true,
+			data:[{name:"정주은",age:20},{name:"정선홍",age:21},{name:"정현지",age:20}]
+	};
+	//조회결과가 있다면 조회를 수행.(result:true)
+	if(jsonObj.result){
+		//조회결과 있음
+		var output="데이터 생산일: " + jsonObj.pubDate
+			+ "<br/>조회건수: " + jsonObj.dataCnt + "건<br/>";
+			
+			//JSONObject안에 JSONArray를 꺼내와서 데이터를 보여준다.
+			var jsonArr=jsonObj.data;
+			for(var i=0;i<jsonArr.length;i++){
+				data=jsonArr[i];
+				output+="이름: <input type='text' class='inputBox' value='"+data.name+"'/>";
+				output+="나이: <input type='text' class='inputBox' value='"+data.age+"'/>";
+			}//end for
+		
+		document.getElementById("output").innerHTML=output;
+	}//end if
+}//onload
+</script>
+</head>
+<body>
+<div id="output"></div>
+</body>
+</html>

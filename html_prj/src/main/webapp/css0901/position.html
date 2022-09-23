@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+#wrap{ width: 800px; height: 1200px; background-color: #FEE6A9 }
+/* position : fixed - 고정좌표 (스크롤 바가 움직이면 스크롤바의 움직임 만큼 좌표를 수정하여
+	항상 브라우저의 고정된 위치에서 보여진다.) */
+#fix{ width: 150px; height: 400px; background-color: #4D9B56;
+	position: fixed; top:180px; left:800px}
+/* position :absolute - 절대좌표 (스크롤바가 움직여도 처음 설정된 좌표를 수정하지 않는다.) */
+#abs{ width: 400px; height: 200px; background-color: #5A81B0;
+	position: absolute; top: 50px; left: 100px }
+/* position: relative - 상대좌표 (absolute의 시작좌표를 이동하기위한 좌표) */
+#rel{ position: relative; top:100px; left:200px }
+</style>
+</head>
+<body>
+
+<div id="wrap">
+<div id="rel">Relative
+	<div id="fix">Fixed</div>
+	<div id="abs">Absolute</div>
+</div>
+</div>
+
+</body>
+</html>

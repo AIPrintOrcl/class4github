@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>closure</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+//함수 안의 변수나 함수를 함수외부에서 호출하기위해 사용하는 closure
+//1.사용할 때 호출하는 클로져 => 호출할때마다 "클로져명().이름"의 형태로 사용
+var clo=function test(){
+	var name="차승주";
+	
+	function addr(){
+		return "서울시 강남구";
+	}//addr
+	
+	//내부의 이름을 외부에서 사용하기 위해 closure를 정의
+	//형식 : {외부이름:내부이름,,,,};
+	return {myName: name, myAddr:addr};
+	
+}//test
+
+//사용 : 클로저명().이름
+alert("변수: " + clo().myName +" / 함수: " + clo().myAddr());
+
+//2.호출하여 저장된 클로져 => 호출할때 "클로져명.이름"의 형태로 사용
+//문법) var closure명=function 함수명(){......}();
+var clo1=function test1(){
+	var name="송성우";
+	
+	function addr(){
+		return "서울시 동대문구 동대문동";
+	}//addr
+	
+	//내부의 이름을 외부에서 사용하기 위해 closure를 정의
+	//형식 : {외부이름:내부이름,,,,};
+	return {myName: name, myAddr:addr};	
+}();//test1을 바로 호출하여 변수에 저장.(test1 호출된 상태)
+//사용 : 클러저명.이름 => closure에 ()를 붙이지 않고 사용.
+alert("변수: " + clo1.myName +" / 함수: " + clo1.myAddr());
+
+//closure를 가진 함수가 매개변수를 정의한 경우
+var clo2=function test2(age,gender){
+	var name="송성우";
+	
+	function addr(){
+		return "서울시 동대문구 동대문동";
+	}//addr
+	console.log("입력값: "+age+" / "+gender);
+	//내부의 이름을 외부에서 사용하기 위해 closure를 정의
+	//형식 : {외부이름:내부이름,,,,};
+	return {myName: name, myAddr:addr};	
+}(20,"남");//test1을 바로 호출하여 변수에 저장.(test1 호출된 상태)
+
+//사용 : 클러저명.이름 => closure에 ()를 붙이지 않고 사용.
+console.log("변수: " + clo2.myName +" / 함수: " + clo2.myAddr());
+</script>
+</head>
+<body>
+
+</body>
+</html>

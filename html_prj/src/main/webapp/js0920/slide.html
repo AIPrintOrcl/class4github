@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+#img{display: none;}
+</style>
+<!-- JQuery google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btn1").click(function(){
+		$("#img").slideDown(1000, function(){
+			$("#output").html("펼쳐보이기 작업완료.")
+		});//slideDown
+	});//click
+	$("#btn2").click(function(){
+		$("#img").slideUp(1000, function(){
+			$("#output").html("말아올리기 작업완료.")
+		});//slideDown
+	});//click
+	$("#btn3").click(function(){
+		$("#img").slideToggle(1000, function(){
+			$("#output").html("토글 작업완료.")
+		});//slideDown
+	});//click
+});//ready
+</script>
+</head>
+<body>
+<div style="height:200px">
+<img src="http://localhost/html_prj/day0825/images/cimg.png" id="img"/>
+</div>
+<input type="button" value="펼쳐보이기" class="inputBtn" id="btn1"/>
+<input type="button" value="말아올리기" class="inputBtn" id="btn2"/>
+<input type="button" value="토글" class="inputBtn" id="btn3"/>
+<div id="output"></div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<!-- JQuery google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#ssn1").keyup(function(){
+		if($("#ssn1").val().length==6){
+			$("#ssn2").focus();
+		}//end if
+	});//keyup
+	$("#ssn2").focusout(function(){
+		if($("#ssn2").val().length==7){
+			var genderFlag=$("#ssn2").val().charAt(0);
+			//속성을 설정할 때에는 attr 함수와 prop함수를 사용 가능.
+			//attr함수는 코드에 생성되어 한번만 적용되지만
+			if(genderFlag%2==0){
+				//$("[value='여자']").attr("checked", true);
+				$("[value='여자']").prop("checked", true);
+			}else{
+				//$("[value='남자']").attr("checked", true);
+				$("[value='남자']").prop("checked", true);
+			}
+			//prop함수는 메모리에 생성되어 여러번 적용 가능.
+		}//end if
+	});
+	
+	$("#btn").click(function(){
+		
+	});//click
+});//ready
+</script>
+</head>
+<body>
+<label>주민번호</label>
+<input type="text" name="ssn1" id="ssn1" maxlength=6 class="inputBox" style="width:60px"/>
+<input type="password" name="ssn2" id="ssn2" maxlength=7 class="inputBox" style="width:70px"/>
+<input type="button" value="입력" id="btn" class="inputBox"/>
+<div>
+<input type="radio" name="gender" value="남자"/>남
+<input type="radio" name="gender" value="여자"/>여
+</div>
+</body>
+</html>

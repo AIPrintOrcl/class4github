@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+#coin-slider{width: 1208px; height:487px; margin: 0px auto}
+</style>
+<!-- JQuery google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- jQuery coin slider -->
+<script src="http://localhost/html_prj/common/coinslider/coin-slider.min.js"></script>
+<link rel="styesheet" type="text/css" href="http://localhost/html_prj/common/coinslider/coin-slider-styles.css"/>
+<!-- jQuery coin slider -->
+
+
+<script type="text/javascript">
+// coin slider 시작
+ $(function() {
+        $('#coin-slider').coinslider({
+        	width: 1208, // width of slider panel
+        	height: 487, // height of slider panel
+        	delay: 500,
+        	opacity: 0.9,
+        	effect: 'random', // random, swirl, rain, straight
+        	navigation: true, // prev next and buttons
+        	links : true, // show images as links 
+        	hoverPause: true // pause on hover
+
+        });
+    });//ready
+// coin slider 끝
+</script>
+</head>
+<body>
+
+<div id='coin-slider'>
+    <a href="http://daum.net" target="_blank">
+        <img src='http://localhost/html_prj/js0921/images/night_1.png' >
+        <span>
+            차승주씨가 건물주인 부산 해운대
+        </span>
+    </a>
+    ......
+    ......
+    <a href="http://naver.com" target="_blank">
+        <img src='http://localhost/html_prj/js0921/images/night_2.png' >
+        <span>
+            서울시 야경
+        </span>
+    </a>
+    <a href="http://googel.com" target="_blank">
+        <img src='http://localhost/html_prj/js0921/images/night_3.png' >
+        <span>
+            경기도 도청에서 본 ..
+        </span>
+    </a>
+    <a href="http://nate.com" target="_blank">
+        <img src='http://localhost/html_prj/js0921/images/night_4.png' >
+        <span>
+            수원시 야경...
+        </span>
+    </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+//closure는 접근지정을 변경하기 위해 사용.
+//() 사용, {} 사용 두가지 문법으로 사용.
+//문법) 
+//선언 : var 변수명=({이름:값,,, 이름:function(){}});
+//사용 : 값 얻기) 변수명, 이름, 함수를 호출)변수명.함수명();
+//함수호출 시 ()를 사용하지 않으면 함수의 내용이 문자열로 반환된다.
+
+//1. 선언
+var clo=({
+			name:"차승주", age:20,
+			addr:function(){
+				//alert("서울시 강남구 역삼동");
+				return "서울살아요";
+			}
+		});
+//객체화 없이 바로 사용가능 => JavaScript Library를 배포할 때 주로 사용.
+//2. 사용.
+console.log("이름: " + clo.name);
+console.log("나이: " + clo.age);
+console.log("주소1: " + clo.addr);//함수기호 ()를 붙이지 않으면 함수의 내용이 문자열로 출력
+console.log("주소2: " + clo.addr());//함수기호 ()를 붙이면 함수가 호출된다.
+</script>
+</head>
+<body>
+
+</body>
+</html>

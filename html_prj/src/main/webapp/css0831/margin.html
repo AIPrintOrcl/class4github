@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>기준선 밖 여백설정</title>
+<style type="text/css">
+div{border:1px solid #FF0000; width: 200px; height: 100px;}
+/* 전체(L, T, R, B) 여백 설정
+	margin: 값px; */
+#all{margin:20px}
+
+/* 특정 위치의 여백 설정 
+	왼쪽 : margin-left : 값px
+	오른쪽 : margin-right : 값px
+	윗쪽 : margin-top : 값px
+	아랫쪽 : margin-bottom : 값px
+*/
+#left{margin-left: 30px}
+#top{margin-top: 30px}
+#bottom{margin-bottom: 30px}
+#right{margin-right: 50px; float:right;}
+</style>
+</head>
+<body>
+<div id="all"></div>
+<div id="left"></div>
+<div id="top"></div>
+<div id="bottom"></div>
+<div id="right"></div>
+</body>
+</html>

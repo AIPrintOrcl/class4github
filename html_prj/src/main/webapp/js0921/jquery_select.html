@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<!-- JQuery google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var arrSubject=["Java","Oracle","JDBC","HTML","CSS","Java Script","jQuery","none"];
+	$("#btn").click(function(){
+		var subject=$("#subject").val();
+		//$("#selSubject option:eq(1)").prop("selected", true);
+		
+		var ind=arrSubject.indexOf(subject);
+		if(ind==-1){
+			ind=$("#selSubject option").length-1;
+		}//end if
+		
+		$("#selSubject option:eq("+ind+")").prop("selected", true);
+		
+	});//click
+	
+	$("#selSubject").change(function(){
+		$("#selOutput").html("선택한 값 : "+$("#selSubject").val());
+	});
+	
+});//ready
+</script>
+</head>
+<body>
+
+<form name="frm" id="frm">
+<label>과목명</label>
+<input type="text" name="subject" id="subject" class="inputBox"/>
+<input type="button" value="입력" id="btn" class="inputBtn"/>
+<div>
+<select id="selSubject">
+<option value="Java">Java SE</option>
+<option value="Oracle">Oracle DBMS</option>
+<option value="JDBC">JDBC</option>
+<option value="HTML">HTML</option>
+<option value="CSS">CSS</option>
+<option value="Java Script">Java Script</option>
+<option value="jQuery">jQuery</option>
+<option value="none">---과목 없음---</option>
+</select>
+</div>
+<div id="selOutput"></div>
+</form>
+
+
+</body>
+</html>

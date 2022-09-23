@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+function test(){
+	var i=100;
+	function temp(){
+		alert("임시 함수 ");
+	}//temp
+	alert("test함수");
+}//test
+
+//함수안에 존재하는 변수나 함수는 함수 외부에서 호출 불가능.
+test();//함수는 호출 가능하나
+alert(test().temp());//함수안의 변수나 함수는 외부에서 호출 불가능. => closure필요 이유
+</script>
+</head>
+<body>
+
+</body>
+</html>

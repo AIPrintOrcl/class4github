@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- details : 텍스트(summary)를 제공해주고, 텍스트를 클릭하면 
+				준비해둔 내용(span)을 열어서 보여주는 태그 -->
+
+<details>
+	<summary>HTML을 만든 사람은?</summary>
+	<span>Tim Berners, lee <img src="http://localhost/html_prj/day0825/images/cimg.png" width="80" /></span>
+</details>
+
+<hr/>
+<label>좋아하는 과목</label><input type="text" name="subjec" list="subjectList">
+
+<!-- 좋아하는 과목을 클릭했을 때 제공할 과목의 리스트 -->
+<datalist id="subjectList">
+<option value="Java">Java</option>
+<option value="oracle DBMS">oracle DBMS</option>
+<option value="JDBC">JDBC</option>
+<option value="HTML">HTML</option>
+<option value="CSS">CSS</option>
+<option value="JavaScript">JavaScript</option>
+<option value="JSP">JSP</option>
+<option value="PHP">PHP</option>
+<option value="asp">asp</option>
+</datalist>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+#target{border: 1px solid #333; width: 400px; height: 200px}
+</style>
+<!-- JQuery google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+//JQuery selector의 사용.
+//문법) $("selector").제공하는일(function(){ 내가 작성해야할 코드 });
+
+//id selector사용 : #기호부터 사용.
+$("#target").css("background-color", "#FF0000");
+
+//class selector의 사용: .기호부터 사용.
+$(".inputBox").val("이것이 jQuery");
+//document.getElementsByClassName("inputBox").value="이것....";
+
+//tag selector
+$("td").html("<strong>태그selector</strong>")
+
+//multiple selector
+$("ol,ul").css("font-weight","bold");
+
+//attribute selector(name selector) : [속성명='값']
+//$("[name='ta']").val("속성 selector");
+$("[id='ta']").val("name selector");
+
+//sub selector : 부모태그명 > 자식태그명
+$("body > p").css("background-color", "#FF0000");
+
+//behavior selector는 지원하지 않는다.
+//$("a:hover").css("font-size", "30px");
+$("a").hover(function(){
+	$("#target").hide();
+});
+});//ready
+
+</script>
+</head>
+<body>
+<div id="target"></div>
+<input type="text" name="txt" class="inputBox" style="width: 200px"/><br/>
+<input type="password" name="pass" class="inputBox" style="width: 200px"/><br/>
+<table>
+<tr>
+<th>이름</th><th>나이</th>
+</tr>
+<tr>
+<td>송성우</td><td>20</td>
+</tr>
+<tr>
+<td>차승주</td><td>25</td>
+</tr>
+</table>
+<ul>
+<li>오늘은</li>
+<li>목요일</li>
+</ul>
+<ol>
+<li>내일은</li>
+<li>금요일</li>
+</ol>
+<textarea name="ta" id="ta" style="border:1px solid #333; width:400px; height:200px"></textarea>
+<br>
+<div>
+<p>div의 하위 P태그</p>
+</div>
+<p>body의 하위 P태그</p>
+<a href="#void">Hyper link</a>
+</body>
+</html>

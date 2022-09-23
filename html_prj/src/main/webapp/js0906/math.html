@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+//절대값 : Math.abs(음수)
+
+var value=-9;
+console.log(value+"의 절대값: "+Math.abs(value));
+
+value=9.6;
+console.log(value+"의 반올림값: "+Math.round(value));
+
+value=9.1;
+console.log(value+"의 올림값: "+Math.ceil(value));
+
+value=9.9;
+console.log(value+"의 내림값: "+Math.floor(value));
+
+//정수의 변환
+//1.실수 > 정수
+console.log(value+" 정수로: "+ parseInt(value) );
+//2.문자열 > 정수 (숫자형태의 문자열만 변경 가능)
+value="2022";
+console.log(value+" 정수로: "+ parseInt(value) );
+
+//난수 : Math.random() => 0.000000000~16 ~ 0.999999999~16
+
+var num=Math.random();
+var num1=num*10;
+var num2=parseInt(num*10);/* 0~9 */
+alert(num+" / 범위의 수 "+num1+" / \n정수만 얻기 "+num2);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

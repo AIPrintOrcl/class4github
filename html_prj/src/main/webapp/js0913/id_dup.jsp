@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+#loginWrap{width:502px; height:303px; margin:0px auto; position:relative;
+	background: #FFFFFF url(http://localhost/html_prj/js0913/images/id_background.png) no-repeat;}
+#idBox{position: absolute; top:100px; left:80px;}
+</style>
+<script type="text/javascript">
+
+function sendId() {
+	//자식의 창의 값을 부모창으로 전달.
+	//1. 자식창의 값을 얻기
+	var id=document.idDupFrm.id.value;
+	//2. 부모창에 값을 전달. opener.window.document.폼이름.control명.value=값;
+	opener.window.document.memberFrm.id.value=id;
+	//3. 자식창 닫기
+	self.close();
+}//sendId
+
+</script>
+</head>
+<body>
+<div id="loginWrap">
+<div id="idBox">
+<form name="idDupFrm">
+<label>아이디</label>
+<!-- 부모창에서 QueryString으로 전송되는 값을 input에 설정 -->
+<input type="text" name="id" class="inputBox" style="width: 150px" value='${param.id}'/>
+<input type="button" value="사용" class="inputBtn" onclick="sendId()"/>
+</form>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML Form Control 값 얻기</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<!-- JQuery google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#getValue").click(function(){
+		var msg="";
+		var txt=$("#txt").val();
+		var pass=$("#pass").val();
+		var hid=$("#hid").val();
+		var file=$("#file").val();
+		var sel=$("#sel").val();
+		
+		msg+="txt : "+txt+"<br>";
+		msg+="pass : "+pass+"<br>";
+		msg+="hidden : "+hid+"<br>";
+		msg+="file : "+file+"<br>";
+		msg+="select : "+sel+"<br>";
+		
+		$("#output").html(msg);
+	});//click
+	
+	$("#setValue").click(function(){
+		//값 설정 : val(값)
+		$("#txt").val("텍스트 값");		
+		$("#pass").val("비밀번호 값");//설정된 값은 반향문자(Echo Character)로 나온다.		
+		$("#hid").val("히든 값");
+		//$("#file").val("E:/dev/eclipse.bat");
+	});//click
+	
+	$("#getCheckValue").click(function(){
+		//체크박스의 갯수
+		var chkLeng=$("[name='hobby']:checked").length;
+		var obj;
+		for(var i=0; i<chkLeng;i++){
+			obj=$("[name='hobby']")[i];
+			if(($obj).is(":checked")){
+				alert($(obj).val());
+			}//end if
+		}//end for
+	});//click
+	
+});//ready
+</script>
+</head>
+<body>
+<form name="frm"><!-- from 태그는 입력 값을 back-end로 전송하기 위해 필요 -->
+<label>text</label>
+<input type="text" name="txt" class="inputBox" id="txt"/><br/>
+<label>password</label>
+<input type="password" name="pass" class="inputBox" id="pass"/><br/>
+<label>hidden</label>
+<input type="hidden" name="hid" class="inputBox" id="hid"/><br/>
+<label>file</label>
+<input type="file" name="file" class="inputBox" id="file"/><br/>
+<label>select</label>
+<select id="sel">
+ <option value="Java SE">Java SE</option>
+ <option value="Oracle DBMS">Oracle DBMS</option>
+ <option value="JDBC">JDBC</option>
+ <option value="HTML">HTML</option>
+</select>
+<br/>
+<label>checkbox</label><br/>
+<input type="checkbox" name="hobby" value="게임"/>게임<br/>
+<input type="checkbox" name="hobby" value="운동"/>운동<br/>
+<input type="checkbox" name="hobby" value="낚시"/>낚시<br/>
+<input type="checkbox" name="hobby" value="등산"/>등산<br/>
+<input type="checkbox" name="hobby" value="영화감상"/>영화감상<br/>
+<input type="checkbox" name="hobby" value="독서"/>독서<br/>
+
+</form>
+
+<div>
+<input type="button" value="값얻기" class="inputBtn" id="getValue"/>
+<input type="button" value="값설정" class="inputBtn" id="setValue"/>
+<input type="button" value="radio, check값얻기" class="inputBtn" id="getCheckValue"/>
+</div>
+<div id="output"></div>
+</body>
+</html>

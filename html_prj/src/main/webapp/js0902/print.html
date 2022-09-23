@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+//자바스크립트에서 출력하기
+//1.경고장 출력(사용자 주위를 환기용, Debug용) -코드의 실행을 멈춤
+alert("경고장 출력");
+
+//2.HTML문서의 <body>에 출력 : window.document.write("출력할 내용");
+// body보다 나중에 로딩되면 기존의 출력 내용을 삭제한 후 출력한다.
+window.document.write("document.wrtie출력");
+function test(){
+	//window 생략가능
+	document.write("오늘은 금요일 입니다.");
+	document.write("<img src='../day0825/images/cimg.png'/>");
+}//test
+
+//3.console 출력 (개발자도구 - F12)(Debug용) : console.log("출력내용");
+console.log("자바스크립트 콘솔로그");
+
+</script>
+</head>
+<body>
+자바스크립트 출력 연습
+<input type="button" value="document.write사용" class="inputBtn" onclick="test()"/>
+</body>
+</html>

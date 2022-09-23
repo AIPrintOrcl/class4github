@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이미지</title>
+<style type="text/css">
+/* 	이미지 로딩 : 이미지가 로딩되지 않더라도 엑박이 뜨지 않는다. tooltip text가 지원되지 않는다.
+	background : 바닥색 url(이미지경로) 반복여부; repeat-x, repeat-y, norepeat
+	이미지는 body, div, span, table, tr, th, td,,,,
+ */
+ div{width:800px; height:200px; border: 1px solid #333; margin-bottom: 10px;}
+ #repeat{ background: #FFFFFF url(http://localhost/html_prj/common/images/sist.png)}
+ #x{ background: #FFFFFF url(http://localhost/html_prj/common/images/sist.png) repeat-x;}
+ #y{ background: #FFFFFF url(http://localhost/html_prj/common/images/sist.png) repeat-y;}
+ #no{ background: #FFFFFF url(http://localhost/html_prj/common/images/sist.png) no-repeat;}
+</style>
+</head>
+<body>
+<div id="repeat">바둑판</div>
+<div id="x">x좌표반복</div>
+<div id="y">y좌표반복</div>
+<div id="no">반복없음</div>
+</body>
+</html>

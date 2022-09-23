@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+function useId() {
+	//id를 사용하여 HTML Form Control에 입력 값 받기.
+	//1. id로 태그를 얻기: var 변수명=document.getElementById("아이디");
+	//2. 얻어낸 태그에서 값 얻기 : var 값저장할 변수명= 변수명.value;
+	
+	//1.태그 얻기
+	var textNode=document.getElementById("name");
+	var passwordNode=document.getElementById("age");
+	//2.값얻기
+	var name=textNode.value
+	var age=passwordNode.value;
+	
+	//유효성 검증
+	if(name==""){
+		alert("이름은 필수 입력 입니다.");
+		return;
+	}//end if
+	
+	
+	var divNode=document.getElementById("output");
+	divNode.innerHTML="이름: "+name+" / 나이: "+age;
+}//useId
+</script>
+</head>
+<body>
+<strong>id로 HTML Form Control의 값 얻기</strong><br/>
+<!-- id로 Form Control의 값을 얻기 때문에 반드시 id속성이 존재해야한다. -->
+<label>이름</label>
+<input type="text" name="name" id="name" class="inputBox"/><br/>
+<label>나이</label>
+<input type="password" name="age" id="age" class="inputBox"/><br/>
+<input type="button" value="id로 값 얻기" class="inputBtn" onclick="useId()"/><br/>
+
+<div id="output"></div>
+</body>
+</html>

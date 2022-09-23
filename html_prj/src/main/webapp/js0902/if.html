@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+#output{width: 500px; height: 400px; border: 1px solid #333; margin: 200px auto}
+</style>
+<script type="text/javascript">
+//if: 단일if, if~else, 다중 if
+//이름을 입력받아 <div>에 이름을 출력하고 이름이 "차승주"라면 cimg.png를 이름 앞에 넣어서 보여주는 코드
+let name=prompt("이름 입력 해주세요.", "차승주");
+
+let flag=name == "차승주";
+document.write("<div id='output'>");
+if(flag){//이름이 차승주인지 비교 : javascript에서는 equals 함수가 없다.
+	document.write("<marquee scrollamount='10'>");
+	document.write("<img src='http://localhost/html_prj/day0825/images/cimg.png'/>");
+}
+
+document.write(name);
+
+if(flag){
+	document.write("</marquee>");
+}//end if
+document.write("</div>");
+
+//입력된 이름이 : 라이언, 무지, 어피치 인 경우에만 
+//라이언이면 img1.png, 무지면 img2.png, 어피치라면 img3.png를 보여주는 코드 작성.
+name=prompt("라이언, 무지, 어피치 중 하나를 입력해 해주세요.", "라이언");
+if(name=="라이언" || name=="무지" || name=="어피치"){
+	let img="img3"
+	if(name=="라이언"){
+		img="img1"
+	}else if(name=="무지"){
+		img="img2"
+	}//else if
+	
+	document.write("<img src='http://localhost/html_prj/day0825/images/"+img+".png'/>");
+}//end if
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

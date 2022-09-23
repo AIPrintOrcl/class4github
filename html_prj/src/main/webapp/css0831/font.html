@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/* 글꼴 설정 : font-family : "글꼴" */
+#font1{font-family: "맑은 고딕"}
+#font2{font-family: "궁서체"}
+
+/* 진하게 : font-weight : normal | bold */
+.fw1{font-weight: normal;}
+.fw2{font-weight: bold;}
+/* 이탤릭 : font-style : normal | italic */
+.fs1{font-style: normal;}
+.fs2{font-style: italic;}
+/* tag selector를 사용하여 이탤릭체로 보여지는 태그를 일반글자로 보여지도록 설정. */
+i, address{font-style: normal;}
+/* tag selector를 사용하여 th의 글자를 일반글자로 보여지도록 설정 */
+th {font-weight: normal;}
+
+/* 글자색(전경색, forground color)
+	color:색
+ */
+ .col1{color: red}/* color의 속성값은 대소문자를 가리지 않는다. */
+ .col2{color: #FF0000}
+ /* 글자효과 : text-decoration : none | underline | line-through | overline */
+ u,a{ text-decoration: none;}
+ .td1{ text-decoration: underline}
+ .td2{ text-decoration: line-through}
+ .td3{ text-decoration: overline}
+ 
+ /* 글자크기변경 : font-size: 수치px */
+ .fontsize1{font-size: 20px}
+ .fontsize2{font-size: 12px}
+</style>
+</head>
+<body>
+일반글자
+<div id="font1">오늘은 8월 마지막날 수요일 입니다.</div>
+<p id="font2">어제는 알약테러의 날이었습니다</p>
+<div>
+<span class="fw1">일반글자</span>
+<span class="fw2">진하게</span>
+</div>
+<div>
+<span class="fs1">일반글자</span>
+<span class="fs2">이탤릭</span>
+<i>이탤릭</i>
+</div>
+<table border="1">
+<tr>
+<th width="80">번호</th>
+<th width="120">이름</th>
+<th width="300"><address>주소</address></th>
+</tr>
+</table>
+<div>
+<span class="col1">단어로 색 설정한 글자</span>
+<span class="col2">RGB 칼라로 색 설정한 글자</span>
+</div>
+<div>
+<u>u태그</u>
+<a href="#void">링크</a>
+<span class="td1">밑줄.</span>
+<span class="td2">취소선.</span>
+<span class="td3">윗줄.</span>
+</div>
+<div>
+일반글자
+<span class="fontsize1">큰글자.</span>
+<span class="fontsize2">작은글자.</span>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery event</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<!-- JQuery google CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btnClick").click(function(){
+		alert("버튼 클릭");
+	});//click
+	
+	$("#txtChg").change(function(){
+		alert("text 변경");
+	});//change
+	
+	$("#selChg").change(function(){
+		alert("select 변경");
+	});//change
+	
+	//커서가 들어오면
+	$("#txtFocusIn").focusin(function(){
+		$("#div").html("커서가 들어가면");
+	});
+	
+	//커서가 빠져 나가면
+	$("#txtFocusOut").focusout(function(){
+		$("#div").html("커서가 빠져 나가면");
+	});
+	
+	//마우스 포인터가 올라오면
+	$("#mouseOver").mouseover(function(){
+		$("#div").html("마우스 포인터가 올라왔음.");
+		$("#div").css("font-weight", "bold");
+	})//mouseover
+	
+	//마우스 포인터가 빠져나가면
+	$("#mouseOut").mouseout(function(){
+		$("#div").html("마우스 포인터가 빠져나갔음.");
+	})//mouseover
+});//ready
+</script>
+</head>
+<body>
+<input type="button" value="클릭" id="btnClick" class="inputBtn"/><br/>
+<label>change</label><input type="text" id="txtChg" class="inputBox"/><br/>
+<label>change</label>
+<select id="selChg">
+<option>A</option>
+<option>B</option>
+<option>C</option>
+</select>
+<br/>
+
+<label>커서가 들어가면</label>
+<input type="text" id="txtFocusIn" class="inputBox"/><br/>
+<label>커서가 빠져나가면</label>
+<input type="text" id="txtFocusOut" class="inputBox"/><br/>
+<div id="div"></div>
+
+<label>마우스포인터가 들어가면</label>
+<img src="http://localhost/html_prj/day0825/images/cimg.png" id="mouseOver"/>
+<br/>
+<br/>
+<label>마우스포인터가 빠져나가면</label>
+<img src="http://localhost/html_prj/day0825/images/cimg.png" id="mouseOut"/>
+
+</body>
+</html>

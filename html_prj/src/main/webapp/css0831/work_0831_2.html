@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+<style type="text/css">
+#wrap{ width:700px; height:1000px; margin: 0px auto;}
+#loginTitle{margin: 100px auto; text-align: center;}
+#flex{display: flex;}
+#leftDiv{width:45%; height:250px;}
+#rightDiv{width:45%; height:250px; margin-left:30px}
+.lblTitle{display:inline-block; width:300px; font-size:16px; font-weight:bold;
+	border-bottom:2px solid #000000}
+.inText{width:290px; height:40px; font-size:16px; margin-top: 10px;
+	border:2px solid #c0c0c0}
+.inHyphen{width:150px; height:40px;}
+.inButton{width:300px; height:40px; font-size:16px; font-weight: bold; margin-top: 10px;}
+.buttonLogin{background-color: #000000; color: #FFFFFF;}
+.buttonNon{background-color: #FFFFFF; color: #000000;}
+.aStyle{text-decoration: none; color: #000000; font-size:12px}
+.orStyle{ font-size:12px; color: #c0c0c0; margin-left:10px; margin-right:10px}
+</style>
+</head>
+<body>
+
+<div id="wrap">
+<div id="loginTitle"><h1>로그인</h1></div>
+
+<div id="flex">
+<div id="leftDiv">
+<div><label class="lblTitle">회원로그인</label></div>
+<div><input class="inText" type="text" placeholder="아이디"/></div>
+<div><input class="inText" type="password" placeholder="비밀번호"/></div>
+<div><input class="inButton buttonLogin" type="button" value="로그인"/></div>
+</div>
+
+<div id="rightDiv">
+<div><label class="lblTitle">비회원 주문조회</label></div>
+<div><input class="inText" type="text" placeholder="주문자명"/></div>
+<div><input class="inText inHyphen" type="text" placeholder="하이픈(-) 포함"/></div>
+<div><input class="inText" type="text" placeholder="비회원주문 비밀번호"/></div>
+<div><input class="inButton" type="button" value="비회원 주문 조회하기"/></div>
+</div>
+</div>
+
+<div>
+<a class="aStyle" href="http://211.63.89.139/html_prj/css0831/member_form.html">회원가입</a> <label class="orStyle">|</label> 
+<a class="aStyle" href="#void">아이디 찾기</a> <label class="orStyle">|</label>
+<a class="aStyle" href="#void">비밀번호 찾기</a>
+</div>
+
+
+</div>
+</body>
+</html>

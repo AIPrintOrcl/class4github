@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>숙제 0902</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script><!-- jQuery 선언 -->
+<style type="text/css">
+#genderColor{width:100px;height:100px;border-radius: 100px;margin:10px auto}
+#RBGColor{width:100px;height:100px;margin:10px auto}
+</style>
+<script type="text/javascript">
+/* - 태어난 해를 prompt로 입력받아 나이를 구하여 console에 출력하는 코드 작성. */
+let YearOfBirth=parseInt(prompt("태어난 해를 입력해주세요.","1995"));
+
+let nowYear=new Date().getFullYear();//현재 연도 구하기
+
+let age=nowYear-YearOfBirth+1;//나이 계산
+
+console.log(age);
+
+/* - 성별을 prompt로 입력받아 아래의 도형에 색을 넣어 HTML <body>로 출력하세요. 
+	 남자면 파란색을 출력한다. 여자면 빨간색을 출력한다.
+     (자바스크립트에서 문자열의 비교는 ==으로 수행한다.) */
+     
+let gender=prompt("성별을 입력해주세요.(남자/여자)", "남자");
+
+function outGenderColor(gender) {
+	let color= "#0000FF";
+	if(gender=="여자") {
+		color= "#FF0000";
+	}//end if
+	$('#genderColor').css('background-color', color);
+}//outGenderColor
+
+    
+/* - prompt로 RGB를 입력받아 넓이 100px, 높이 100px 크기를 가지는 div에 
+입력받은 색을 바닥색으로 넣어 보여주세요. */
+    
+let RGB=prompt("RGB 값을 입력해주세요.","#000000");
+    
+function outRGBColor(RGB) {
+	$('#RBGColor').css('background-color', RGB);
+}//outRGBColor
+
+</script>
+</head>
+<body>
+<!-- 
+*숙제.
+  - 태어난 해를 prompt로 입력받아 나이를 구하여 console에 출력하는 코드 작성.
+
+  - 성별을 prompt로 입력받아 아래의 도형에 색을 넣어 HTML <body>로 출력하세요. 
+    남자 면     파란색을 출력한다. 여자면     빨간색을 출력한다.
+      
+    (자바스크립트에서 문자열의 비교는 ==으로 수행한다.)
+	
+
+  - prompt로 RGB를 입력받아 넓이 100px, 높이 100px 크기를 가지는 div에 
+     입력받은 색을 바닥색으로 넣어 보여주세요.
+
+ -->
+ <div id='genderColor'></div>
+ 
+ <div id='RBGColor'></div>
+ 
+ <script type="text/javascript">
+ outGenderColor(gender);
+ outRGBColor(RGB);
+ </script>
+</body>
+</html>

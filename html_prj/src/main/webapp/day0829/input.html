@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML From Control - input</title>
+</head>
+<body>
+<!-- HTML 4.01에서는
+<input type="text|password|checkbox|radio|submit|button|reset">을 사용 가능 -->
+<!-- <input type="text" => 사용자가 자유롭게 한줄로 입력 가능한 객체 -->
+<form action="test.jsp">
+<input><br/> <!-- type을 설정하지 않으면 text가 기본 -->
+<!-- <input type="text" name="이름" size="넓이" maxvalue="최대입력글자수"
+	 	readonly="readonly" disabled="disabled" /> -->
+	 	
+<label title="input의 용도를 알려주는 태그">이름</label>
+<input type="text" name="name"/><br/>
+<label>크기변경</label><input type="text" name="size" size="10"/><br/>
+
+<label>최대입력 글자수</label><!-- size속성과 maxlength는 아무런 상관이 없다. -->
+<input type="text" name="maxleng" size="10" maxlength="20"/><br/>
+
+<label>읽기전용</label> <!-- readonly는 설정된 값을 변경할 수 없으나 back-end로 값 전송이 가능 -->
+<input type="text" name="read" size="10" readonly="readonly" value="읽기전용"/><br/>
+
+<label>비활성화</label> <!-- disabled는 설정된 값을 변경할 수 없고, back-end로 값 전송이 불가능 -->
+<input type="text" name="disable" size="10" disabled="disabled" value="비활성화"/><br/>
+
+<hr/>
+<label>비밀번호</label><!-- 입력글자가 echo char(반향문자)로 보여지는 HTML Form Control -->
+<input type="password" name="pass"/><br/>
+
+<label>나이</label>
+<input type="password" name="age" size="3" maxlength="3"/>
+
+<hr/>
+<!-- 
+ <input type="checkbox" name="이름" value="back-end로 전송할 값" checked="checked"
+ 		readonly="readonly" disabled="disabled"/>체크박스라벨
+ -->
+ <label>취미</label>
+ <input type="checkbox" name="hobby" value="액션영화"/>영화감상<br/>
+ <input type="checkbox" name="hobby" value="축구시청"/>EPL시청<br/>
+ <input type="checkbox" name="hobby" value="코딩" checked="checked"/>자바코딩<br/>
+ <input type="checkbox" name="hobby" value="숨쉬기운동" disabled="disabled"/>운동<br/>
+
+<hr/>
+<label>성별</label> <!-- radio는 여러 개의 객체중 하나만 선택 가능 => 
+여러개의 객체중 하나만 선택 될 수 있도록 하기위해서는 "그룹"으로 라디오를 묶어야한다.
+name속성에 같은 이름을 설정하면 라디오 버튼이 그룹으로 묶여진다. -->
+<input type="radio" value="남" name="gender" checked="checked"/>남자
+<input type="radio" value="여" name="gender"/>여자<br/>
+<hr/>
+<!-- hidden은 사용자에게 보여지지 않는 HTML Form Control 
+	<input type="hidden" name="이름" value="back-end로 전송할 값"/>
+-->
+<input type="hidden" name="hid" value="전송할 값"/>
+<hr/>
+<label>파일선택</label> <!-- value 속성을 사용한 값 설정은 될 수 없다. -->
+<input type="file" name="upfile" value="e:/dev/env.bat"/><br/>
+
+<hr/>
+<!-- reset, submit은 <form>태그안에 있어야 동작 -->
+<input type="button" value="버튼"/> <!-- 버튼 모양, 라벨이 존재하지 않는다. --> 
+<input type="reset" value="취소"/> <!-- <form>의 자식으로 등록된 HTML Form Control들의 값을 초기화 --> 
+<input type="submit" value="전송"/><!-- <form> action속성에 설정된 페이지로 요청을 보낸다. -->
+</form>
+</body>
+</html>

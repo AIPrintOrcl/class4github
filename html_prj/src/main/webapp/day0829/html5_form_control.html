@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML5에서 새로 제공되는 HTML Form Control</title>
+</head>
+<body>
+<!-- 범위를 설정하는 객체 -->
+<label>범위선택</label>
+<input type="range" min="0" max="100" value="30"/>100<br/>
+<!-- #000000 검은색, #FFFFFF 흰색, #FF0000 빨간색, #00FF00 녹색, #0000FF 파란색 -->
+<label>색</label><input type="color" name="color" value="#FF0000"/><br/>
+<label>색</label><input type="color" name="color" value="#000000"/><br/>
+
+<hr/>
+<!-- date객체에 value를 설정할 때에는 년-월-일 로 설정해야한다. -->
+<label>날짜(년-월-일)</label><input type="date" name="date" value="2022-08-29"/><br/>
+<label>날짜(년-월)</label><input type="month" name="mon" value="2022-08"/><br/>
+<label>날짜(년-월-일 시간)</label><input type="datetime-local" name="dl"/><br/>
+<label>시간</label><input type="time" name="time"/><br/>
+<hr/>
+<!-- 의미적인 HTML Form Control -->
+<label>이메일</label><input type="text"/><br/>
+<label>이메일</label><input type="email"/><br/>
+
+<label>전화번호</label><input type="text"/><br/>
+<label>전화번호</label><input type="tel"/><br/>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+//var로 변수를 선언하면 
+//1.같은 이름의 변수를 몇번이든 선언할 수 있다.
+var name="차승주";
+console.log(name);
+
+var name="송성우";
+console.log(name);
+
+//2. hosting이 발생 : 아랫 줄에서 선언(?)할 변수를 윗줄에서 참조하여 사용할 수 있는 것.
+
+console.log("선언한 윗줄: "+addr);//에러 유발
+var addr="서울시 강남구 역삼동";
+console.log("선언한 아랫줄: "+addr);//값 할당하지 않은 변수를 사용하면 underfined가 출력
+
+//ES6에서는 let을 사용하면 var의 문제를 미리 차단할 수 있다.
+//1.선언
+let email;
+//2.값할당
+email="test@test.com";
+//3.값 사용
+console.log(email);
+//1.같은 이름의 변수를 선언 불가능
+//let email;
+
+//2. hosting 차단
+//console.log("변수 선언 전: "+time);//변수 선언전에 변수를 사용하면 error가 발생.
+let time="15:00";
+console.log("변수 선언 후: "+time);
+
+//const: 상수사용.
+//문법) const 상수명=값;
+const age=20;//선언할 때만 값 할당 가능
+//age=21;
+console.log("상수 사용: "+age);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>선 두께 조절</title>
+<style type="text/css">
+/* 이미지의 테두리 설정 */
+img{ border: 3px solid #000000}
+/* input 테두리 설정 */
+.input{ border: 1px solid #dfdfdf}
+.input2{ border-left: 0px; border-top: 0px; border-right: 0px;
+		border-bottom: 1px dotted #000000;}
+/* table은 table과 th,td의 선을 따로 설정해야한다. */
+table{ margin-top: 10px; border: 1px solid #333; border-spacing: 0px}/* RGB에 333은 3f3f3f를 줄여서 사용. */
+th,td{ border: 1px solid #333}
+</style>
+</head>
+<body>
+<img src="http://localhost/html_prj/day0825/images/img1.png"/>
+<div>
+<input type="text" value="선 설정되지 않는 input"/><br/>
+<input type="text" class="input" value="선 설정된 input"/><br/>
+<input type="password" class="input2" placeholder="특정선이 설정된 input"/><br/>
+</div>
+<table>
+<tr>
+	<th width="80">번호</th>
+	<th width="130">이름</th>
+	<th width="150">이메일</th>
+</tr>
+<tr>
+	<td>1</td>
+	<td>차승주</td>
+	<td>cha@test.com</td>
+</tr>
+<tr>
+	<td>2</td>
+	<td>남상민</td>
+	<td>min@daum.net</td>
+</tr>
+<tr>
+	<td>3</td>
+	<td>송성우</td>
+	<td>song@naver.com</td>
+</tr>
+</table>
+</body>
+</html>

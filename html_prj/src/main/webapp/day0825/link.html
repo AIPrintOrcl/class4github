@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>태그를 사용한 문서 연결</title>
+</head>
+<body>
+<!-- 다른 HTML문서를 연결하기 위해 사용하는 태그
+<a href="연결할HTML문서 경로" target="연결될 HTML이 보여질 Frame 위치" title="풍선도움말">
+ 클릭할 이름 </a>
+ 
+ 경로 : URL	  : http://서버명:80/폴더명/파일명.html
+ 				 - 장점 : link를 가진 HTML파일의 위치가 변경되어도 연결가능. 다른 서버와도 연결 가능.
+ 				 - 단점 : 코드의 길이가 길어진다.
+ 	   상대경로 : 폴더명/파일명.html *중요 : 경로는 웹브라우저에서 서비스되는 경로로만 생각한다.
+ 	   			 - 장점 : 코드의 길이가 짧아진다.
+ 	   			 - 단점 : link를 가진 HTML파일의 위치가 변경되면 경로를 수정해주어야한다.
+ 	   			 		서버 내에서만 이동가능.
+ 	   절대경로 : 접속자 HDD에 Web Server와 동일한 경로가 존재할리가 없으므로 web service가 불가능한
+ 	   			경로
+ -->
+<p>
+ <strong>같은 경로에 존재하는 파일 연결</strong><br>
+URL사용 : <a href="http://localhost/html_prj/day0825/test.html">클릭</a><br>
+상대경로 : <a href="test.html">클릭</a><br>
+</p>
+<p>
+ <strong>다른 경로에 존재하는 파일 연결</strong><br>
+URL사용 : <a href="http://localhost/html_prj/day0824/hello.html">클릭</a><br>
+상대경로 : <a href="../day0824/hello.html">클릭</a><br>
+</p>
+<p>
+<a href="http://www.daum.net/index.html">다음</a><br>
+<a href="http://www.google.co.kr/index.html">구글</a><br>
+</p>
+<p>
+<strong>링크의 다양한 사용</strong><br>
+<a href="mailto:skatkdals5@gmail.com">메일</a><br>
+<a href="tel:010-xxxx-xxxx">전화</a><br>
+<a href="sms:010-xxxx-xxxx">문자</a><br>
+</p>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styesheet" type="text/css" href="http://211.63.89.139/html_prj/common/css/main_v1_220901.css"/>
+<style type="text/css">
+span{font-size: 20px;}
+.red{background-color: #FF0000}
+.blue{background-color: #0000FF}
+</style>
+<script type="text/javascript">
+var cnt=0;
+var flag=false;
+function test() {
+	cnt++;
+	var bg="red";
+	if(flag){
+		bg="blue";
+	}//end if
+	
+	var msg="<span class='"+bg+"'>"+cnt+"</span><strong>test called!!</strong>";
+	
+	if(cnt==50){
+		msg+="<br/><img src='../day0825/images/cimg.png'/>";
+	}//end if
+	
+	document.getElementById("output").innerHTML=msg;
+	
+	if(cnt == 50){
+		endCall();
+	}else {
+	//1초마다 test 함수를 다시 호출(재귀호출:recursive call)하고 싶다.
+		setTimeout(test, 500);
+	}//end else
+	
+	flag=!flag;
+}//test
+function endCall() {
+	alert("그만");
+}//endCall
+</script>
+</head>
+<body>
+<input type="button" value="클릭" class="inputBtn" onclick="test()"/>
+<div id="output"></div>
+</body>
+</html>
