@@ -34,7 +34,7 @@
 <!-- datapicker 시작 -->
  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-  <script>
+<script type="text/javascript">
   $( function() {
     $( "#datepicker" ).datepicker({
     	dayNamesMin: [ "일", "월", "화", "수", "목", "금", "토" ],
@@ -47,9 +47,9 @@
         	                               
         	      date = $("#datepicker").val();
         	                               
-        	      $("#datepickerDate").val(date);
+        	      $("#reserDate").val(date);
         	      
-        	      <%-- var tourNum = "<%= tourNum %>" ;
+        	      <%-- var tourNum = "<%= tourNum %>";
         	      
         	      <%
         	      TourReservaDAO trDAO=new TourReservaDAO();
@@ -58,8 +58,8 @@
         	      trVO.setTourNum(tourNum);
         	      %>
         	      
-        	      $("#peopleCnt").val(trDAO.selectSeatCnt(trVO));  --%>
-        	  }
+        	      $("#peopleCnt").val(trDAO.selectSeatCnt(trVO)); --%>
+        	  }//onSelect
     });
     
     $("#reslutFrm").submit(function(event) { //다음 버튼 클릭 시 submit
@@ -70,10 +70,8 @@
       	$("#reslutFrm").submit();
       });
   });
-function seatCnt(date, tourNum) {
-	
-}
-  </script>
+
+</script>
 <!-- datapicker 끝 -->
 
 <style type="text/css">
@@ -169,7 +167,7 @@ if(request.getParameter("tourNum") != null){
 	<!--  여기사이에 구상하시면 됩니다!!! -->
 	
 	<div class="container">
-		<form action="user_reservation_date_Action.jsp" method="get" id="reslutFrm">
+		<form action="user_reservation_dateAction.jsp" method="get" id="reslutFrm">
 		<%
 		TourReservaDAO trDAO=new TourReservaDAO();
 		List<TourReservaVO> tourName=trDAO.selectTourList();
@@ -188,7 +186,7 @@ if(request.getParameter("tourNum") != null){
 				</div>
 				<div style="display: flex; flex-direction: column; justify-content: space-around;">
 					<div>
-						<div style="font-size: 15px;"><span><input type="text" id="datepickerDate" name="datepickerDate" readonly="readonly"/></span> 10:00 ~ 16:00</div>
+						<div style="font-size: 15px;"><span><input type="text" id="reserDate" name="reserDate" readonly="readonly"/></span> 10:00 ~ 16:00</div>
 						<div style="color: red; font-size: 13px;">*시간은 10:00 ~ 16:00으로 고정 입니다.</div>
 					</div>
 					<div>

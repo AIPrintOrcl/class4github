@@ -15,8 +15,6 @@ import kr.co.goyang.user.reservation.vo.TourReservaVO;
  * @author user
  */
 public class TourReservaDAO {
-
-	
 	
 	public TourReservaDAO() {
 		

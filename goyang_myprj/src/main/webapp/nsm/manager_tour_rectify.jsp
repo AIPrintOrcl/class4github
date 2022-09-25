@@ -52,7 +52,7 @@
 
 tableCnt=0;
 $(function(){
-	tableCnt=$("#tableAction tr").length;
+	tableCnt=$("#tableAction tr").length;//생성된 테이블의 행의 수
 	
 	$('#btn-add-row').click(function() {
 		if($('#tableAction tr').length>12){
@@ -74,6 +74,13 @@ $(function(){
 		tableCnt--;
 		if(tableCnt == -1){tableCnt=0;}
 	});//click
+	/* $("#recitfyFrm").submit(function(event) { //다음 버튼 클릭 시 submit
+		
+	});
+	      
+	$('#recitfyBtn').click(function () {
+		$("#recitfyFrm").submit();
+	}); */
 })
 
 function fileInput(fileInput, output){
@@ -82,6 +89,11 @@ function fileInput(fileInput, output){
 	fReader.readAsDataURL(file.files[0]);
 	fReader.onloadend = function(event) {
 		document.getElementById(output).src=event.target.result;
+		
+		/* 파일명 */
+		var fileValue = $('#'+fileInput).val().split("\\");
+		var fileName = fileValue[fileValue.length-1]; // 파일명
+		console.log(fileName);
 	}//end onloadend
 }//fileInput
 </script>
@@ -158,6 +170,7 @@ if(request.getParameter("tourNum") != null){
 
 
   <!-- container -->
+  <form id="recitfyFrm" action="manager_tour_rectifyAction.jsp" method="post">
   <%
   TourManagerDAO tmDAO = new TourManagerDAO();
   TourManagerVO tourVO=tmDAO.selectTour(tourNum);
@@ -167,6 +180,7 @@ if(request.getParameter("tourNum") != null){
   <hr>
   <div class="margin20"><!-- 코스명, 요약 설명, 사진, 맵 -->
    <div class="margin20">
+   <input type="hidden" name="tourNum" value="<%= tourNum %>"/>
     <span><strong>코스명</strong></span><br/>
     <input type="text" class="textSize" name="tourName" value="<%= tourVO.getTourName() %>" placeholder="코스명을 입력하세요." maxlength=20/><br/>
     </div>
@@ -179,7 +193,8 @@ if(request.getParameter("tourNum") != null){
    <span><strong>대표 사진</strong></span><br/>
    <div style="display: flex; justify-content: left; margin:20px 20px 0px 5px;">
     <div>
-     <input type='file' name="thumImg" id="thumImg" onchange="fileInput('thumImg', 'thumImgOutput')" accept="image/png, image/jpeg" value="<%= tourVO.getThumImg() %>">
+     <input type='file' id="thumImgFile" onchange="fileInput('thumImgFile', 'thumImgOutput')" accept="image/png, image/jpeg" value="<%= tourVO.getThumImg() %>">
+     <input type="hidden" id="thumImg" name="thumImg" value="<%= tourVO.getThumImg() %>"/>
     </div>
      <div class="imgSize"><img class="imgSize" id="thumImgOutput" src="http://localhost/goyang_myprj/images/<%= tourVO.getThumImg() %>"/></div>
     </div>
@@ -189,7 +204,8 @@ if(request.getParameter("tourNum") != null){
     <span><strong>MAP</strong></span><br/>
    <div style="display: flex; justify-content: left; margin:20px 20px 0px 5px;">
     <div>
-     <input type='file' name="mapImg" id="mapImg" onchange="fileInput('mapImg', 'mapImgOutput')" accept="image/png, image/jpeg" value="<%= tourVO.getMapImg() %>">
+     <input type='file' id="mapImgFile" onchange="fileInput('mapImgFile', 'mapImgOutput')" accept="image/png, image/jpeg" value="<%= tourVO.getMapImg() %>">
+     <input type="hidden" id="mapImg" name="mapImg" value="<%= tourVO.getMapImg() %>"/>
     </div>
      <div class="imgSize"><img class="imgSize" id="mapImgOutput" src="http://localhost/goyang_myprj/images/<%= tourVO.getMapImg() %>"/></div>
    </div>
@@ -228,13 +244,14 @@ if(request.getParameter("tourNum") != null){
   
   <div class="margin20"> <!-- 탑승료, 종료하기/수정하기 버튼 -->
    <div class="margin20"><strong>탑승료</strong></div>
-   <div class="margin20"><strong>성인:</strong><input type="text" value="<%= tourVO.getAdultFee() %>"/></div>
-   <div class="margin20"><strong>기타:</strong><input type="text" value="<%= tourVO.getOtherFee() %>"/></div>
+   <div class="margin20"><strong>성인:</strong><input type="text" name="adultFee" value="<%= tourVO.getAdultFee() %>"/></div>
+   <div class="margin20"><strong>기타:</strong><input type="text" name="otherFee" value="<%= tourVO.getOtherFee() %>"/></div>
    <div style="display: flex; justify-content: end; margin-bottom: 5px; margin-top: 20px;">
-    <div class="marginLR10"></div><div class="marginLR10"><input type="button" value="수정하기" class="mainBtn" onclick="showPopup(true,'popup')"/></div>
+    <div class="marginLR10"></div><div class="marginLR10"><input type="button" id="recitfyBtn" value="수정하기" class="mainBtn" onclick="showPopup(true,'popup')"/></div>
    </div>
   </div>
   </div>
+  </form>
   
   <!-- footer -->
 
@@ -300,30 +317,11 @@ if(request.getParameter("tourNum") != null){
 					align-items: center; height: 70px ;background-color: #f0f6f9;">해당 투어를 수정하시겠습니까?</div>
 					
 					<div style="display: flex; align-items: center; justify-content: center; padding-bottom: 10px;">
-						<input type="button" value="확인" class="popupBtn" onclick="showPopup(true,'popup2')">
+						<input type="button" value="확인" class="popupBtn" onclick="windowMove('popup')">
 						<input type="button" value="취소" class="popupBtn" onclick="closePopup('popup')">
 					</div>
 				</div>
 			</div>
-	  </div>
-	</div>
-	
-	<!-- 투어 수정 메시지 팝업 - popup2 -->
-	<div id="popup2" class="hide popup">
-	  <div class="content">
-		<div style="width: 450px;">
-			<div style="font-size: 12px; width: 450px; height: 30px; padding-left: 10px;
-			display: flex; align-items: center; background-color: #f0f6f9; border: 1px solid #ddd; margin-bottom: 5px">투어 수정 확인</div>
-			
-			<div style="background-color: #f0f6f9;">
-				<div style="font-size: 16px; display: flex; justify-content: center; 
-				align-items: center; height: 70px ;background-color: #f0f6f9;">수정되었습니다.</div>
-				
-				<div style="display: flex; align-items: center; justify-content: center; padding-bottom: 10px;">
-					<input type="button" value="확인" class="popupBtn" onclick="windowMove('popup2')">
-				</div>
-			</div>
-		</div>
 	  </div>
 	</div>
 	
@@ -346,10 +344,6 @@ if(request.getParameter("tourNum") != null){
 		function showPopup(hasFilter,id) {
 			const popup = document.querySelector("#"+id);
 			
-			if(id=='popup2'){
-				document.querySelector('#popup').classList.add('hide');
-			}
-			
 			if (hasFilter) {
 				popup.classList.add('has-filter');
 			} else {
@@ -366,7 +360,7 @@ if(request.getParameter("tourNum") != null){
 		
 		function windowMove(id) {
 			closePopup(id);
-			location.href='manager_tour_detail.jsp?tourNum=<%= tourNum %>';
+			$("#recitfyFrm").submit();
 		}//windowMove()
 		
 	</script>

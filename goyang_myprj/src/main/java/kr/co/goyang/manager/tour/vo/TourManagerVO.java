@@ -6,8 +6,9 @@ import java.util.Arrays;
 public class TourManagerVO {
 
 	private String tourName, explain, thumImg, mapImg, spotName, startHour, endHour, listSearch, textSearch;
-	private String[] tourOrderIn,spotNameIn, startHourIn, endHourIn;
+	private String[] spotNameIn, startHourIn, endHourIn;
 	private int tourNum, adultFee, otherFee, runFlag, tourOrder;
+	private int[] tourOrderIn;
 	private Date tourResist;
 	
 	public TourManagerVO() {
@@ -15,7 +16,7 @@ public class TourManagerVO {
 	}
 
 	public TourManagerVO(String tourName, String explain, String thumImg, String mapImg, String spotName,
-			String startHour, String endHour, String listSearch, String textSearch, String[] tourOrderIn,
+			String startHour, String endHour, String listSearch, String textSearch, int[] tourOrderIn,
 			String[] spotNameIn, String[] startHourIn, String[] endHourIn, int tourNum, int adultFee, int otherFee,
 			int runFlag, int tourOrder, Date tourResist) {
 		super();
@@ -112,11 +113,11 @@ public class TourManagerVO {
 		this.textSearch = textSearch;
 	}
 
-	public String[] getTourOrderIn() {
+	public int[] getTourOrderIn() {
 		return tourOrderIn;
 	}
 
-	public void setTourOrderIn(String[] tourOrderIn) {
+	public void setTourOrderIn(int[] tourOrderIn) {
 		this.tourOrderIn = tourOrderIn;
 	}
 

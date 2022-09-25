@@ -9,7 +9,6 @@ import java.util.List;
 
 import kr.co.goyang.common.dao.DbConnection;
 import kr.co.goyang.manager.tour.vo.TourManagerVO;
-import kr.co.goyang.user.reservation.vo.TourReservaVO;
 
 /**
  * PreparedStatement를 사용한 CRUD작업.
@@ -73,7 +72,6 @@ public class TourManagerDAO {
 	}//selectSearchTour
 	
 	public TourManagerVO selectTour(int tourNum) throws SQLException {//투어별 상세보기
-//		List<TourManagerVO> list = new ArrayList<TourManagerVO>();
 		TourManagerVO tmVO;
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -88,12 +86,6 @@ public class TourManagerDAO {
 			//3.쿼리문 생성 객체 얻기
 			StringBuilder selectTour=new StringBuilder();
 			
-//			selectTour
-//			.append("	SELECT	T.TOUR_NUM, T.TOUR_NAME, T.EXPLAIN, T.THUM_IMG, T.MAP_IMG, T.ADULT_FEE, T.OTHER_FEE, T.RUN_FLAG,	")
-//			.append("			TS.TOUR_ORDER, TS.SPOTS_NAME, TS.START_HOUR, TS.END_HOUR	")
-//			.append(" 	FROM	TOUR T, TOUR_SPOTS TS	")
-//			.append(" 	WHERE	T.TOUR_NUM=TS.TOUR_NUM AND	")
-//			.append(" 			TOUR_NUM= ?	");
 			selectTour
 			.append("	SELECT	TOUR_NUM, TOUR_NAME, EXPLAIN, THUM_IMG, MAP_IMG, ADULT_FEE, OTHER_FEE, RUN_FLAG	")
 			.append(" 	FROM	TOUR	")
@@ -116,12 +108,6 @@ public class TourManagerDAO {
 				tmVO.setAdultFee(rs.getInt("ADULT_FEE"));
 				tmVO.setOtherFee(rs.getInt("OTHER_FEE"));
 				tmVO.setRunFlag(rs.getInt("RUN_FLAG"));
-//				tmVO.setTourOrder(rs.getInt("TS.TOUR_ORDER"));
-//				tmVO.setSpotName(rs.getString("TS.SPOTS_NAME"));
-//				tmVO.setStartHour(rs.getString("TS.START_HOUR"));
-//				tmVO.setEndHour(rs.getString("TS.END_HOUR"));
-				//생성된 VO를 list에 저장
-//				list.add(tmVO);
 			}//end while
 			
 		}finally {
@@ -150,7 +136,7 @@ public class TourManagerDAO {
 			
 			selectTour
 			.append("	SELECT	T.TOUR_NUM,	")
-			.append("			TS.TOUR_ORDER, TS.SPOTS_NAME, TS.START_HOUR, TS.END_HOUR	")
+			.append("			TS.TOUR_ORDER, TS.SPOTS_NAME, NVL(TS.START_HOUR, '') START_HOUR, NVL(TS.END_HOUR, '') END_HOUR	")
 			.append(" 	FROM	TOUR T, TOUR_SPOTS TS	")
 			.append(" 	WHERE	T.TOUR_NUM=TS.TOUR_NUM AND	")
 			.append(" 			T.TOUR_NUM= ?	");
@@ -178,7 +164,103 @@ public class TourManagerDAO {
 		}//end finally
 		
 		return list;
-	}//selectTour
+	}//selectTourSpots
+	
+	public int updateTour(TourManagerVO tmVO) throws SQLException{
+		int updateCnt=0;
+		DbConnection dc = DbConnection.getInstance();
+		
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		
+		try {
+		//1.드라이버 로딩
+		//2.커넥션 얻기
+			con=dc.getConn();
+		//3.쿼리문 생성객체 얻기
+			StringBuilder updateTour=new StringBuilder();
+			updateTour
+			.append("	update	TOUR			 ")
+			.append("	set		TOUR_NAME=?, EXPLAIN=?, THUM_IMG=?, MAP_IMG=?, ADULT_FEE=?, OTHER_FEE=?	")
+			.append("	where	TOUR_NUM=?			 ");
+			
+			pstmt=con.prepareStatement(updateTour.toString());
+		//4.바인드 변수에 값 설정
+			pstmt.setString(1, tmVO.getTourName());
+			pstmt.setString(2, tmVO.getExplain());
+			pstmt.setString(3, tmVO.getThumImg());
+			pstmt.setString(4, tmVO.getMapImg());
+			pstmt.setInt(5, tmVO.getAdultFee());
+			pstmt.setInt(6, tmVO.getOtherFee());
+			pstmt.setInt(7, tmVO.getTourNum());
+		//5.쿼리문 수행 후 결과 얻기
+			updateCnt=pstmt.executeUpdate();
+			
+		}finally {
+			//6.연결 끊기
+			dc.dbClose(null, pstmt, con);
+		}//end finally
+		
+		return updateCnt;
+	}//updateTour
+	
+	public int delecteTourSport(int tourNum) throws SQLException {
+		int deleteCnt=0;
+		
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		
+		DbConnection db=DbConnection.getInstance();
+		try {
+			//1.드라이버로딩
+			//2.커넥션 얻기
+			 con=db.getConn();
+			//3.쿼리문 생성객체 얻기
+			 String delecteTourSport="delete from TOUR_SPOTS where TOUR_NUM=?";
+			 pstmt=con.prepareStatement(delecteTourSport);
+			//4.바인드변수에 값 설정
+			 pstmt.setInt(1, tourNum);
+			//5.쿼리문 수행 후 결과 얻기
+			 deleteCnt=pstmt.executeUpdate(); // 리턴되는 값:0 - 삭제된 행 없는 경우 
+			 								//or 1 - 삭제된 행이 하나인 경우.
+		}finally {
+			//6.연결끊기
+			db.dbClose(null, pstmt, con);
+		}
+		
+		return deleteCnt;
+	}//delecteCpEmp
+	
+	public void insertTourSport(TourManagerVO tmVO) throws SQLException{
+		
+		DbConnection dc=DbConnection.getInstance();
+		
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		//1.드라이버 로딩
+		try {
+		//2.커넥션 연결
+			con=dc.getConn();
+		//3.쿼리문생성객체 얻기
+			String insertCpEmp=
+					"insert into TOUR_SPOTS(TOUR_NUM, TOUR_ORDER, SPOTS_NAME, START_HOUR, END_HOUR) values(?,?,?,?,?)";
+			
+			for(int i=0;i<tmVO.getTourOrderIn().length;i++) {
+				pstmt=con.prepareStatement(insertCpEmp);//쿼리문을 넣어 쿼리문 실행객체를 얻는다.
+				//4.바인드변수에 값 설정
+				pstmt.setInt(1, tmVO.getTourNum());
+				pstmt.setInt(2, tmVO.getTourOrderIn()[i]);
+				pstmt.setString(3, tmVO.getSpotNameIn()[i]);
+				pstmt.setString(4, tmVO.getStartHourIn()[i]);
+				pstmt.setString(5, tmVO.getEndHourIn()[i]);
+				//5.쿼리문 수행 후 결과 얻기
+				pstmt.executeUpdate();
+			}
+		}finally {
+			//6.연결 끊기
+			dc.dbClose(null, pstmt, con);
+		}//end finally
+	}//insertCpEmp
 	
 	
 //	/**
@@ -324,18 +406,16 @@ public class TourManagerDAO {
 //		return ceVO;
 //	}//seletOneCpEmp1
 	
-//	public static void main(String[] args) {
-//		TourManagerDAO tmDAO=new TourManagerDAO();
-//		TourManagerVO tmVO=new TourManagerVO();
+	public static void main(String[] args) {
+		TourManagerDAO tmDAO=new TourManagerDAO();
+		TourManagerVO tmVO=new TourManagerVO();
 //		try {
-//			tmDAO.selectTourSpots(1);
-//			
+//			tmDAO.updateTour(1, "화요나들이(벽제)", "자세한 설명은 생략한다.", 6002, 4000);
 //		} catch (SQLException e) {
 //			e.printStackTrace();
 //		}
-//		for(int i=0;i<seatNum.length;i++) {
-//			System.out.println(seatNum[i]);
-//		}
-//	}//main
+//		System.out.println("안녕");
+	}//main
+		
 	
-}//TourReservaDAO
+}//class
