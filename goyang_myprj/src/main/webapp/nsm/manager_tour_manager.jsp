@@ -157,7 +157,7 @@ if(session.getAttribute("id") !=null){//세션에서 아이디 가져오기.
 				</div>
 			</div>
 			<div style="display: flex; justify-content: end; margin-bottom: 5px; margin-top: 20px;">
-			  <input type="button" value="추가하기" class="mainBtn" onclick="location.href='manager_tour_add.html'"/>
+			  <input type="button" value="추가하기" class="mainBtn" onclick="location.href='manager_tour_add.jsp'"/>
 			</div>
 		</form>
 	</div>

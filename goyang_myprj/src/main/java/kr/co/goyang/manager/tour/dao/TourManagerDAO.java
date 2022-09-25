@@ -166,7 +166,75 @@ public class TourManagerDAO {
 		return list;
 	}//selectTourSpots
 	
-	public int updateTour(TourManagerVO tmVO) throws SQLException{
+	public int insertTour(TourManagerVO tmVO) throws SQLException{//투어 관리 추가- int tourNum 반환값: 관광지 추가 시 new tourNum 값이 필요
+		int tourNum=tmVO.getTourNum();
+		
+		DbConnection dc=DbConnection.getInstance();
+		
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		//1.드라이버 로딩
+		try {
+		//2.커넥션 연결
+			con=dc.getConn();
+		//3.쿼리문생성객체 얻기
+			StringBuilder insertTour=new StringBuilder();
+			insertTour
+			.append("	INSERT	INTO TOUR(TOUR_NUM, TOUR_NAME, EXPLAIN, THUM_IMG, MAP_IMG, ADULT_FEE, OTHER_FEE, TOUR_REGIST, RUN_FLAG)			 ")
+			.append("	VALUES(?, ?, ?, ?, ?, ?, ?, sysdate, 1)	");
+			
+				pstmt=con.prepareStatement(insertTour.toString());//쿼리문을 넣어 쿼리문 실행객체를 얻는다.
+				//4.바인드변수에 값 설정
+				tourNum=selectNextNum();
+				pstmt.setInt(1, tourNum);//투어 관리 리스트 마지막 번호 구하는 메소드
+				pstmt.setString(2, tmVO.getTourName());
+				pstmt.setString(3, tmVO.getExplain());
+				pstmt.setString(4, tmVO.getThumImg());
+				pstmt.setString(5, tmVO.getMapImg());
+				pstmt.setInt(6, tmVO.getAdultFee());
+				pstmt.setInt(7, tmVO.getOtherFee());
+				
+				//5.쿼리문 수행 후 결과 얻기
+				pstmt.executeUpdate();
+		}finally {
+			//6.연결 끊기
+			dc.dbClose(null, pstmt, con);
+		}//end finally
+		
+		return tourNum;
+	}//insertTour
+	
+	public int selectNextNum() throws SQLException { // 투어 게시판 마지막 번호 구하기
+		int selectNum=1;//첫번째면 1번
+		
+		DbConnection dc=DbConnection.getInstance();
+		
+		String selectNextNum = "SELECT TOUR_NUM FROM TOUR ORDER BY TOUR_NUM DESC";
+		
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+
+		try {
+			con = dc.getConn();// DB 연결
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} // catch
+		
+		try {
+			pstmt = con.prepareStatement(selectNextNum);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				selectNum=rs.getInt(1) + 1; // 게시판 마지막 번호에 다음 번호
+			}//end if
+		} finally {
+			dc.dbClose(rs, pstmt, con);
+		}//end finally
+		return selectNum;
+	}// selectNextNum
+	
+	public int updateTour(TourManagerVO tmVO) throws SQLException{//투어 정보 수정
 		int updateCnt=0;
 		DbConnection dc = DbConnection.getInstance();
 		
@@ -242,11 +310,11 @@ public class TourManagerDAO {
 		//2.커넥션 연결
 			con=dc.getConn();
 		//3.쿼리문생성객체 얻기
-			String insertCpEmp=
+			String insertTourSport=
 					"insert into TOUR_SPOTS(TOUR_NUM, TOUR_ORDER, SPOTS_NAME, START_HOUR, END_HOUR) values(?,?,?,?,?)";
 			
 			for(int i=0;i<tmVO.getTourOrderIn().length;i++) {
-				pstmt=con.prepareStatement(insertCpEmp);//쿼리문을 넣어 쿼리문 실행객체를 얻는다.
+				pstmt=con.prepareStatement(insertTourSport);//쿼리문을 넣어 쿼리문 실행객체를 얻는다.
 				//4.바인드변수에 값 설정
 				pstmt.setInt(1, tmVO.getTourNum());
 				pstmt.setInt(2, tmVO.getTourOrderIn()[i]);
@@ -261,7 +329,6 @@ public class TourManagerDAO {
 			dc.dbClose(null, pstmt, con);
 		}//end finally
 	}//insertCpEmp
-	
 	
 //	/**
 //	 * VO에 입력된 사원정보를 받아 CP_EMP1테이블에 추가하는 일

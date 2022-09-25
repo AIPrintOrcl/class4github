@@ -74,13 +74,6 @@ $(function(){
 		tableCnt--;
 		if(tableCnt == -1){tableCnt=0;}
 	});//click
-	/* $("#recitfyFrm").submit(function(event) { //다음 버튼 클릭 시 submit
-		
-	});
-	      
-	$('#recitfyBtn').click(function () {
-		$("#recitfyFrm").submit();
-	}); */
 })
 
 function fileInput(fileInput, nameOutput, imgOutput){
@@ -131,7 +124,7 @@ if(request.getParameter("tourNum") != null){
 					class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-center">
 					<li class="active"><a href="manager_dashboard.html">dash board</a></li>
 					<li><a href="manager_member_popup.html">회원관리</a></li>
-					<li><a href="manager_tour_manager.html">투어관리</a></li>
+					<li><a href="manager_tour_manager.jsp">투어관리</a></li>
 					<li><a href="manager_reservation.html">예약관리</a></li>
 					<li><a href="manager_spot_list.html">관광지 관리</a></li>
 					<li><a href="manager_review.html">후기관리</a></li>
@@ -170,11 +163,7 @@ if(request.getParameter("tourNum") != null){
 
 
   <!-- container -->
-  <form id="recitfyFrm" action="manager_tour_rectifyAction.jsp" method="post">
-  <%
-  TourManagerDAO tmDAO = new TourManagerDAO();
-  TourManagerVO tourVO=tmDAO.selectTour(tourNum);
-  %>
+  <form id="addFrm" action="manager_tour_addAction.jsp" method="post">
   <div class="container">
   <div style="font-size: 20px; margin: 50px 0px 10px 0px">투어 정보 수정</div>
   <hr>
@@ -182,21 +171,21 @@ if(request.getParameter("tourNum") != null){
    <div class="margin20">
    <input type="hidden" name="tourNum" value="<%= tourNum %>"/>
     <span><strong>코스명</strong></span><br/>
-    <input type="text" class="textSize" name="tourName" value="<%= tourVO.getTourName() %>" placeholder="코스명을 입력하세요." maxlength=20/><br/>
+    <input type="text" class="textSize" name="tourName" value="" placeholder="코스명을 입력하세요." maxlength=20/><br/>
     </div>
     <div class="margin20">
     <span><strong>요약 설명</strong></span><br/>
-    <input type="text" class="textSize" name="explain" value="<%= tourVO.getExplain() %>" placeholder="내용을 입력하세요." maxlength=30/>
+    <input type="text" class="textSize" name="explain" value="" placeholder="내용을 입력하세요." maxlength=30/>
    </div>
    
    <div class="margin20"><!-- 대표 사진 -->
    <span><strong>대표 사진</strong></span><br/>
    <div style="display: flex; justify-content: left; margin:20px 20px 0px 5px;">
     <div>
-     <input type='file' id="thumImgFile" onchange="fileInput('thumImgFile', 'thumImg', 'thumImgOutput')" accept="image/png, image/jpeg" value="<%= tourVO.getThumImg() %>">
-     <input type="hidden" id="thumImg" name="thumImg" value="<%= tourVO.getThumImg() %>"/>
+     <input type='file' id="thumImgFile" onchange="fileInput('thumImgFile', 'thumImg', 'thumImgOutput')" accept="image/png, image/jpeg" value="">
+     <input type="hidden" id="thumImg" name="thumImg" value=""/>
     </div>
-     <div class="imgSize"><img class="imgSize" id="thumImgOutput" src="http://localhost/goyang_myprj/images/<%= tourVO.getThumImg() %>"/></div>
+     <div class="imgSize"><img class="imgSize" id="thumImgOutput" src=""/></div>
     </div>
    </div>
    
@@ -204,10 +193,10 @@ if(request.getParameter("tourNum") != null){
     <span><strong>MAP</strong></span><br/>
    <div style="display: flex; justify-content: left; margin:20px 20px 0px 5px;">
     <div>
-     <input type='file' id="mapImgFile" onchange="fileInput('mapImgFile', 'mapImg', 'mapImgOutput')" accept="image/png, image/jpeg" value="<%= tourVO.getMapImg() %>">
-     <input type="hidden" id="mapImg" name="mapImg" value="<%= tourVO.getMapImg() %>"/>
+     <input type='file' id="mapImgFile" onchange="fileInput('mapImgFile', 'mapImg', 'mapImgOutput')" accept="image/png, image/jpeg" value="">
+     <input type="hidden" id="mapImg" name="mapImg" value=""/>
     </div>
-     <div class="imgSize"><img class="imgSize" id="mapImgOutput" src="http://localhost/goyang_myprj/images/<%= tourVO.getMapImg() %>"/></div>
+     <div class="imgSize"><img class="imgSize" id="mapImgOutput" src=""/></div>
    </div>
    </div>
    
@@ -223,17 +212,27 @@ if(request.getParameter("tourNum") != null){
   		<th>시작 시간</th>
   		<th>끝나는 시간</th>
   	</tr>
-  	<%
-  	List<TourManagerVO> tourSportList=tmDAO.selectTourSpots(tourNum);
-  	for(int i=0;i<tourSportList.size();i++){
-  	%>
+  	
   	<tr>
-  		<td><input type="text" name="tourOrderIn" value="<%= tourSportList.get(i).getTourOrder() %>" size=1 readonly="readonly"/></td>
-  		<td><input type="text" name="spotNameIn" value="<%= tourSportList.get(i).getSpotName() %>" /></td>
-  		<td><input type="text" name="startHourIn" value="<%= tourSportList.get(i).getStartHour() %>"/></td>
-  		<td><input type="text" name="endHourIn" value="<%= tourSportList.get(i).getEndHour() %>"/></td>
+  		<td><input type="text" name="tourOrderIn" value="1" size=1 readonly="readonly"/></td>
+  		<td><input type="text" name="spotNameIn" value=""/></td>
+  		<td><input type="text" name="startHourIn" value=""/></td>
+  		<td><input type="text" name="endHourIn" value=""/></td>
   	</tr>
-  	<%}//end for %>
+  	
+  	<tr>
+  		<td><input type="text" name="tourOrderIn" value="2" size=1 readonly="readonly"/></td>
+  		<td><input type="text" name="spotNameIn" value=""/></td>
+  		<td><input type="text" name="startHourIn" value=""/></td>
+  		<td><input type="text" name="endHourIn" value=""/></td>
+  	</tr>
+  	
+  	<tr>
+  		<td><input type="text" name="tourOrderIn" value="3" size=1 readonly="readonly"/></td>
+  		<td><input type="text" name="spotNameIn" value=""/></td>
+  		<td><input type="text" name="startHourIn" value=""/></td>
+  		<td><input type="text" name="endHourIn" value=""/></td>
+  	</tr>
   	
   </table>
    <div style="display: flex; justify-content: space-evenly;">
@@ -244,10 +243,10 @@ if(request.getParameter("tourNum") != null){
   
   <div class="margin20"> <!-- 탑승료, 종료하기/수정하기 버튼 -->
    <div class="margin20"><strong>탑승료</strong></div>
-   <div class="margin20"><strong>성인:</strong><input type="text" name="adultFee" value="<%= tourVO.getAdultFee() %>"/></div>
-   <div class="margin20"><strong>기타:</strong><input type="text" name="otherFee" value="<%= tourVO.getOtherFee() %>"/></div>
+   <div class="margin20"><strong>성인:</strong><input type="text" name="adultFee" value=""/></div>
+   <div class="margin20"><strong>기타:</strong><input type="text" name="otherFee" value=""/></div>
    <div style="display: flex; justify-content: end; margin-bottom: 5px; margin-top: 20px;">
-    <div class="marginLR10"></div><div class="marginLR10"><input type="button" id="recitfyBtn" value="수정하기" class="mainBtn" onclick="showPopup(true,'popup')"/></div>
+    <div class="marginLR10"></div><div class="marginLR10"><input type="button" id="addBtn" value="추가하기" class="mainBtn" onclick="showPopup(true,'popup')"/></div>
    </div>
   </div>
   </div>
@@ -305,7 +304,7 @@ if(request.getParameter("tourNum") != null){
 		</div>
 	</div>
 	
-	<!-- 투어 수정 확인 팝업 popup -->
+	<!-- 투어 추가 확인 팝업 popup -->
 	<div id="popup" class="hide popup">
 		<div class="content">
 			<div style="width: 450px;">
@@ -314,7 +313,7 @@ if(request.getParameter("tourNum") != null){
 				
 				<div style="background-color: #f0f6f9;">
 					<div style="font-size: 16px; display: flex; justify-content: center; 
-					align-items: center; height: 70px ;background-color: #f0f6f9;">해당 투어를 수정하시겠습니까?</div>
+					align-items: center; height: 70px ;background-color: #f0f6f9;">해당 투어를 추가하시겠습니까?</div>
 					
 					<div style="display: flex; align-items: center; justify-content: center; padding-bottom: 10px;">
 						<input type="button" value="확인" class="popupBtn" onclick="windowMove('popup')">
@@ -360,7 +359,7 @@ if(request.getParameter("tourNum") != null){
 		
 		function windowMove(id) {
 			closePopup(id);
-			$("#recitfyFrm").submit();
+			$("#addFrm").submit();//form submit
 		}//windowMove()
 		
 	</script>
