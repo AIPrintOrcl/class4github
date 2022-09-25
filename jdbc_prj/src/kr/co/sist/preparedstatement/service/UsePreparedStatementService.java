@@ -2,7 +2,6 @@ package kr.co.sist.preparedstatement.service;
 
 import static java.lang.Integer.parseInt; //static import
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -12,9 +11,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import kr.co.sist.preparedstatement.dao.UsePreparedStatementDAO;
-import kr.co.sist.vo.CpEmp1OneVO;
-import kr.co.sist.vo.CpEmp1SelectVO;
-import kr.co.sist.vo.CpEmp1UpdateVO;
 import kr.co.sist.vo.CpEmp1VO;
 
 /**

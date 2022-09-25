@@ -146,7 +146,7 @@
 			</div>
 			
 			<div style="display: flex; justify-content: end; margin: 20px 0;">
-				<input type="button" value="결제하기" class="mainBtn" onclick="showPopup(true,'popup')" style="width: 80px; height: 32px;" onclick="location.href='http://localhost/goyang/User/user_reservation_success.html'">
+				<input type="button" value="결제하기" class="mainBtn" onclick="showPopup(true,'popup')" style="width: 80px; height: 32px;">
 			</div>
 			
 		</form>
@@ -278,6 +278,9 @@
 		
 		function closePopup(id) {
 			const popup = document.querySelector("#"+id);
+			if(id=='popup2') {
+				location.href='http://localhost/goyang/User/user_reservation_success.html'
+			}
 			popup.classList.add('hide');
 		}
 		
