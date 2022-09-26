@@ -1,6 +1,6 @@
 <%@page import="java.util.List"%>
-<%@page import="kr.co.goyang.manager.tour.vo.TourManagerVO"%>
-<%@page import="kr.co.goyang.manager.tour.dao.TourManagerDAO"%>
+<%@page import="kr.co.goyang.manager.vo.TourManagerVO"%>
+<%@page import="kr.co.goyang.manager.dao.TourManagerDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
@@ -172,7 +172,7 @@ if(request.getParameter("tourNum") != null){
    <div class="margin20"><strong>기타:</strong><input type="text" value="<%= tourVO.getOtherFee() %>" readonly="readonly"/></div>
    <div style="display: flex; justify-content: end; margin-bottom: 5px; margin-top: 20px;">
     <div class="marginLR10">
-     <input type="button" value="종료하기" class="mainBtn" onclick="showPopup(true, 'popup')"/></div><div class="marginLR10">
+     <input type="button" value="종료하기" class="mainBtn" onclick="showPopup(true,'popup')"/></div><div class="marginLR10">
      <input type="button" value="수정하기" class="mainBtn" onclick="location.href='manager_tour_rectify.jsp?tourNum=<%= tourNum %>'"/></div>
    </div>
   </div>
@@ -231,42 +231,23 @@ if(request.getParameter("tourNum") != null){
 		</div>
 	</div>
 	
-	<!-- 투어 종료 확인 팝업 - popup -->
+	<!-- 투어 종료 확인 팝업 popup -->
 	<div id="popup" class="hide popup">
-	  <div class="content">
-		<div style="width: 412px;">
-			<div style="font-size: 10px; width: 400px; height: 30px; padding-left: 10px;
-			display: flex; align-items: center; background-color: #f0f6f9; border: 1px solid #ddd; margin-bottom: 5px">투어 종료 확인</div>
-			
-			<div style="background-color: #f0f6f9;">
-				<div style="font-size: 16px; display: flex; justify-content: center; 
-				align-items: center; height: 70px ;background-color: #f0f6f9;">정말로 종료하시겠습니까?</div>
+		<div class="content">
+			<div style="width: 450px;">
+				<div style="font-size: 12px; width: 450px; height: 30px; padding-left: 10px;
+				display: flex; align-items: center; background-color: #f0f6f9; border: 1px solid #ddd; margin-bottom: 5px">투어 수정 확인</div>
 				
-				<div style="display: flex; align-items: center; justify-content: space-evenly; padding-bottom: 10px;">
-					<input type="button" value="확인" class="popupBtn" onclick="closePopup('popup','yes')">
-					<input type="button" value="취소" class="popupBtn" onclick="closePopup('popup','no')">
+				<div style="background-color: #f0f6f9;">
+					<div style="font-size: 16px; display: flex; justify-content: center; 
+					align-items: center; height: 70px ;background-color: #f0f6f9;">해당 투어를 종료하시겠습니까?</div>
+					
+					<div style="display: flex; align-items: center; justify-content: center; padding-bottom: 10px;">
+						<input type="button" value="종료" class="popupBtn" onclick="windowMove('popup')">
+						<input type="button" value="취소" class="popupBtn" onclick="closePopup('popup')">
+					</div>
 				</div>
 			</div>
-		</div>
-	  </div>
-	</div>
-	
-	<!-- 투어 종료 메시지 팝업 - popup2 -->
-	<div id="popup2" class="hide popup">
-	  <div class="content">
-		<div style="width: 450px;">
-			<div style="font-size: 12px; width: 450px; height: 30px; padding-left: 10px;
-			display: flex; align-items: center; background-color: #f0f6f9; border: 1px solid #ddd; margin-bottom: 5px">투어 종료 확인</div>
-			
-			<div style="background-color: #f0f6f9;">
-				<div style="font-size: 16px; display: flex; justify-content: center; 
-				align-items: center; height: 70px ;background-color: #f0f6f9;">해당 투어가 종료되었습니다.</div>
-				
-				<div style="display: flex; align-items: center; justify-content: center; padding-bottom: 10px;">
-					<input type="button" value="확인" class="popupBtn" onclick="closePopup('popup2')">
-				</div>
-			</div>
-		</div>
 	  </div>
 	</div>
 	
@@ -289,10 +270,6 @@ if(request.getParameter("tourNum") != null){
 		function showPopup(hasFilter,id) {
 			const popup = document.querySelector("#"+id);
 			
-			if(id=='popup2'){
-				document.querySelector('#popup').classList.add('hide');
-			}
-			
 			if (hasFilter) {
 				popup.classList.add('has-filter');
 			} else {
@@ -302,13 +279,15 @@ if(request.getParameter("tourNum") != null){
 			popup.classList.remove('hide');
 		}//showPopup
 		
-		function closePopup(id, yn) {
-			if(yn=='yes'){
-				showPopup(true,'popup2')
-			}//end if
+		function closePopup(id) {
 			const popup = document.querySelector("#"+id);
 			popup.classList.add('hide');
 		}//closePopup
+		
+		function windowMove(id) {
+			closePopup(id);
+			location.href="manager_tour_downAction.jsp?tourNum=<%= tourNum %>"
+		}//windowMove()
 		
 	</script>
 	

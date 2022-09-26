@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.sist.common.dao.DbConnection;
-import kr.co.sist.vo.ZipcodeVO;
 
 /**
  * PreparedStatement의 bind변수와 SQL문의 like 특수문자의 사용.

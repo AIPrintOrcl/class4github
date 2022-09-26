@@ -10,8 +10,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
-import kr.co.sist.vo.ZipcodeVO;
-
 public class ZipcodeEvent extends WindowAdapter implements ActionListener {
 
 	private ZipcodeDesign zd;

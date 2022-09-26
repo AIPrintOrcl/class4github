@@ -1,12 +1,12 @@
-<%@page import="kr.co.goyang.manager.tour.dao.TourManagerDAO"%>
+<%@page import="kr.co.goyang.manager.dao.TourManagerDAO"%>
 <%@page import="java.sql.Date"%>
-<%@page import="kr.co.goyang.user.reservation.vo.TourReservaVO"%>
-<%@page import="kr.co.goyang.user.reservation.dao.TourReservaDAO"%>
+<%@page import="kr.co.goyang.user.vo.TourReservaVO"%>
+<%@page import="kr.co.goyang.user.dao.TourReservaDAO"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("UTF-8");
 %>
-<jsp:useBean id="tmVO" class="kr.co.goyang.manager.tour.vo.TourManagerVO" scope="page" />
+<jsp:useBean id="tmVO" class="kr.co.goyang.manager.vo.TourManagerVO" scope="page" />
 <jsp:setProperty name="tmVO" property="tourNum"/>
 <jsp:setProperty name="tmVO" property="tourName"/>
 <jsp:setProperty name="tmVO" property="explain"/>

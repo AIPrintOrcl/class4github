@@ -1,4 +1,4 @@
-package kr.co.goyang.manager.tour.dao;
+package kr.co.goyang.manager.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.goyang.common.dao.DbConnection;
-import kr.co.goyang.manager.tour.vo.TourManagerVO;
+import kr.co.goyang.manager.vo.TourManagerVO;
 
 /**
  * PreparedStatement를 사용한 CRUD작업.
@@ -297,7 +297,7 @@ public class TourManagerDAO {
 		}
 		
 		return deleteCnt;
-	}//delecteCpEmp
+	}//delecteTourSport
 	
 	public void insertTourSport(TourManagerVO tmVO) throws SQLException{
 		
@@ -328,7 +328,39 @@ public class TourManagerDAO {
 			//6.연결 끊기
 			dc.dbClose(null, pstmt, con);
 		}//end finally
-	}//insertCpEmp
+	}//insertTourSport
+	
+	public int updateTourDown(int tourNum) throws SQLException{//투어 종료
+		int updateCnt=0;
+		DbConnection dc = DbConnection.getInstance();
+		
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		
+		try {
+		//1.드라이버 로딩
+		//2.커넥션 얻기
+			con=dc.getConn();
+		//3.쿼리문 생성객체 얻기
+			StringBuilder updateTourDown=new StringBuilder();
+			updateTourDown
+			.append("	update	TOUR			 ")
+			.append("	set		RUN_FLAG=0	")
+			.append("	where	TOUR_NUM=?			 ");
+			
+			pstmt=con.prepareStatement(updateTourDown.toString());
+		//4.바인드 변수에 값 설정
+			pstmt.setInt(1, tourNum);
+		//5.쿼리문 수행 후 결과 얻기
+			updateCnt=pstmt.executeUpdate();
+			
+		}finally {
+			//6.연결 끊기
+			dc.dbClose(null, pstmt, con);
+		}//end finally
+		
+		return updateCnt;
+	}//updateTourDown
 	
 //	/**
 //	 * VO에 입력된 사원정보를 받아 CP_EMP1테이블에 추가하는 일

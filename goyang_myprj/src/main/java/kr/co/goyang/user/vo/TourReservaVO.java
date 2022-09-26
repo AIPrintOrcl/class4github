@@ -1,4 +1,4 @@
-package kr.co.goyang.user.reservation.vo;
+package kr.co.goyang.user.vo;
 
 import java.util.Arrays;
 import java.sql.Date;

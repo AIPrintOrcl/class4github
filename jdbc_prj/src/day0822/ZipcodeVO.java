@@ -1,4 +1,4 @@
-package kr.co.sist.vo;
+package day0822;
 
 public class ZipcodeVO {
 

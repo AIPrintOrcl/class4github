@@ -1,4 +1,4 @@
-package kr.co.goyang.manager.tour.vo;
+package kr.co.goyang.manager.vo;
 
 import java.sql.Date;
 import java.util.Arrays;

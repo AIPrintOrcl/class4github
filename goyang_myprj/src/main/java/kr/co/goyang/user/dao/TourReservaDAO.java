@@ -1,4 +1,4 @@
-package kr.co.goyang.user.reservation.dao;
+package kr.co.goyang.user.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.goyang.common.dao.DbConnection;
-import kr.co.goyang.user.reservation.vo.TourReservaVO;
+import kr.co.goyang.user.vo.TourReservaVO;
 
 /**
  * PreparedStatement를 사용한 CRUD작업.

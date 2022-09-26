@@ -1,6 +1,6 @@
 <%@page import="java.util.List"%>
-<%@page import="kr.co.goyang.manager.tour.vo.TourManagerVO"%>
-<%@page import="kr.co.goyang.manager.tour.dao.TourManagerDAO"%>
+<%@page import="kr.co.goyang.manager.vo.TourManagerVO"%>
+<%@page import="kr.co.goyang.manager.dao.TourManagerDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
@@ -67,7 +67,7 @@ $(function(){
 	  });
 	
 	$("#btn-delete-row").click(function(){
-		if($('#tableAction tr').length<3){
+		if($('#tableAction tr').length<4){
 			return;
 		}
 		$("#tableAction tr").last().remove();

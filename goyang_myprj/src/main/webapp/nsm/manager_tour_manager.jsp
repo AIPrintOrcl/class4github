@@ -1,6 +1,6 @@
-<%@page import="kr.co.goyang.manager.tour.vo.TourManagerVO"%>
+<%@page import="kr.co.goyang.manager.vo.TourManagerVO"%>
 <%@page import="java.util.List"%>
-<%@page import="kr.co.goyang.manager.tour.dao.TourManagerDAO"%>
+<%@page import="kr.co.goyang.manager.dao.TourManagerDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
