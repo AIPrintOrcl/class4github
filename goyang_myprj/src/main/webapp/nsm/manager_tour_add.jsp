@@ -74,6 +74,42 @@ $(function(){
 		tableCnt--;
 		if(tableCnt == -1){tableCnt=0;}
 	});//click
+	
+	$("#addBtn").click(function() { //추가하기 유효성 검사 후 submit
+		if($("#tourName").val().trim()=="") {
+			alert("코스명을 입력해주세요.")
+			return;
+		}//end if
+		
+		if($("#explain").val().trim()=="") {
+			alert("요약설명을 입력해주세요.")
+			return;
+		}//end if
+		
+		var spotNameFlag=true;
+		$("input[name=spotNameIn]").each(function(index, item){
+			if($(item).val().trim()=="") {
+				spotNameFlag=false;
+			}//end if
+		});//each
+		
+		if(!spotNameFlag) {//관광지명이 하나라도 빈 칸이 있을 경우
+			alert("관광지명을 입력해주세요.")
+			return;
+		}//end if
+		
+		if($("#adultFee").val().trim()=="") {
+			alert("성인 가격을 입력해주세요.")
+			return;
+		}//end if
+		
+		if($("#otherFee").val().trim()=="") {
+			alert("기타 가격을 입력해주세요.")
+			return;
+		}//end if
+		
+		showPopup(true,'popup');
+	});//click
 })
 
 function fileInput(fileInput, nameOutput, imgOutput){
@@ -97,10 +133,6 @@ function fileInput(fileInput, nameOutput, imgOutput){
 String id=null;
 if(session.getAttribute("id") !=null){//세션에서 아이디 가져오기.
 	id = (String) session.getAttribute("id");
-}//end if
-int tourNum=0;
-if(request.getParameter("tourNum") != null){
-	tourNum = Integer.parseInt(request.getParameter("tourNum"));
 }//end if
 %>
   <!-- header -->
@@ -169,13 +201,12 @@ if(request.getParameter("tourNum") != null){
   <hr>
   <div class="margin20"><!-- 코스명, 요약 설명, 사진, 맵 -->
    <div class="margin20">
-   <input type="hidden" name="tourNum" value="<%= tourNum %>"/>
     <span><strong>코스명</strong></span><br/>
-    <input type="text" class="textSize" name="tourName" value="" placeholder="코스명을 입력하세요." maxlength=20/><br/>
+    <input type="text" class="textSize" name="tourName" id="tourName" value="" placeholder="코스명을 입력하세요." maxlength=20/><br/>
     </div>
     <div class="margin20">
     <span><strong>요약 설명</strong></span><br/>
-    <input type="text" class="textSize" name="explain" value="" placeholder="내용을 입력하세요." maxlength=30/>
+    <input type="text" class="textSize" name="explain" id="explain" value="" placeholder="내용을 입력하세요." maxlength=30/>
    </div>
    
    <div class="margin20"><!-- 대표 사진 -->
@@ -243,10 +274,10 @@ if(request.getParameter("tourNum") != null){
   
   <div class="margin20"> <!-- 탑승료, 종료하기/수정하기 버튼 -->
    <div class="margin20"><strong>탑승료</strong></div>
-   <div class="margin20"><strong>성인:</strong><input type="text" name="adultFee" value=""/></div>
-   <div class="margin20"><strong>기타:</strong><input type="text" name="otherFee" value=""/></div>
+   <div class="margin20"><strong>성인:</strong><input type="text" name="adultFee" id="adultFee" value=""/></div>
+   <div class="margin20"><strong>기타:</strong><input type="text" name="otherFee" id="otherFee" value=""/></div>
    <div style="display: flex; justify-content: end; margin-bottom: 5px; margin-top: 20px;">
-    <div class="marginLR10"></div><div class="marginLR10"><input type="button" id="addBtn" value="추가하기" class="mainBtn" onclick="showPopup(true,'popup')"/></div>
+    <div class="marginLR10"></div><div class="marginLR10"><input type="button" id="addBtn" value="추가하기" class="mainBtn"/></div>
    </div>
   </div>
   </div>

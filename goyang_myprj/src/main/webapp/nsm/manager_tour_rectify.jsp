@@ -74,6 +74,42 @@ $(function(){
 		tableCnt--;
 		if(tableCnt == -1){tableCnt=0;}
 	});//click
+	
+	$("#rectifyBtn").click(function() { //수정하기 유효성 검사 후 submit
+		if($("#tourName").val().trim()=="") {
+			alert("코스명을 입력해주세요.")
+			return;
+		}//end if
+		
+		if($("#explain").val().trim()=="") {
+			alert("요약설명을 입력해주세요.")
+			return;
+		}//end if
+		
+		var spotNameFlag=true;
+		$("input[name=spotNameIn]").each(function(index, item){
+			if($(item).val().trim()=="") {
+				spotNameFlag=false;
+			}//end if
+		});//each
+		
+		if(!spotNameFlag) {//관광지명이 하나라도 빈 칸이 있을 경우
+			alert("관광지명을 입력해주세요.")
+			return;
+		}//end if
+		
+		if($("#adultFee").val().trim()=="") {
+			alert("성인 가격을 입력해주세요.")
+			return;
+		}//end if
+		
+		if($("#otherFee").val().trim()=="") {
+			alert("기타 가격을 입력해주세요.")
+			return;
+		}//end if
+		
+		showPopup(true,'popup');
+	});//click
 })
 
 function fileInput(fileInput, nameOutput, imgOutput){
@@ -160,8 +196,6 @@ if(request.getParameter("tourNum") != null){
 		</div>
 	</div>
 
-
-
   <!-- container -->
   <form id="recitfyFrm" action="manager_tour_rectifyAction.jsp" method="post">
   <%
@@ -175,11 +209,11 @@ if(request.getParameter("tourNum") != null){
    <div class="margin20">
    <input type="hidden" name="tourNum" value="<%= tourNum %>"/>
     <span><strong>코스명</strong></span><br/>
-    <input type="text" class="textSize" name="tourName" value="<%= tourVO.getTourName() %>" placeholder="코스명을 입력하세요." maxlength=20/><br/>
+    <input type="text" class="textSize" name="tourName" id="tourName" value="<%= tourVO.getTourName() %>" placeholder="코스명을 입력하세요." maxlength=20/><br/>
     </div>
     <div class="margin20">
     <span><strong>요약 설명</strong></span><br/>
-    <input type="text" class="textSize" name="explain" value="<%= tourVO.getExplain() %>" placeholder="내용을 입력하세요." maxlength=30/>
+    <input type="text" class="textSize" name="explain" id="explain" value="<%= tourVO.getExplain() %>" placeholder="내용을 입력하세요." maxlength=30/>
    </div>
    
    <div class="margin20"><!-- 대표 사진 -->
@@ -237,10 +271,10 @@ if(request.getParameter("tourNum") != null){
   
   <div class="margin20"> <!-- 탑승료, 종료하기/수정하기 버튼 -->
    <div class="margin20"><strong>탑승료</strong></div>
-   <div class="margin20"><strong>성인:</strong><input type="text" name="adultFee" value="<%= tourVO.getAdultFee() %>"/></div>
-   <div class="margin20"><strong>기타:</strong><input type="text" name="otherFee" value="<%= tourVO.getOtherFee() %>"/></div>
+   <div class="margin20"><strong>성인:</strong><input type="text" name="adultFee" id="adultFee" value="<%= tourVO.getAdultFee() %>"/></div>
+   <div class="margin20"><strong>기타:</strong><input type="text" name="otherFee" id="otherFee" value="<%= tourVO.getOtherFee() %>"/></div>
    <div style="display: flex; justify-content: end; margin-bottom: 5px; margin-top: 20px;">
-    <div class="marginLR10"></div><div class="marginLR10"><input type="button" id="recitfyBtn" value="수정하기" class="mainBtn" onclick="showPopup(true,'popup')"/></div>
+    <div class="marginLR10"></div><div class="marginLR10"><input type="button" id="rectifyBtn" value="수정하기" class="mainBtn"/></div>
    </div>
   </div>
   </div>
