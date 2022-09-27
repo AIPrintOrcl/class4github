@@ -67,7 +67,7 @@ public class TourReservaDAO {
 		return list;
 	}//selectTourList
 	
-	public int[] selectSeatCnt(TourReservaVO trVO) throws SQLException {
+	public int[] selectSeatNum(TourReservaVO trVO) throws SQLException {
 		int[] seatNum=null;
 		
 		Connection con=null;
@@ -86,13 +86,11 @@ public class TourReservaDAO {
 			.append("	SELECT 	SEAT_NUM	")
 			.append(" 	FROM 	TOUR_RESERVA tr, BUS_SEAT bs	")
 			.append(" 	WHERE	tr.RESER_NUM=bs.RESER_NUM and	")
-			.append(" 		  	TO_CHAR(RESER_DATE, 'YYYY-MM-DD') = ? AND TOUR_NUM = ?	");
+			.append(" 		  	RESER_DATE = ? AND TOUR_NUM = ?	");
 			
 			pstmt=con.prepareStatement(selectTour.toString(), ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			//4.바운드 값 설정
-			//pstmt.setString(1, String.valueOf(trVO.getReserDate()));
-			//pstmt.setInt(2, trVO.getTourNum());
-			pstmt.setString(1, String.valueOf(trVO.getReserDate()));
+			pstmt.setString(1, trVO.getReserDate());
 			pstmt.setInt(2, trVO.getTourNum());
 			
 			//5. 쿼리문 수행 후 결과 얻기
@@ -265,21 +263,21 @@ public class TourReservaDAO {
 //		return ceVO;
 //	}//seletOneCpEmp1
 	
-	public static void main(String[] args) {
-		TourReservaDAO trDAO=new TourReservaDAO();
-		TourReservaVO trVO=new TourReservaVO();
-		int[] seatNum=new int[3];
-		trVO.setReserDate("2022-09-24");
-		trVO.setTourNum(3);
-		try {
-			seatNum=trDAO.selectSeatCnt(trVO);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		for(int i=0;i<seatNum.length;i++) {
-			System.out.println(seatNum[i]);
-		}
-	}//main
+//	public static void main(String[] args) {
+//		TourReservaDAO trDAO=new TourReservaDAO();
+//		TourReservaVO trVO=new TourReservaVO();
+//		int[] seatNum=new int[3];
+//		trVO.setReserDate("2022-09-24");
+//		trVO.setTourNum(3);
+//		try {
+//			seatNum=trDAO.selectSeatNum(trVO);
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		for(int i=0;i<seatNum.length;i++) {
+//			System.out.println(seatNum[i]);
+//		}
+//	}//main
 	
 }//TourReservaDAO

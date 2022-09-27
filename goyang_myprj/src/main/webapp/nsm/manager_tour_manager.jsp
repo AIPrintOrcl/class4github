@@ -33,8 +33,18 @@
 <style type="text/css">
 
 </style>
+
+<!-- google jquery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
 <script type="text/javascript">
-<% %>
+/* $(function(){
+	$("#searchBtn").click(function() {
+		var searchVal=$("#searchInput").val();
+		console.log(searchVal);
+	});//click
+});//ready */
+
 </script>
 <title>관리자화면-투어관리</title>
 </head>
@@ -105,18 +115,19 @@ if(session.getAttribute("id") !=null){//세션에서 아이디 가져오기.
 	<!--  여기사이에 구상하시면 됩니다!!! -->
 	
 	<div class="container">
-		<form>
 			<div style="font-size: 20px; margin: 50px 0px 10px 0px">투어 정보 관리</div>
 			<hr>
 		
 			<div>
 				<div style="display: flex; justify-content: end; margin-bottom: 5px; margin-top: 20px;">
-					<select>
-     					<option value="courseName" selected>코스명</option>
-     					<option value="courseNum">코스번호</option>
+					<form name="searchFrm" action="manager_tour_manager_search">
+					<select name="listSearch">
+     					<option value="tour_Name" selected>코스명</option>
+     					<option value="tour_Num">코스번호</option>
     				</select>
-					<input type="text" placeholder="내용을 입력하세요.">
-					<input type="button" value="검색" class="mainBtn">
+					<input type="text" name="textSearch" placeholder="내용을 입력하세요.">
+					<input type="submit" id="searchBtn" value="검색" class="mainBtn">
+					</form>
 				</div>
 				<table class="member" style="width: 100%">
 					<tr>
@@ -159,7 +170,6 @@ if(session.getAttribute("id") !=null){//세션에서 아이디 가져오기.
 			<div style="display: flex; justify-content: end; margin-bottom: 5px; margin-top: 20px;">
 			  <input type="button" value="추가하기" class="mainBtn" onclick="location.href='manager_tour_add.jsp'"/>
 			</div>
-		</form>
 	</div>
 
 

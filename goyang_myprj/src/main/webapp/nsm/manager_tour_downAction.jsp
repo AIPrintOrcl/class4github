@@ -30,7 +30,7 @@ if(upResult>=1){
 <%}else {%>
 	alert("해당 투어가 종료되지 못했습니다.");
 	history.back();
-	<%-- location.href='manager_tour_rectify.jsp?tourNum=<%= tmVO.getTourNum() --%> %>';
+	<%-- location.href='manager_tour_rectify.jsp?tourNum=<%= tmVO.getTourNum() %>'; --%> 
 <%}%>
 </script>
 <body>

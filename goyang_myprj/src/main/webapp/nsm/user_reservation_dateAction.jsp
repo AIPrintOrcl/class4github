@@ -16,18 +16,13 @@ request.setCharacterEncoding("UTF-8");
 <body>
 
 <%
-//String date=request.getParameter("datepickerDate");
-//int tourNum=Integer.parseInt(request.getParameter("tourNum")); 
 
 TourReservaDAO trDAO=new TourReservaDAO();
-//TourReservaVO trVO=new TourReservaVO();
-//trVO.setReserDate(date);
-//trVO.setTourNum(tourNum);
-trDAO.selectSeatCnt(trVO);
+trDAO.selectSeatNum(trVO);
 %>
 예약한 좌석 번호 : 
 <%
-int[] seatNum=trDAO.selectSeatCnt(trVO);
+int[] seatNum=trDAO.selectSeatNum(trVO);
 
 for(int i=0;i<seatNum.length;i++) {
 %>

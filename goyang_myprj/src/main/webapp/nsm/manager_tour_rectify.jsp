@@ -74,13 +74,6 @@ $(function(){
 		tableCnt--;
 		if(tableCnt == -1){tableCnt=0;}
 	});//click
-	/* $("#recitfyFrm").submit(function(event) { //다음 버튼 클릭 시 submit
-		
-	});
-	      
-	$('#recitfyBtn').click(function () {
-		$("#recitfyFrm").submit();
-	}); */
 })
 
 function fileInput(fileInput, nameOutput, imgOutput){
@@ -131,7 +124,7 @@ if(request.getParameter("tourNum") != null){
 					class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-center">
 					<li class="active"><a href="manager_dashboard.html">dash board</a></li>
 					<li><a href="manager_member_popup.html">회원관리</a></li>
-					<li><a href="manager_tour_manager.html">투어관리</a></li>
+					<li><a href="manager_tour_manager.jsp">투어관리</a></li>
 					<li><a href="manager_reservation.html">예약관리</a></li>
 					<li><a href="manager_spot_list.html">관광지 관리</a></li>
 					<li><a href="manager_review.html">후기관리</a></li>
